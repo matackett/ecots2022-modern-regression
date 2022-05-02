@@ -1,0 +1,38 @@
+---
+title: "Modernizing the undergraduate regression analysis course"
+subtitle: "eCOTS 2022"
+author: "Maria Tackett, Mine Çetinkaya-Rundel, Rick Presman"
+footer: ""
+logo: ""
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: true
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+editor: visual
+execute:
+  freeze: auto
+---
+
+# Part 1
+
+## Slide 1
+
+-   Text 
+-   Text
+-   Text
+
+## Slide 2
+
+-   Text 
+-   Text
+-   Text
+
+## Slide 3
+
+::: appex
+📋 Call out
+:::
