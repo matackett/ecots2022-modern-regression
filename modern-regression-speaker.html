@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.43">
+  <meta name="generator" content="quarto-0.9.363">
+
   <meta name="author" content="Maria Tackett, Mine Çetinkaya-Rundel, Rick Presman">
   <title>Modernizing the undergraduate regression analysis course</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -10,9 +11,6 @@
   <link rel="stylesheet" href="modern-regression_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="modern-regression_files/libs/revealjs/dist/reveal.css">
   <style>
-    .reveal .sourceCode {  /* see #7635 */
-      overflow: visible;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
@@ -21,14 +19,13 @@
     ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="modern-regression_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-
   <script src="modern-regression_files/libs/clipboard/clipboard.min.js"></script>
   <script src="modern-regression_files/libs/quarto-html/tabby.min.js"></script>
   <script src="modern-regression_files/libs/quarto-html/popper.min.js"></script>
   <script src="modern-regression_files/libs/quarto-html/tippy.umd.min.js"></script>
   <link href="modern-regression_files/libs/quarto-html/tippy.css" rel="stylesheet">
   <link href="modern-regression_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet">
-  <link href="modern-regression_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="modern-regression_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
   <link href="modern-regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="modern-regression_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="modern-regression_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -44,7 +41,7 @@
   }
 
   .callout.callout-style-simple { 
-    padding: 0em 0.7em;
+    padding: 0em 0.5em;
     border-left: solid #acacac .3rem;
     border-right: solid 1px silver;
     border-top: solid 1px silver;
@@ -155,8 +152,7 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > :last-child,
-  .callout.callout-captioned .callout-body > div > :last-child {
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
@@ -245,12 +241,6 @@
     .reveal .slide:not(.center) {
       height: 100%;
     }
-    .reveal #title-slide.center,
-    .reveal .title-slide.center,
-    .reveal .controls .navigate-left .controls-arrow,
-    .reveal .controls .navigate-right .controls-arrow {
-      margin-top: -15px;
-    }
     .reveal .slide.scrollable {
       overflow-y: auto;
     }
@@ -337,42 +327,95 @@
   <p class="author">Maria Tackett, Mine Çetinkaya-Rundel, Rick Presman</p>
 </section>
 
+<section class="slide level2">
+
+<p>class: middle, center</p>
+<p>[Slide with pictures for introductions]</p>
+</section>
+<section id="session-agenda" class="slide level2">
+<h2>Session agenda</h2>
+<ul>
+<li>Background &amp; Motivation</li>
+<li>Computing with tidymodels</li>
+<li>Demonstration</li>
+<li>Tips and lessons learned</li>
+</ul>
+</section>
 <section>
-<section id="part-1" class="title-slide slide level1 center">
-<h1>Part 1</h1>
+<section id="background-motivation" class="title-slide slide level1 center">
+<h1>Background &amp; Motivation</h1>
 
 </section>
-<section id="slide-1" class="slide level2">
-<h2>Slide 1</h2>
+<section id="statistics-curriculum-guidelines" class="slide level2">
+<h2>Statistics curriculum guidelines</h2>
 <ul>
-<li>Text</li>
-<li>Text</li>
-<li>Text</li>
+<li>GAISE 2016</li>
+<li>ASA 2014 report</li>
 </ul>
 </section>
-<section id="slide-2" class="slide level2">
-<h2>Slide 2</h2>
+<section id="observations-from-projects" class="slide level2">
+<h2>Observations from projects</h2>
 <ul>
-<li>Text</li>
-<li>Text</li>
-<li>Text</li>
+<li>Final projects in class</li>
+<li>Noticed gaps</li>
 </ul>
 </section>
-<section id="slide-3" class="slide level2">
-<h2>Slide 3</h2>
-<div class="appex">
-<p>📋 Call out</p>
+<section id="innovations-at-introductory-level" class="slide level2">
+<h2>Innovations at introductory level</h2>
+<ul>
+<li>increase computing</li>
+<li>data science in a box</li>
+<li>etc</li>
+</ul>
+</section>
+<section id="bring-innovations-into-second-course" class="slide level2">
+<h2>Bring innovations into second course</h2>
+</section>
+<section id="the-course-sta-210" class="slide level2">
+<h2>The Course: STA 210</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Add logo</li>
+<li>Student population</li>
+<li>Description of the topics</li>
+<li>Course structure</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/sta210-sticker.png"></p>
 </div>
+</div>
+</section>
+<section id="modernizing-the-course" class="slide level2">
+<h2>Modernizing the course</h2>
+<ul>
+<li>Working with complex and messy real-world data (some wrangling required before modeling)</li>
+<li>Modern computing + reproducible workflow</li>
+<li>Inferential + predictive models</li>
+<li>Written communication + collaboration</li>
+</ul>
+</section></section>
+<section id="computing-using-tidymodels" class="title-slide slide level1 center">
+<h1>Computing using tidymodels</h1>
+
+</section>
+
+<section id="demo" class="title-slide slide level1 center">
+<h1>Demo</h1>
+
+</section>
+
+<section id="tips-and-lessons-learned" class="title-slide slide level1 center">
+<h1>Tips and Lessons Learned</h1>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="modern-regression_files/libs/revealjs/dist/reveal.js"></script>
-
   <!-- reveal.js plugins -->
   <script src="modern-regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
   <script src="modern-regression_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
@@ -382,12 +425,13 @@
   <script src="modern-regression_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
   <script src="modern-regression_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="modern-regression_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
   <script src="modern-regression_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="modern-regression_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="modern-regression_files/libs/revealjs/plugin/zoom/zoom.js"></script>
   <script src="modern-regression_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
 
   <script>
 
@@ -401,12 +445,11 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
 'multiplex': {"secret":"16515186909882534597","id":"9d7a2c0f9a8732ea","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
-
+ 
         // Display controls in the bottom right corner
         controls: false,
 
@@ -584,7 +627,7 @@
         ]
       });
     </script>
-    <script type="application/javascript">
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
       tabsets.forEach(function(tabset) {
@@ -602,7 +645,10 @@
         button.blur();
         // flash "checked"
         button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
         setTimeout(function() {
+          button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
         // clear code selection

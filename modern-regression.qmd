@@ -17,22 +17,74 @@ execute:
   freeze: auto
 ---
 
-# Part 1
+---
 
-## Slide 1
+class: middle, center
 
--   Text 
--   Text
--   Text
+[Slide with pictures for introductions]
 
-## Slide 2
+---
 
--   Text 
--   Text
--   Text
 
-## Slide 3
+## Session agenda
 
-::: appex
-📋 Call out
+- Background & Motivation
+- Computing with tidymodels
+- Demonstration 
+- Tips and lessons learned
+
+# Background & Motivation
+
+## Statistics curriculum guidelines 
+
+- GAISE 2016 
+- ASA 2014 report 
+
+## Observations from projects 
+
+- Final projects  in class
+- Noticed gaps
+
+## Innovations at introductory level 
+
+- increase computing
+- data science in a box 
+- etc
+
+## Bring innovations into second course
+
+## The Course
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- Add logo 
+- Student population 
+- Description of the topics
+- Course structure 
 :::
+
+
+::: {.column width="40%"}
+![](images/sta210-sticker.png)
+:::
+
+::::
+
+
+## Modernizing the course
+
+- Working with complex and messy real-world data (some wrangling required before modeling)
+- Modern computing + reproducible workflow
+- Inferential + predictive models 
+- Written communication + collaboration
+
+# Computing using tidymodels
+
+# Demo 
+
+# Tips and Lessons Learned
+
+
+
+
