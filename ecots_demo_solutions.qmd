@@ -159,10 +159,45 @@ In this exercise, we will synthesize our work above to create a reader-friendly 
 
 Using your plots above (along with any other metrics you compute), describe your initial findings about the training data. Discuss why we perform EDA only on the training data and not on the entire data set.
 
+```{r}
+loans_med <- median(loans_train$interest_rate)
+loans_iqr <- IQR(loans_train$interest_rate)
+```
+
+It appears that the marginal distribution for interest rates is largely unimodal (possibly bimodal since there aren't many loans issued with interest rates around 7%) with a right-skew. The median interest rate is `r loans_med` with IQR `r loans_iqr`.
+
+It appears that there is no strong relationship between debt-to-income when the debt-to-income ratio is low. It seems that the that joint applications generally have higher debt-to-income ratios, but possibly some lower interest rates for highly levered (i.e., high debt-to-income ratios, esepcially greater than 100%) applications. These may be outliers.
+
+The boxplot seems to suggest that while applications with a bankruptcy history have higher interest rates, the difference is very slight.
+
+
 ## Model and Model Fit
 
 Although our primary aim is prediction and not inference, its good to check the model fit nonetheless to make sure nothing looks out of the ordinary. Create a neatly organized table of the model output, and describe your observations, such as which parameters are significant. Make sure to interpret some coefficients appropriately.
 
+```{r}
+loans_train_fit <- fit(loans_wflow, data = loans_train)
+tidy(loans_train_fit) %>% 
+  kable(digits = 2)
+```
+
+From the above table, it appears that all of the coefficients are significant at the 0.05 significance level except for \texttt{application\_type}. However, the interaction with \texttt{debt\_to\_income} is significant, so we want to include the main effect. We find that the sign of the coefficients is intuitive. For instance, as the debt-to-income ratio increases by 1%, the interest rate is predicted to increase by about 0.11% on average, holding all equal. Similarly, relative to loans with a 3-year maturity, loans with a 5-year maturity are predicted to have an interest rate about 3.84% higher on averaged, all else equal.
+
+
 ## Cross-Validation
 
 Explain what 10-fold CV does, and why it's useful. Display a neat table with the outputs of your CV summary, and describe your observations. Make sure to discuss why we are focusing on R-squared and RMSE instead of adjusted R-squared, AIC, and BIC.
+
+
+10-fold CV splits the training data into roughly 10 equal groups, fits the model on 9 of the groups, and then tests the performance on the remaining 10th group. This is done by leaving one group out at a team, and then averaging the error. We do this because even though we cannot use the test data to in fitting the model, this allows us to get an idea of how well our model performs on data it has not seen before. In turn, we can compare different models based on their predictive performance using metrics like R-squared and RMSE. Since prediction is our primary concern, we use these metrics instead of R-squared, AIC, and BIC.
+
+```{r}
+cv_metrics <- collect_metrics(loans_fit_rs)
+cv_metrics %>% 
+  kable(digits=2)
+loan_rmse <- cv_metrics$mean[1]
+loan_rsq <- cv_metrics$mean[2]
+```
+
+The above table computes the RMSE, which is about `r round(loan_rmse, 2)`, and the R-squared, which is about `r round(loan_rsq, 2)`.
+
