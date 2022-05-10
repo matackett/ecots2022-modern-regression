@@ -19,9 +19,8 @@ execute:
 
 ---
 
-class: middle, center
+## Introductions 
 
-[Slide with pictures for introductions]
 
 ---
 
@@ -37,8 +36,17 @@ class: middle, center
 
 ## Statistics curriculum guidelines 
 
-- GAISE 2016 
-- ASA 2014 report 
+**GAISE** 
+
+- "..emphasize the practical problem-solving skills that are necessary to answer statistical questions." - GAISE 
+
+**Curriculum Guidelines for Undergraduate Programs in Statistical Science**
+
+- "concepts and approaches for working with complex data...and analyzing non-textbook data"
+
+- facile with professional statistical software" and that students' analyses "should be undertaken in a well-documented and reproducible way"
+
+- "write clearly, speak fluently, and construct effective visual displays and compelling written summaries" and "demonstrate ability to collaborate in teams and to organize and manage projects"
 
 ## Observations from projects 
 
@@ -47,43 +55,64 @@ class: middle, center
 
 ## Innovations at introductory level 
 
-- increase computing
-- data science in a box 
-- etc
+- Modernizing intro statistics classes
+- Development of intro data science classes 
+  - data science in a box 
 
-## Bring innovations into second course
+## Motivation
+
+- **Goal:** Create learning experiences to continue cultivating these skills beyond the intro course
+
+- Why this course? 
+  - Often the second course for many students
+  - Serves a diverse student population 
+  - First shared course for statistics majors
+  - Develop skills early that can be built on in later courses
 
 ## The Course
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-- Add logo 
-- Student population 
-- Description of the topics
-- Course structure 
+-  ~ 90 - 100 students who have taken introductory statistics, data science, or probability course
+- **Topics:** Linear regression, logistic regression, and ANOVA with focus on application
+- **Activities:** Active lectures with in-class exercises, computing labs, homework, quizzes/exams, group project
 :::
 
-
-::: {.column width="40%"}
+::: {.column width="35%"}
 ![](images/sta210-sticker.png)
 :::
 
 ::::
 
-
 ## Modernizing the course
 
-- Working with complex and messy real-world data (some wrangling required before modeling)
-- Modern computing + reproducible workflow
-- Inferential + predictive models 
-- Written communication + collaboration
+- Regularly engage with complex [and relevant] real-world data and applications*
+
+- Develop the skills and computational proficiency for a reproducible data analysis workflow*
+
+- Develop important non-technical skills, specifically written communication and teamwork
+
+- Use regression for prediction and inference and determine appropriate methods based on analysis objective
+
 
 # Computing using tidymodels
 
 # Demo 
 
 # Tips and Lessons Learned
+
+## Tips for finding authentic data 
+
+## Finding authentic data 
+
+## Teamwork in the course 
+
+
+## Challenges & lessons learned
+
+- Important for students to understand how to put everything together 
+  - value of the project
 
 
 
