@@ -1,8 +1,5 @@
 project:
   type: website
-  resources:
-    - activity/modeling-loans-solutions.qmd
-    - activity/modeling-loans-solutions.pdf
 
 website:
   title: "Modernizing the undergraduate regression analysis course"

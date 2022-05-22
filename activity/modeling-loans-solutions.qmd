@@ -1,9 +1,6 @@
 ---
 title: "Modeling loans - Solutions"
 subtitle: "eCOTS 2022 - Modern Regression"
-author: "Your name goes here!"
-date: "Today's date goes here!"
-format: pdf
 editor: visual
 execute:
   freeze: auto

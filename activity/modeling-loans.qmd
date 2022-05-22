@@ -1,8 +1,6 @@
 ---
 title: "Modeling loans"
 subtitle: "eCOTS 2022 - Modern Regression"
-author: "Your name goes here!"
-date: "Today's date goes here!"
 editor: visual
 ---
 
@@ -166,3 +164,7 @@ Make sure to interpret some coefficients appropriately.
 Explain what 10-fold CV does, and why it's useful.
 Display a neat table with the outputs of your CV summary, and describe your observations.
 Make sure to discuss why we are focusing on R-squared and RMSE instead of adjusted R-squared, AIC, and BIC.
+
+# Solutions
+
+The solutions to this activity can be found [here](/activity/modeling-loans-solutions.html).
