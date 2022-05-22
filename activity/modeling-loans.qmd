@@ -4,6 +4,12 @@ subtitle: "eCOTS 2022 - Modernizing the undergraduate regression analysis course
 editor: visual
 ---
 
+------------------------------------------------------------------------
+
+To work on this activity, join the RStudio Cloud workspace for this session by clicking [here](https://rstudio.cloud/spaces/249609/join?access_code=LTmXYxXCbfxvwRscmu9ijBwU6tk7PXFlnF2lPcj_), and then start the project titled `Modeling loans`.
+
+------------------------------------------------------------------------
+
 ```{r}
 #| label: load-pkgs
 #| message: false
@@ -21,11 +27,8 @@ We will start with some exploratory data analysis, walk through how to create th
 Throughout we will be using the [`loans_full_schema`](http://openintrostat.github.io/openintro/reference/loans_full_schema.html) dataset from the **openintro** package[^1] and featured in the OpenIntro textbooks[^2]
 .
 
-[^1]: Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Y.
-    Kim, Ben Baumer, Chester Ismay, Nick Paterno and
- Christopher Barr (2022).
-    openintro: Data Sets and
- Supplemental Functions from 'OpenIntro' Textbooks and Labs.
+[^1]: Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Y. Kim, Ben Baumer, Chester Ismay, Nick Paterno and Christopher Barr (2022).
+    openintro: Data Sets and Supplemental Functions from 'OpenIntro' Textbooks and Labs.
     R package version 2.3.0.
     <https://CRAN.R-project.org/package=openintro>.
 
