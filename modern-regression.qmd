@@ -17,11 +17,11 @@ execute:
   freeze: auto
 ---
 
-------------------------------------------------------------------------
+# Welcome
 
 ## Introductions
 
-------------------------------------------------------------------------
+...
 
 ## Session agenda
 
@@ -84,9 +84,9 @@ execute:
 
 ## Modernizing the course
 
--   Regularly engage with complex \[and relevant\] real-world data and applications\*
+-   Regularly engage with complex and relevant real-world data and applications
 
--   Develop the skills and computational proficiency for a reproducible data analysis workflow\*
+-   Develop the skills and computational proficiency for a reproducible data analysis workflow
 
 -   Develop important non-technical skills, specifically written communication and teamwork
 
@@ -94,7 +94,7 @@ execute:
 
 # Computing using tidymodels
 
-# Demo
+# Activity
 
 # Tips and Lessons Learned
 
