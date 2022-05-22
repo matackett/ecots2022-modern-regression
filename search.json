@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "activity/modeling-loans-solutions.html",
+    "href": "activity/modeling-loans-solutions.html",
+    "title": "Modeling loans - Solutions",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)\nlibrary(dplyr)\n\n\n\nIn today’s workshop, we will explore how to use framework to perform data wrangling and modeling the data. We will start with some exploratory data analysis (EDA), walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation. Throughout we will be using the dataset from the OpenIntro textbook\nThe exercises below are drawn from an exam review. Students would have already completed readings, some assignments, and labs prior to attempting these questions.\nYou may notice some code below has already been pre-populated for you. In these cases, there is a flag set as . Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the pdf.\n\n\n\nWe are going to do a preliminary cleaning step. Let’s drop any unused levels.\n\nglimpse(loans_full_schema)\n\nRows: 10,000\nColumns: 55\n$ emp_title                        <chr> \"global config engineer \", \"warehouse…\n$ emp_length                       <dbl> 3, 10, 3, 1, 10, NA, 10, 10, 10, 3, 1…\n$ state                            <fct> NJ, HI, WI, PA, CA, KY, MI, AZ, NV, I…\n$ homeownership                    <fct> MORTGAGE, RENT, RENT, RENT, RENT, OWN…\n$ annual_income                    <dbl> 90000, 40000, 40000, 30000, 35000, 34…\n$ verified_income                  <fct> Verified, Not Verified, Source Verifi…\n$ debt_to_income                   <dbl> 18.01, 5.04, 21.15, 10.16, 57.96, 6.4…\n$ annual_income_joint              <dbl> NA, NA, NA, NA, 57000, NA, 155000, NA…\n$ verification_income_joint        <fct> , , , , Verified, , Not Verified, , ,…\n$ debt_to_income_joint             <dbl> NA, NA, NA, NA, 37.66, NA, 13.12, NA,…\n$ delinq_2y                        <int> 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0…\n$ months_since_last_delinq         <int> 38, NA, 28, NA, NA, 3, NA, 19, 18, NA…\n$ earliest_credit_line             <dbl> 2001, 1996, 2006, 2007, 2008, 1990, 2…\n$ inquiries_last_12m               <int> 6, 1, 4, 0, 7, 6, 1, 1, 3, 0, 4, 4, 8…\n$ total_credit_lines               <int> 28, 30, 31, 4, 22, 32, 12, 30, 35, 9,…\n$ open_credit_lines                <int> 10, 14, 10, 4, 16, 12, 10, 15, 21, 6,…\n$ total_credit_limit               <int> 70795, 28800, 24193, 25400, 69839, 42…\n$ total_credit_utilized            <int> 38767, 4321, 16000, 4997, 52722, 3898…\n$ num_collections_last_12m         <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ num_historical_failed_to_pay     <int> 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0…\n$ months_since_90d_late            <int> 38, NA, 28, NA, NA, 60, NA, 71, 18, N…\n$ current_accounts_delinq          <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ total_collection_amount_ever     <int> 1250, 0, 432, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ current_installment_accounts     <int> 2, 0, 1, 1, 1, 0, 2, 2, 6, 1, 2, 1, 2…\n$ accounts_opened_24m              <int> 5, 11, 13, 1, 6, 2, 1, 4, 10, 5, 6, 7…\n$ months_since_last_credit_inquiry <int> 5, 8, 7, 15, 4, 5, 9, 7, 4, 17, 3, 4,…\n$ num_satisfactory_accounts        <int> 10, 14, 10, 4, 16, 12, 10, 15, 21, 6,…\n$ num_accounts_120d_past_due       <int> 0, 0, 0, 0, 0, 0, 0, NA, 0, 0, 0, 0, …\n$ num_accounts_30d_past_due        <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ num_active_debit_accounts        <int> 2, 3, 3, 2, 10, 1, 3, 5, 11, 3, 2, 2,…\n$ total_debit_limit                <int> 11100, 16500, 4300, 19400, 32700, 272…\n$ num_total_cc_accounts            <int> 14, 24, 14, 3, 20, 27, 8, 16, 19, 7, …\n$ num_open_cc_accounts             <int> 8, 14, 8, 3, 15, 12, 7, 12, 14, 5, 8,…\n$ num_cc_carrying_balance          <int> 6, 4, 6, 2, 13, 5, 6, 10, 14, 3, 5, 3…\n$ num_mort_accounts                <int> 1, 0, 0, 0, 0, 3, 2, 7, 2, 0, 2, 3, 3…\n$ account_never_delinq_percent     <dbl> 92.9, 100.0, 93.5, 100.0, 100.0, 78.1…\n$ tax_liens                        <int> 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ public_record_bankrupt           <int> 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0…\n$ loan_purpose                     <fct> moving, debt_consolidation, other, de…\n$ application_type                 <fct> individual, individual, individual, i…\n$ loan_amount                      <int> 28000, 5000, 2000, 21600, 23000, 5000…\n$ term                             <dbl> 60, 36, 36, 36, 36, 36, 60, 60, 36, 3…\n$ interest_rate                    <dbl> 14.07, 12.61, 17.09, 6.72, 14.07, 6.7…\n$ installment                      <dbl> 652.53, 167.54, 71.40, 664.19, 786.87…\n$ grade                            <fct> C, C, D, A, C, A, C, B, C, A, C, B, C…\n$ sub_grade                        <fct> C3, C1, D1, A3, C3, A3, C2, B5, C2, A…\n$ issue_month                      <fct> Mar-2018, Feb-2018, Feb-2018, Jan-201…\n$ loan_status                      <fct> Current, Current, Current, Current, C…\n$ initial_listing_status           <fct> whole, whole, fractional, whole, whol…\n$ disbursement_method              <fct> Cash, Cash, Cash, Cash, Cash, Cash, C…\n$ balance                          <dbl> 27015.86, 4651.37, 1824.63, 18853.26,…\n$ paid_total                       <dbl> 1999.330, 499.120, 281.800, 3312.890,…\n$ paid_principal                   <dbl> 984.14, 348.63, 175.37, 2746.74, 1569…\n$ paid_interest                    <dbl> 1015.19, 150.49, 106.43, 566.15, 754.…\n$ paid_late_fees                   <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n\nloans_full_schema <- droplevels(loans_full_schema)\n\n\n\n\nNow using , split the data into a training and test set with a 75%-25% split. Don’t forget to set a seed!\n\nset.seed(210)\nloans_split <- initial_split(loans_full_schema)\nloans_train <- training(loans_split)\nloans_test <- testing(loans_split)\n\n\n\n\nWrite the model for predicting interest rate (interest_rate) from debt to income ratio (debt_to_income), the term of loan (term), the number of inquiries (credit checks) into the applicant’s credit during the last 12 months (inquiries_last_12m), whether there are any bankruptcies listed in the public record for this applicant (bankrupt), and the type of application (application_type). The model should allow for the effect of to income ratio on interest rate to vary by application type.\n\\[\n\\widehat{\\texttt{interest\\_rate}} = b_0 + b_{DI}\\cdot\\texttt{debt\\_to\\_income} + b_{term}\\cdot\\texttt{term} \\\\\n+ b_{CC}\\cdot\\texttt{inquiries\\_last\\_12m} + b_{bank}\\cdot\\texttt{bankrupt} \\\\\n+ b_{app}\\cdot\\texttt{application\\_type} + b_{DI:app}\\cdot\\text{debt\\_to\\_income:application\\_type}\n\\]\n\n\n\nExplore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(bins = 20) +\n  labs(x = \"Interest Rate\", y = \"Count\",\n       title = \"Distribution of Loan Interest Rates\")\n\n\n\n\n\n\n\nggplot(loans_train, aes(x = debt_to_income, y = interest_rate,\n                        color = application_type)) +\n  geom_point() +\n  labs(x = \"Debt-to-Income Ratio\", y = \"Interest Rate\",\n       title = \"Interest Rate vs. Debt-to-Income, by App. Type\")\n\n\n\n\n\n\n\nggplot(loans_train, aes(x = as_factor(if_else(public_record_bankrupt == 0,\n                                              \"no\", \"yes\")),\n                        y = interest_rate)) + \n  geom_boxplot() +\n  labs(x = \"Past Bankrupcy Status\", y = \"Interest Rate\",\n       title = \"Boxplots of Interest Rate by Bankruptcy Status\")\n\n\n\n\n\n\n\n\n\n\n\nSpecify a linear regression model. Call it loans_spec.\n\nloans_spec <- linear_reg() %>%\n  set_engine(\"lm\")\n\n\n\n\n\nPredict interest_rate from debt_to_income, term, inquiries_last_12m, public_record_bankrupt, and application_type.\nMean center debt_to_income.\nMake term a factor.\nCreate a new variable: bankrupt that takes on the value “no” if public_record_bankrupt is 0 and the value “yes” if public_record_bankrupt is 1 or higher. Then, remove public_record_bankrupt.\nInteract application_type with debt_to_income.\nCreate dummy variables where needed and drop any zero variance variables.\n\n\nloans_rec <- recipe(interest_rate ~ debt_to_income +\n          term + inquiries_last_12m +\n          public_record_bankrupt + application_type,\n          data = loans_train) %>%\n          step_center(debt_to_income) %>%\n          step_mutate(term = as_factor(term)) %>%\n          step_mutate(bankrupt = as_factor(if_else(public_record_bankrupt == 0, \"no\", \"yes\"))) %>%\n          step_rm(public_record_bankrupt) %>%\n          step_dummy(all_nominal_predictors()) %>%\n          step_interact(terms = ~ starts_with(\"application_type\"):debt_to_income) %>%\n          step_zv(all_predictors())\n\n\n\n\nCreate the workflow that brings together the model specification and recipe.\n\nloans_wflow <- workflow() %>%\n  add_model(loans_spec) %>%\n  add_recipe(loans_rec)\n\n\n\n\nConduct 10-fold cross validation.\n\nset.seed(210)\nloans_folds <- vfold_cv(loans_train, v = 10)\nloans_fit_rs <- loans_wflow %>%\n  fit_resamples(loans_folds)\nloans_fit_rs\n\n# Resampling results\n# 10-fold cross-validation \n# A tibble: 10 × 4\n   splits             id     .metrics         .notes          \n   <list>             <chr>  <list>           <list>          \n 1 <split [6750/750]> Fold01 <tibble [2 × 4]> <tibble [0 × 3]>\n 2 <split [6750/750]> Fold02 <tibble [2 × 4]> <tibble [0 × 3]>\n 3 <split [6750/750]> Fold03 <tibble [2 × 4]> <tibble [0 × 3]>\n 4 <split [6750/750]> Fold04 <tibble [2 × 4]> <tibble [0 × 3]>\n 5 <split [6750/750]> Fold05 <tibble [2 × 4]> <tibble [0 × 3]>\n 6 <split [6750/750]> Fold06 <tibble [2 × 4]> <tibble [0 × 3]>\n 7 <split [6750/750]> Fold07 <tibble [2 × 4]> <tibble [0 × 3]>\n 8 <split [6750/750]> Fold08 <tibble [2 × 4]> <tibble [0 × 3]>\n 9 <split [6750/750]> Fold09 <tibble [2 × 4]> <tibble [0 × 3]>\n10 <split [6750/750]> Fold10 <tibble [2 × 4]> <tibble [0 × 3]>\n\n\nSummarize metrics from your CV resamples.\n\ncollect_metrics(loans_fit_rs)\n\n# A tibble: 2 × 6\n  .metric .estimator  mean     n std_err .config             \n  <chr>   <chr>      <dbl> <int>   <dbl> <chr>               \n1 rmse    standard   4.54     10 0.0363  Preprocessor1_Model1\n2 rsq     standard   0.173    10 0.00646 Preprocessor1_Model1"
+  },
+  {
+    "objectID": "activity/modeling-loans-solutions.html#exploratory-data-analysis",
+    "href": "activity/modeling-loans-solutions.html#exploratory-data-analysis",
+    "title": "Modeling loans - Solutions",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\nUsing your plots above (along with any other metrics you compute), describe your initial findings about the training data. Discuss why we perform EDA only on the training data and not on the entire data set.\n\nloans_med <- median(loans_train$interest_rate)\nloans_iqr <- IQR(loans_train$interest_rate)\n\nIt appears that the marginal distribution for interest rates is largely unimodal (possibly bimodal since there aren’t many loans issued with interest rates around 7%) with a right-skew. The median interest rate is 11.98 with IQR 5.62.\nIt appears that there is no strong relationship between debt-to-income when the debt-to-income ratio is low. It seems that the that joint applications generally have higher debt-to-income ratios, but possibly some lower interest rates for highly levered (i.e., high debt-to-income ratios, esepcially greater than 100%) applications. These may be outliers.\nThe boxplot seems to suggest that while applications with a bankruptcy history have higher interest rates, the difference is very slight."
+  },
+  {
+    "objectID": "activity/modeling-loans-solutions.html#model-and-model-fit",
+    "href": "activity/modeling-loans-solutions.html#model-and-model-fit",
+    "title": "Modeling loans - Solutions",
+    "section": "Model and Model Fit",
+    "text": "Model and Model Fit\nAlthough our primary aim is prediction and not inference, its good to check the model fit nonetheless to make sure nothing looks out of the ordinary. Create a neatly organized table of the model output, and describe your observations, such as which parameters are significant. Make sure to interpret some coefficients appropriately.\n\nloans_train_fit <- fit(loans_wflow, data = loans_train)\ntidy(loans_train_fit) %>% \n  kable(digits = 2)\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n10.94\n0.08\n135.05\n0.00\n\n\ndebt_to_income\n0.11\n0.01\n16.46\n0.00\n\n\ninquiries_last_12m\n0.22\n0.02\n9.91\n0.00\n\n\nterm_X60\n3.84\n0.11\n33.41\n0.00\n\n\napplication_type_joint\n-0.08\n0.16\n-0.53\n0.59\n\n\nbankrupt_yes\n0.46\n0.16\n2.84\n0.00\n\n\napplication_type_joint_x_debt_to_income\n-0.09\n0.01\n-12.00\n0.00\n\n\n\n\n\nFrom the above table, it appears that all of the coefficients are significant at the 0.05 significance level except for . However, the interaction with is significant, so we want to include the main effect. We find that the sign of the coefficients is intuitive. For instance, as the debt-to-income ratio increases by 1%, the interest rate is predicted to increase by about 0.11% on average, holding all equal. Similarly, relative to loans with a 3-year maturity, loans with a 5-year maturity are predicted to have an interest rate about 3.84% higher on averaged, all else equal."
+  },
+  {
+    "objectID": "activity/modeling-loans-solutions.html#cross-validation",
+    "href": "activity/modeling-loans-solutions.html#cross-validation",
+    "title": "Modeling loans - Solutions",
+    "section": "Cross-Validation",
+    "text": "Cross-Validation\nExplain what 10-fold CV does, and why it’s useful. Display a neat table with the outputs of your CV summary, and describe your observations. Make sure to discuss why we are focusing on R-squared and RMSE instead of adjusted R-squared, AIC, and BIC.\n10-fold CV splits the training data into roughly 10 equal groups, fits the model on 9 of the groups, and then tests the performance on the remaining 10th group. This is done by leaving one group out at a team, and then averaging the error. We do this because even though we cannot use the test data to in fitting the model, this allows us to get an idea of how well our model performs on data it has not seen before. In turn, we can compare different models based on their predictive performance using metrics like R-squared and RMSE. Since prediction is our primary concern, we use these metrics instead of R-squared, AIC, and BIC.\n\ncv_metrics <- collect_metrics(loans_fit_rs)\ncv_metrics %>% \n  kable(digits=2)\n\n\n\n\n.metric\n.estimator\nmean\nn\nstd_err\n.config\n\n\n\n\nrmse\nstandard\n4.54\n10\n0.04\nPreprocessor1_Model1\n\n\nrsq\nstandard\n0.17\n10\n0.01\nPreprocessor1_Model1\n\n\n\n\nloan_rmse <- cv_metrics$mean[1]\nloan_rsq <- cv_metrics$mean[2]\n\nThe above table computes the RMSE, which is about 4.54, and the R-squared, which is about 0.17."
+  },
+  {
+    "objectID": "activity/modeling-loans.html",
+    "href": "activity/modeling-loans.html",
+    "title": "Modeling loans",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)\nlibrary(dplyr)\n\n\n\nIn today’s workshop, we will explore how to use tidymodels framework to perform data wrangling and modeling the data. We will start with some exploratory data analysis (EDA), walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation. Throughout we will be using the dataset from the OpenIntro textbook\nThe exercises below are drawn from an exam review. Students would have already completed readings, some assignments, and labs prior to attempting these questions.\nYou may notice some code below has already been pre-populated for you. In these cases, there is a flag set as eval = FALSE. Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the pdf.\n\n\n\nWe are going to do a preliminary cleaning step. Let’s drop any unused levels.\n\nglimpse(loans_full_schema)\nloans_full_schema <- droplevels(loans_full_schema)\n\n\n\n\nSplit the data into a training and test set with a 75%-25% split. Don’t forget to set a seed!\n\nset.seed(210)\nloans_split <- initial_split(loans_full_schema)\nloans_train <- training(loans_split)\nloans_test <- testing(loans_split)\n\n\n\n\nWrite the model for predicting interest rate (interest_rate) from debt to income ratio (debt_to_income), the term of loan (term), the number of inquiries (credit checks) into the applicant’s credit during the last 12 months (inquiries_last_12m), whether there are any bankruptcies listed in the public record for this applicant (bankrupt), and the type of application (application_type). The model should allow for the effect of to income ratio on interest rate to vary by application type.\n$$ = b_0 + b_{DI} + b_{term}\n\\[ \\]\n\nb_{CC} + b_{bank}\n\n\\[ \\]\n\nb_{app} + b_{DI:app} $$\n\n\n\n\nExplore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(bins = 20) +\n  labs(x = \"Interest Rate\", y = \"Count\",\n       title = \"Distribution of Loan Interest Rates\")\n\nggplot(loans_train, aes(x = debt_to_income, y = interest_rate,\n                        color = application_type)) +\n  geom_point() +\n  labs(x = \"Debt-to-Income Ratio\", y = \"Interest Rate\",\n       title = \"Interest Rate vs. Debt-to-Income, by App. Type\")\n\nggplot(loans_train, aes(x = as_factor(if_else(public_record_bankrupt == 0,\n                                              \"no\", \"yes\")),\n                        y = interest_rate)) + \n  geom_boxplot() +\n  labs(x = \"Past Bankrupcy Status\", y = \"Interest Rate\",\n       title = \"Boxplots of Interest Rate by Bankruptcy Status\")\n\n\n\n\nSpecify a linear regression model. Call it loans_spec.\n\n# add code here\n\n\n\n\n\nPredict interest_rate from debt_to_income, term, inquiries_last_12m, public_record_bankrupt, and application_type.\nMean center debt_to_income.\nMake term a factor.\nCreate a new variable: bankrupt that takes on the value “no” if public_record_bankrupt is 0 and the value “yes” if public_record_bankrupt is 1 or higher. Then, remove public_record_bankrupt.\nInteract application_type with debt_to_income.\nCreate dummy variables where needed and drop any zero variance variables.\n\n\n# add code here\n\n\n\n\nCreate the workflow that brings together the model specification and recipe.\n\n\n\n\n\n\nConduct 10-fold cross validation.\n\n# add code here\n\nSummarize metrics from your CV resamples.\n\n# add code here"
+  },
+  {
+    "objectID": "activity/modeling-loans.html#exploratory-data-analysis",
+    "href": "activity/modeling-loans.html#exploratory-data-analysis",
+    "title": "Modeling loans",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\nUsing your plots above (along with any other metrics you compute), describe your initial findings about the training data. Discuss why we perform EDA only on the training data and not on the entire data set."
+  },
+  {
+    "objectID": "activity/modeling-loans.html#model-fitting-and-fit-evaluation",
+    "href": "activity/modeling-loans.html#model-fitting-and-fit-evaluation",
+    "title": "Modeling loans",
+    "section": "Model fitting and fit evaluation",
+    "text": "Model fitting and fit evaluation\nAlthough our primary aim is prediction and not inference, its good to check the model fit nonetheless to make sure nothing looks out of the ordinary. Create a neatly organized table of the model output, and describe your observations, such as which parameters are significant. Make sure to interpret some coefficients appropriately."
+  },
+  {
+    "objectID": "activity/modeling-loans.html#cross-validation",
+    "href": "activity/modeling-loans.html#cross-validation",
+    "title": "Modeling loans",
+    "section": "Cross-validation",
+    "text": "Cross-validation\nExplain what 10-fold CV does, and why it’s useful. Display a neat table with the outputs of your CV summary, and describe your observations. Make sure to discuss why we are focusing on R-squared and RMSE instead of adjusted R-squared, AIC, and BIC."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "",
+    "text": "USCOTS 2022\nMonday, May 23, 2022\n3:35 pm – 4:45 pm ET\n\n\nAbstract\nThere has been significant innovation in introductory statistics and data science courses to equip students with the statistical, computing, and communication skills needed for modern data analysis. Innovating subsequent courses is also important, so students can continue developing these skills beyond the first course. In this session, we'll present a modern approach to teaching undergraduate regression analysis, the second statistics course for many students. We'll share strategies for using real-world data sets and examples, teaching modern computing skills, and incorporating non-technical skills such as writing and effective collaboration as part of the course. We'll share example activities and assignments, along with a demo of the computing toolkit using the R tidymodels package, Quarto for reproducible reports, and Git and GitHub for version control and collaboration. The activities and demo will be hands-on; attendees will also have the opportunity to exchange ideas and ask questions throughout the session.\n\n\nPresenters\n\nDr. Maria Tackett is …\n\n\nDr. Mine Çetinkaya-Rundel (she/her) is Professor of the Practice and Director of Undergraduate Studies at the Department of Statistical Science at Duke University. Mine’s work focuses on innovation in statistics and data science pedagogy, with an emphasis on computing, reproducible research, student-centered learning, and open-source education as well as pedagogical approaches for enhancing retention of women and under-represented minorities in STEM. Mine also works with RStudio as a Developer Educator.\n\n\nRisk Presman is …"
+  },
+  {
+    "objectID": "slides.html",
+    "href": "slides.html",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "",
+    "text": "View slides in full screen"
+  },
+  {
+    "objectID": "slides/index.html#introductions",
+    "href": "slides/index.html#introductions",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Introductions",
+    "text": "Introductions\n…"
+  },
+  {
+    "objectID": "slides/index.html#session-agenda",
+    "href": "slides/index.html#session-agenda",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Session agenda",
+    "text": "Session agenda\n\nBackground & Motivation\nComputing with tidymodels\nDemonstration\nTips and lessons learned"
+  },
+  {
+    "objectID": "slides/index.html#statistics-curriculum-guidelines",
+    "href": "slides/index.html#statistics-curriculum-guidelines",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Statistics curriculum guidelines",
+    "text": "Statistics curriculum guidelines\nGAISE\n\n“..emphasize the practical problem-solving skills that are necessary to answer statistical questions.” - GAISE\n\nCurriculum Guidelines for Undergraduate Programs in Statistical Science\n\n“concepts and approaches for working with complex data…and analyzing non-textbook data”\nfacile with professional statistical software” and that students’ analyses “should be undertaken in a well-documented and reproducible way”\n“write clearly, speak fluently, and construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams and to organize and manage projects”"
+  },
+  {
+    "objectID": "slides/index.html#observations-from-projects",
+    "href": "slides/index.html#observations-from-projects",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Observations from projects",
+    "text": "Observations from projects\n\nFinal projects in class\nNoticed gaps"
+  },
+  {
+    "objectID": "slides/index.html#innovations-at-introductory-level",
+    "href": "slides/index.html#innovations-at-introductory-level",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Innovations at introductory level",
+    "text": "Innovations at introductory level\n\nModernizing intro statistics classes\nDevelopment of intro data science classes\n\ndata science in a box"
+  },
+  {
+    "objectID": "slides/index.html#motivation",
+    "href": "slides/index.html#motivation",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Motivation",
+    "text": "Motivation\n\nGoal: Create learning experiences to continue cultivating these skills beyond the intro course\nWhy this course?\n\nOften the second course for many students\nServes a diverse student population\nFirst shared course for statistics majors\nDevelop skills early that can be built on in later courses"
+  },
+  {
+    "objectID": "slides/index.html#the-course",
+    "href": "slides/index.html#the-course",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "The Course",
+    "text": "The Course\n\n\n\n~ 90 - 100 students who have taken introductory statistics, data science, or probability course\nTopics: Linear regression, logistic regression, and ANOVA with focus on application\nActivities: Active lectures with in-class exercises, computing labs, homework, quizzes/exams, group project"
+  },
+  {
+    "objectID": "slides/index.html#modernizing-the-course",
+    "href": "slides/index.html#modernizing-the-course",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Modernizing the course",
+    "text": "Modernizing the course\n\nRegularly engage with complex and relevant real-world data and applications\nDevelop the skills and computational proficiency for a reproducible data analysis workflow\nDevelop important non-technical skills, specifically written communication and teamwork\nUse regression for prediction and inference and determine appropriate methods based on analysis objective"
+  },
+  {
+    "objectID": "slides/index.html#tips-for-finding-authentic-data",
+    "href": "slides/index.html#tips-for-finding-authentic-data",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Tips for finding authentic data",
+    "text": "Tips for finding authentic data"
+  },
+  {
+    "objectID": "slides/index.html#finding-authentic-data",
+    "href": "slides/index.html#finding-authentic-data",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Finding authentic data",
+    "text": "Finding authentic data"
+  },
+  {
+    "objectID": "slides/index.html#teamwork-in-the-course",
+    "href": "slides/index.html#teamwork-in-the-course",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Teamwork in the course",
+    "text": "Teamwork in the course"
+  },
+  {
+    "objectID": "slides/index.html#challenges-lessons-learned",
+    "href": "slides/index.html#challenges-lessons-learned",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Challenges & lessons learned",
+    "text": "Challenges & lessons learned\n\nImportant for students to understand how to put everything together\n\nvalue of the project"
+  }
+]
