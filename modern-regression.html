@@ -329,55 +329,93 @@
 
 <section id="introductions" class="slide level2">
 <h2>Introductions</h2>
+<div class="columns">
+<div class="column" style="width:31%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="images/maria-tackett-photo.png" width="320"></p>
+</div>
+</div>
+<p>Maria Tackett</p>
+<p>Duke University</p>
+</div><div class="column" style="width:31%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="images/mine-photo.jpeg" width="360"></p>
+</div>
+</div>
+<p>Mine Çetinkaya-Rundel</p>
+<p>Duke University</p>
+<p>RStudio</p>
+</div><div class="column" style="width:31%;">
+<p>Rick Presman</p>
+<p>Duke University</p>
+</div>
+</div>
 </section>
 <section id="session-agenda" class="slide level2">
 <h2>Session agenda</h2>
-<ul>
-<li>Background &amp; Motivation</li>
-<li>Computing with tidymodels</li>
-<li>Demonstration</li>
-<li>Tips and lessons learned</li>
-</ul>
+<p><br></p>
+<p>1️⃣ Background &amp; motivation</p>
+<p><br></p>
+<p>2️⃣ Computing with tidymodels</p>
+<p><br></p>
+<p>3️⃣ Tips &amp; lessons learned</p>
 </section>
 <section>
 <section id="background-motivation" class="title-slide slide level1 center">
 <h1>Background &amp; Motivation</h1>
 
 </section>
-<section id="statistics-curriculum-guidelines" class="slide level2">
-<h2>Statistics curriculum guidelines</h2>
-<p><strong>GAISE</strong></p>
-<ul>
-<li>“..emphasize the practical problem-solving skills that are necessary to answer statistical questions.” - GAISE</li>
-</ul>
-<p><strong>Curriculum Guidelines for Undergraduate Programs in Statistical Science</strong></p>
-<ul>
-<li><p>“concepts and approaches for working with complex data…and analyzing non-textbook data”</p></li>
-<li><p>facile with professional statistical software” and that students’ analyses “should be undertaken in a well-documented and reproducible way”</p></li>
-<li><p>“write clearly, speak fluently, and construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams and to organize and manage projects”</p></li>
-</ul>
+<section id="asa-curriculum-guidelines-for-undergradaute-programs-in-statistical-science" class="slide level2">
+<h2>2014 ASA Curriculum Guidelines for Undergradaute Programs in Statistical Science</h2>
+<p><em>“…concepts and approaches for working with <strong>complex data</strong>…and analyzing non-textbook data.”</em></p>
+<p><br></p>
+<p><em>“…students’ analyses”should be undertaken in a <strong>well-documented and reproducible way</strong>”</em></p>
+<p><br></p>
+<p><em>“…construct effective visual displays and <strong>compelling written summaries</strong>” and “demonstrate ability to <strong>collaborate in teams</strong>…”</em></p>
 </section>
-<section id="observations-from-projects" class="slide level2">
-<h2>Observations from projects</h2>
+<section id="what-we-learned-from-projects" class="slide level2">
+<h2>What we learned from projects…</h2>
 <ul>
 <li>Final projects in class</li>
 <li>Noticed gaps</li>
 </ul>
 </section>
-<section id="innovations-at-introductory-level" class="slide level2">
-<h2>Innovations at introductory level</h2>
-<ul>
-<li>Modernizing intro statistics classes</li>
-<li>Development of intro data science classes
-<ul>
-<li>data science in a box</li>
-</ul></li>
-</ul>
+<section id="inspired-by-introductory-courses" class="slide level2">
+<h2>Inspired by introductory courses</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="images/modern-dive.png" width="362"></p>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="images/ims.png" width="842"></p>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="images/modern-ds.png" width="916"></p>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="images/dsbox.png" width="300"></p>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Goal:</strong> Create learning experiences to continue cultivating these skills beyond the intro course</p>
 </section>
-<section id="motivation" class="slide level2">
-<h2>Motivation</h2>
+<section id="why-the-second-course" class="slide level2">
+<h2>Why the second course?</h2>
 <ul>
-<li><p><strong>Goal:</strong> Create learning experiences to continue cultivating these skills beyond the intro course</p></li>
 <li><p>Why this course?</p>
 <ul>
 <li>Often the second course for many students</li>
@@ -392,8 +430,8 @@
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
-<li>~ 90 - 100 students who have taken introductory statistics, data science, or probability course</li>
-<li><strong>Topics:</strong> Linear regression, logistic regression, and ANOVA with focus on application</li>
+<li>90+ students who have taken introductory statistics, data science, or probability course</li>
+<li><strong>Topics:</strong> Linear regression, logistic regression, special topics, with focus on application</li>
 <li><strong>Activities:</strong> Active lectures with in-class exercises, computing labs, homework, quizzes/exams, group project</li>
 </ul>
 </div><div class="column" style="width:35%;">
@@ -404,19 +442,14 @@
 <section id="modernizing-the-course" class="slide level2">
 <h2>Modernizing the course</h2>
 <ul>
-<li><p>Regularly engage with complex [and relevant] real-world data and applications*</p></li>
-<li><p>Develop the skills and computational proficiency for a reproducible data analysis workflow*</p></li>
-<li><p>Develop important non-technical skills, specifically written communication and teamwork</p></li>
-<li><p>Use regression for prediction and inference and determine appropriate methods based on analysis objective</p></li>
+<li><p>Regularly engage with <strong>real-world applications and data</strong> that require some wrangling</p></li>
+<li><p>Develop proficiency using <strong>professional statistical software</strong> and using a reproducible workflow</p></li>
+<li><p>Develop important non-technical skills, specifically <strong>written communication and teamwork</strong></p></li>
+<li><p>Understand determine <strong>appropriate methods for the primary analysis objective</strong> - inference or prediction</p></li>
 </ul>
 </section></section>
 <section id="computing-using-tidymodels" class="title-slide slide level1 center">
 <h1>Computing using tidymodels</h1>
-
-</section>
-
-<section id="demo" class="title-slide slide level1 center">
-<h1>Demo</h1>
 
 </section>
 
@@ -433,6 +466,43 @@
 </section>
 <section id="teamwork-in-the-course" class="slide level2">
 <h2>Teamwork in the course</h2>
+<p><em>“demonstrate ability to <strong>collaborate in teams</strong>…”</em></p>
+<ul>
+<li><p>Groups of 3 or 4 students assigned early in the semester</p>
+<ul>
+<li>statistics and computing experience</li>
+<li>major or academic interests</li>
+<li>each student has at least one potential point of connection</li>
+</ul></li>
+<li><p>Groups work together throughout the semester on weekly lab assignments and the final project</p></li>
+<li><p>Assessed on contribution and collaboration</p>
+<ul>
+<li>GitHub commit history on assignments</li>
+<li>Periodic team feedback</li>
+</ul></li>
+</ul>
+</section>
+<section id="writing-communication" class="slide level2">
+<h2>Writing &amp; communication</h2>
+<p><em>“…construct effective visual displays and <strong>compelling written summaries</strong>”</em></p>
+<p><strong>Two components</strong></p>
+<ul>
+<li>Writing accurate interpretations that are meaningful in practice</li>
+<li>Produce well-structured and neatly formatted document
+<ul>
+<li>Includes headers, narrative, tables, and visualizations</li>
+</ul></li>
+</ul>
+</section>
+<section id="writing-communication-1" class="slide level2">
+<h2>Writing &amp; communication</h2>
+<ul>
+<li>Students provided scaffolded documents
+<ul>
+<li>By final project, students receive essentially blank document</li>
+</ul></li>
+<li>Writing activity <strong>see google slides</strong></li>
+</ul>
 </section>
 <section id="challenges-lessons-learned" class="slide level2">
 <h2>Challenges &amp; lessons learned</h2>
@@ -662,6 +732,48 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
