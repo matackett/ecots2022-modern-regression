@@ -6,8 +6,6 @@ execute:
   freeze: auto
 ---
 
-# Demo
-
 ```{r}
 #| label: load-pkgs
 #| message: false
@@ -18,18 +16,15 @@ library(knitr)
 library(openintro)
 ```
 
-## Introduction
+# Introduction
 
 In today's workshop, we will explore using the **tidymodels** framework for modeling along with the tidyverse framework for data wrangling and visualization.
 We will start with some exploratory data analysis, walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation.
 Throughout we will be using the [`loans_full_schema`](http://openintrostat.github.io/openintro/reference/loans_full_schema.html) dataset from the **openintro** package[^1] and featured in the OpenIntro textbooks[^2]
 .
 
-[^1]: Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Y.
-    Kim, Ben Baumer, Chester Ismay, Nick Paterno and
- Christopher Barr (2022).
-    openintro: Data Sets and
- Supplemental Functions from 'OpenIntro' Textbooks and Labs.
+[^1]: Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Y. Kim, Ben Baumer, Chester Ismay, Nick Paterno and Christopher Barr (2022).
+    openintro: Data Sets and Supplemental Functions from 'OpenIntro' Textbooks and Labs.
     R package version 2.3.0.
     <https://CRAN.R-project.org/package=openintro>.
 
