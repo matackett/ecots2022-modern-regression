@@ -4,7 +4,7 @@
     "href": "activity/modeling-loans-solutions.html",
     "title": "Modeling loans - Solutions",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)\n\n\n\nIn today’s workshop, we will explore using the tidymodels framework for modeling along with the tidyverse framework for data wrangling and visualization. We will start with some exploratory data analysis, walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation. Throughout we will be using the loans_full_schema dataset from the openintro package1 and featured in the OpenIntro textbooks2 .\nThe exercises below are drawn from an exam review. Students would have already completed readings, some assignments, and labs prior to attempting these questions.\nYou may notice some code below has already been pre-populated for you. In these cases, there is a flag set as eval = FALSE. Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the document."
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)"
   },
   {
     "objectID": "activity/modeling-loans-solutions.html#exercise-0-data-cleanup",
@@ -88,7 +88,7 @@
     "href": "activity/modeling-loans.html",
     "title": "Modeling loans",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)"
+    "text": "To work on this activity, join the RStudio Cloud workspace for this session by clicking here, and then start the project titled Modeling loans."
   },
   {
     "objectID": "activity/modeling-loans.html#exercise-0-data-cleanup",
