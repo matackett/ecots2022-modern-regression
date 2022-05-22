@@ -179,9 +179,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#demo" id="toc-demo" class="nav-link active" data-scroll-target="#demo">Demo</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#exercise-0-data-cleanup" id="toc-exercise-0-data-cleanup" class="nav-link" data-scroll-target="#exercise-0-data-cleanup">Exercise 0: Data cleanup</a></li>
   <li><a href="#exercise-1-train-test-data-split" id="toc-exercise-1-train-test-data-split" class="nav-link" data-scroll-target="#exercise-1-train-test-data-split">Exercise 1: Train-test data split</a></li>
   <li><a href="#exercise-2-the-model" id="toc-exercise-2-the-model" class="nav-link" data-scroll-target="#exercise-2-the-model">Exercise 2: The model</a></li>
@@ -207,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Modeling loans</h1>
-<p class="subtitle lead">eCOTS 2022 - Modern Regression</p>
+<p class="subtitle lead">eCOTS 2022 - Modernizing the undergraduate regression analysis course</p>
 </div>
 
 
@@ -221,27 +221,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="demo" class="level1">
-<h1>Demo</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In today’s workshop, we will explore how to use <strong>tidymodels</strong> framework to perform data wrangling and modeling the data. We will start with some exploratory data analysis (EDA), walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation. Throughout we will be using the dataset from the OpenIntro textbook</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In today’s workshop, we will explore using the <strong>tidymodels</strong> framework for modeling along with the tidyverse framework for data wrangling and visualization. We will start with some exploratory data analysis, walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation. Throughout we will be using the <a href="http://openintrostat.github.io/openintro/reference/loans_full_schema.html"><code>loans_full_schema</code></a> dataset from the <strong>openintro</strong> package<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and featured in the OpenIntro textbooks<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> .</p>
 <p>The exercises below are drawn from an exam review. Students would have already completed readings, some assignments, and labs prior to attempting these questions.</p>
-<p>You may notice some code below has already been pre-populated for you. In these cases, there is a flag set as <code>eval = FALSE</code>. Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the pdf.</p>
+<p>You may notice some code below has already been pre-populated for you. In these cases, there is a flag set as <code>eval = FALSE</code>. Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the document.</p>
 </section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
 <section id="exercise-0-data-cleanup" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-0-data-cleanup">Exercise 0: Data cleanup</h2>
 <p>We are going to do a preliminary cleaning step. Let’s drop any unused levels.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(loans_full_schema)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>loans_full_schema <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(loans_full_schema)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>loans_full_schema <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(loans_full_schema)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-1-train-test-data-split" class="level2">
@@ -257,37 +255,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="exercise-2-the-model" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2-the-model">Exercise 2: The model</h2>
 <p>Write the model for predicting interest rate (<code>interest_rate</code>) from debt to income ratio (<code>debt_to_income</code>), the term of loan (<code>term</code>), the number of inquiries (credit checks) into the applicant’s credit during the last 12 months (<code>inquiries_last_12m</code>), whether there are any bankruptcies listed in the public record for this applicant (<code>bankrupt</code>), and the type of application (<code>application_type</code>). The model should allow for the effect of to income ratio on interest rate to vary by application type.</p>
-<p>$$ = b_0 + b_{DI} + b_{term}</p>
-<p><span class="math display">\[ \]</span></p>
-<ul>
-<li>b_{CC} + b_{bank}</li>
-</ul>
-<p><span class="math display">\[ \]</span></p>
-<ul>
-<li>b_{app} + b_{DI:app} $$</li>
-</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{\texttt{interest\_rate}} = b_0 &amp;+ b_{DI}\cdot\texttt{debt\_to\_income} \\
+&amp;+ b_{term}\cdot\texttt{term} \\
+&amp;+ b_{CC}\cdot\texttt{inquiries\_last\_12m} \\
+&amp;+ b_{bank}\cdot\texttt{bankrupt} \\
+&amp;+ b_{app}\cdot\texttt{application\_type} \\
+&amp;+ b_{DI:app}\cdot\texttt{debt\_to\_income:application\_type}
+\end{aligned}
+\]</span></p>
 </section>
 <section id="exercise-3-exploratory-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3-exploratory-data-analysis">Exercise 3: Exploratory data analysis</h2>
 <p>Explore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(<span class="at">x =</span> interest_rate)) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Interest Rate"</span>, <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribution of Loan Interest Rates"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(<span class="at">x =</span> debt_to_income, <span class="at">y =</span> interest_rate,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">color =</span> application_type)) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Debt-to-Income Ratio"</span>, <span class="at">y =</span> <span class="st">"Interest Rate"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Interest Rate vs. Debt-to-Income, by App. Type"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as_factor</span>(<span class="fu">if_else</span>(public_record_bankrupt <span class="sc">==</span> <span class="dv">0</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                                              <span class="st">"no"</span>, <span class="st">"yes"</span>)),</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y =</span> interest_rate)) <span class="sc">+</span> </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Past Bankrupcy Status"</span>, <span class="at">y =</span> <span class="st">"Interest Rate"</span>,</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Boxplots of Interest Rate by Bankruptcy Status"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Interest Rate"</span>, <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Loan Interest Rates"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> debt_to_income, <span class="at">y =</span> interest_rate,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> application_type</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Debt-to-Income Ratio"</span>, <span class="at">y =</span> <span class="st">"Interest Rate"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Interest Rate vs. Debt-to-Income, by App. Type"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">as_factor</span>(<span class="fu">if_else</span>(public_record_bankrupt <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"no"</span>, <span class="st">"yes"</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  )),</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> interest_rate</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Past Bankrupcy Status"</span>, <span class="at">y =</span> <span class="st">"Interest Rate"</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Boxplots of Interest Rate by Bankruptcy Status"</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-4-model-specification" class="level2">
@@ -315,18 +325,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="exercise-6-creating-a-workflow">Exercise 6: Creating a workflow</h2>
 <p>Create the workflow that brings together the model specification and recipe.</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-7-cross-validation-and-summary" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-7-cross-validation-and-summary">Exercise 7: Cross-validation and summary</h2>
 <p>Conduct 10-fold cross validation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Summarize metrics from your CV resamples.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -353,7 +363,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Y. Kim, Ben Baumer, Chester Ismay, Nick Paterno and Christopher Barr (2022). openintro: Data Sets and Supplemental Functions from ‘OpenIntro’ Textbooks and Labs. R package version 2.3.0. <a href="https://CRAN.R-project.org/package=openintro" class="uri">https://CRAN.R-project.org/package=openintro</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Mine Çetinkaya-Rundel and Johanna Hardin. 2021. OpenIntro::Introduction to Modern Statistics. <a href="https://openintro-ims.netlify.app/">https://openintro-ims.netlify.app</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const disableStylesheet = (stylesheets) => {
