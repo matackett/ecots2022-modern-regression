@@ -1,20 +1,22 @@
 ---
-title: Some title...
+title: Modernizing the undergraduate regression analysis course
 ---
 
-# ecots 2022 Breakout Session
+------------------------------------------------------------------------
 
-When ...
+[USCOTS 2022](https://causeweb.org/cause/ecots/ecots22/program/breakout/6)\
+Monday, May 23, 2022\
+3:35 pm -- 4:45 pm ET
 
-Where ...
+------------------------------------------------------------------------
 
 # Abstract
 
 There has been significant innovation in introductory statistics and data science courses to equip students with the statistical, computing, and communication skills needed for modern data analysis.
 Innovating subsequent courses is also important, so students can continue developing these skills beyond the first course.
-In this session, we'll present a modern approach to teaching undergraduate regression analysis, the second statistics course for many students.
-We'll share strategies for using real-world data sets and examples, teaching modern computing skills, and incorporating non-technical skills such as writing and effective collaboration as part of the course.
-We'll share example activities and assignments, along with a demo of the computing toolkit using the R tidymodels package, Quarto for reproducible reports, and Git and GitHub for version control and collaboration.
+In this session, we\'ll present a modern approach to teaching undergraduate regression analysis, the second statistics course for many students.
+We\'ll share strategies for using real-world data sets and examples, teaching modern computing skills, and incorporating non-technical skills such as writing and effective collaboration as part of the course.
+We\'ll share example activities and assignments, along with a demo of the computing toolkit using the R tidymodels package, Quarto for reproducible reports, and Git and GitHub for version control and collaboration.
 The activities and demo will be hands-on; attendees will also have the opportunity to exchange ideas and ask questions throughout the session.
 
 # Presenters

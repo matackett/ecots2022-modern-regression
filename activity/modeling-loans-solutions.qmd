@@ -5,6 +5,8 @@ author: "Your name goes here!"
 date: "Today's date goes here!"
 format: pdf
 editor: visual
+execute:
+  freeze: auto
 ---
 
 # Demo
