@@ -2,8 +2,8 @@
 title: "Modernizing the undergraduate regression analysis course"
 subtitle: "eCOTS 2022"
 author: "Maria Tackett, Mine Çetinkaya-Rundel, Rick Presman"
-footer: ""
-logo: ""
+footer: "[🔗 matackett.github.io/ecots2022-modern-regression](https://matackett.github.io/ecots2022-modern-regression/)"
+logo: "images/logo.png"
 format: 
   revealjs:
     theme: slides.scss
@@ -21,22 +21,32 @@ execute:
 
 ## Introductions
 
-...
+![](images/authors.png){fig-alt="Headshots of Maria Tackett, Mine Çetinkaya-Rundel, and Rick Presman" fig-align="center"}
+
+::: {style="text-align: center;"}
+Dr. Maria Tackett
+
+Dr. Mine Çetinkaya-Rundel
+
+Rick Presman
+:::
 
 ## Session agenda
 
--   Background & Motivation
+-   Background + motivation
 -   Computing with tidymodels
--   Demonstration
--   Tips and lessons learned
+-   Live demo + activity
+-   Tips + lessons learned
 
-# Background & Motivation
+# Background + motivation
 
-## Statistics curriculum guidelines
+## Statistics curriculum guidelines {.smaller}
 
 **GAISE**
 
 -   "..emphasize the practical problem-solving skills that are necessary to answer statistical questions." - GAISE
+
+. . .
 
 **Curriculum Guidelines for Undergraduate Programs in Statistical Science**
 
@@ -55,11 +65,13 @@ execute:
 
 -   Modernizing intro statistics classes
 -   Development of intro data science classes
-    -   data science in a box
+    -   Data Science in a Box
 
 ## Motivation
 
 -   **Goal:** Create learning experiences to continue cultivating these skills beyond the intro course
+
+. . .
 
 -   Why this course?
 
@@ -68,7 +80,7 @@ execute:
     -   First shared course for statistics majors
     -   Develop skills early that can be built on in later courses
 
-## The Course
+## The course
 
 ::: columns
 ::: {.column width="60%"}
@@ -94,17 +106,15 @@ execute:
 
 # Computing using tidymodels
 
-# Activity
+# Live demo + activity
 
-# Tips and Lessons Learned
-
-## Tips for finding authentic data
+# Tips + lessons learned
 
 ## Finding authentic data
 
-## Teamwork in the course
+## Teamwork
 
-## Challenges & lessons learned
+## Challenges + lessons learned
 
 -   Important for students to understand how to put everything together
     -   value of the project
