@@ -14,7 +14,7 @@ website:
         href: https://github.com/matackett/ecots2022-modern-regression
         text: GitHub
       - icon: cloud-fill
-        href: https://github.com/matackett/ecots2022-modern-regression
+        href: https://rstudio.cloud/spaces/249609
         text: RStudio Cloud
     style: docked
     contents:
