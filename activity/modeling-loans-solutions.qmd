@@ -1,6 +1,6 @@
 ---
 title: "Modeling loans - Solutions"
-subtitle: "eCOTS 2022 - Modern Regression"
+subtitle: "eCOTS 2022 - Modernizing the undergraduate regression analysis course"
 editor: visual
 execute:
   freeze: auto
@@ -16,21 +16,36 @@ library(tidyverse)
 library(tidymodels)
 library(knitr)
 library(openintro)
-library(dplyr)
 ```
 
 ## Introduction
 
-In today's workshop, we will explore how to use \texttt{tidymodels} framework to perform data wrangling and modeling the data.
-We will start with some exploratory data analysis (EDA), walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation.
-Throughout we will be using the \texttt{loans} dataset from the OpenIntro textbook\footnote{Diez, David M., Christopher D. Barr, and Mine Çetinkaya-Rundel. 2019. OpenIntro statistics.}
+In today's workshop, we will explore using the **tidymodels** framework for modeling along with the tidyverse framework for data wrangling and visualization.
+We will start with some exploratory data analysis, walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation.
+Throughout we will be using the [`loans_full_schema`](http://openintrostat.github.io/openintro/reference/loans_full_schema.html) dataset from the **openintro** package[^1] and featured in the OpenIntro textbooks[^2]
+.
+
+[^1]: Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Y.
+    Kim, Ben Baumer, Chester Ismay, Nick Paterno and
+ Christopher Barr (2022).
+    openintro: Data Sets and
+ Supplemental Functions from 'OpenIntro' Textbooks and Labs.
+    R package version 2.3.0.
+    <https://CRAN.R-project.org/package=openintro>.
+
+[^2]: Mine Çetinkaya-Rundel and Johanna Hardin.
+    2021.
+    OpenIntro::Introduction to Modern Statistics.
+    [https://openintro-ims.netlify.app](https://openintro-ims.netlify.app/).
 
 The exercises below are drawn from an exam review.
 Students would have already completed readings, some assignments, and labs prior to attempting these questions.
 
 You may notice some code below has already been pre-populated for you.
-In these cases, there is a flag set as \texttt{eval = FALSE}.
-Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the pdf.
+In these cases, there is a flag set as `eval = FALSE`.
+Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the document.
+
+# Exercises
 
 ## Exercise 0: Data Cleanup
 
@@ -39,17 +54,18 @@ Let's drop any unused levels.
 
 ```{r}
 #| label: load-data
-glimpse(loans_full_schema)
+
 loans_full_schema <- droplevels(loans_full_schema)
 ```
 
 ## Exercise 1: Train-Test Data Split
 
-Now using \texttt{tidymodels}, split the data into a training and test set with a 75%-25% split.
+Split the data into a training and test set with a 75%-25% split.
 Don't forget to set a seed!
 
 ```{r}
 #| label: initial-split
+
 set.seed(210)
 loans_split <- initial_split(loans_full_schema)
 loans_train <- training(loans_split)
@@ -62,9 +78,14 @@ Write the model for predicting interest rate (`interest_rate`) from debt to inco
 The model should allow for the effect of to income ratio on interest rate to vary by application type.
 
 $$
-\widehat{\texttt{interest\_rate}} = b_0 + b_{DI}\cdot\texttt{debt\_to\_income} + b_{term}\cdot\texttt{term} \\
-+ b_{CC}\cdot\texttt{inquiries\_last\_12m} + b_{bank}\cdot\texttt{bankrupt} \\
-+ b_{app}\cdot\texttt{application\_type} + b_{DI:app}\cdot\text{debt\_to\_income:application\_type}
+\begin{aligned}
+\widehat{\texttt{interest\_rate}} = b_0 &+ b_{DI}\cdot\texttt{debt\_to\_income} \\
+&+ b_{term}\cdot\texttt{term} \\
+&+ b_{CC}\cdot\texttt{inquiries\_last\_12m} \\ 
+&+ b_{bank}\cdot\texttt{bankrupt} \\
+&+ b_{app}\cdot\texttt{application\_type} \\
+&+ b_{DI:app}\cdot\texttt{debt\_to\_income:application\_type}
+\end{aligned}
 $$
 
 ## Exercise 3: EDA
@@ -72,39 +93,57 @@ $$
 Explore characteristics of the variables you'll use for the model using the training data only.
 Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
 
-```{r, warning = FALSE, message = FALSE, fig.width = 5, fig.height = 3, fig.align = "center"}
+Explore characteristics of the variables you'll use for the model using the training data only.
+Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
+
+```{r}
 #| label: explore
+#| warning: false
+#| message: false
+
 ggplot(loans_train, aes(x = interest_rate)) +
   geom_histogram(bins = 20) +
-  labs(x = "Interest Rate", y = "Count",
-       title = "Distribution of Loan Interest Rates")
+  labs(
+    x = "Interest Rate", y = "Count",
+    title = "Distribution of Loan Interest Rates"
+  )
 
-ggplot(loans_train, aes(x = debt_to_income, y = interest_rate,
-                        color = application_type)) +
+ggplot(loans_train, aes(
+  x = debt_to_income, y = interest_rate,
+  color = application_type
+)) +
   geom_point() +
-  labs(x = "Debt-to-Income Ratio", y = "Interest Rate",
-       title = "Interest Rate vs. Debt-to-Income, by App. Type")
+  labs(
+    x = "Debt-to-Income Ratio", y = "Interest Rate",
+    title = "Interest Rate vs. Debt-to-Income, by App. Type"
+  )
 
-ggplot(loans_train, aes(x = as_factor(if_else(public_record_bankrupt == 0,
-                                              "no", "yes")),
-                        y = interest_rate)) + 
+ggplot(loans_train, aes(
+  x = as_factor(if_else(public_record_bankrupt == 0,
+    "no", "yes"
+  )),
+  y = interest_rate
+)) +
   geom_boxplot() +
-  labs(x = "Past Bankrupcy Status", y = "Interest Rate",
-       title = "Boxplots of Interest Rate by Bankruptcy Status")
+  labs(
+    x = "Past Bankrupcy Status", y = "Interest Rate",
+    title = "Boxplots of Interest Rate by Bankruptcy Status"
+  )
 ```
 
-## Exercise 4: \texttt{tidymodels} Model
+## Exercise 4: Model specification
 
 Specify a linear regression model.
 Call it `loans_spec`.
 
 ```{r}
 #| label: specify-model
+
 loans_spec <- linear_reg() %>%
   set_engine("lm")
 ```
 
-## Exercise 5: \texttt{tidymodels} Recipe
+## Exercise 5: Recipe building
 
 -   Predict `interest_rate` from `debt_to_income`, `term`, `inquiries_last_12m`, `public_record_bankrupt`, and `application_type`.
 -   Mean center `debt_to_income`.
@@ -115,6 +154,7 @@ loans_spec <- linear_reg() %>%
 
 ```{r}
 #| label: create-recipe
+
 loans_rec <- recipe(interest_rate ~ debt_to_income +
           term + inquiries_last_12m +
           public_record_bankrupt + application_type,
@@ -128,23 +168,25 @@ loans_rec <- recipe(interest_rate ~ debt_to_income +
           step_zv(all_predictors())
 ```
 
-## Exercise 6: \texttt{tidymodels} Workflow
+## Exercise 6: Creating a workflow
 
 Create the workflow that brings together the model specification and recipe.
 
 ```{r}
 #| label: create-wflow
+
 loans_wflow <- workflow() %>%
   add_model(loans_spec) %>%
   add_recipe(loans_rec)
 ```
 
-## Exercise 7: Cross-Validation and Summary
+## Exercise 7: Cross-validation and summary
 
 Conduct 10-fold cross validation.
 
 ```{r}
 #| label: cv-tenfold
+
 set.seed(210)
 loans_folds <- vfold_cv(loans_train, v = 10)
 loans_fit_rs <- loans_wflow %>%
@@ -156,6 +198,7 @@ Summarize metrics from your CV resamples.
 
 ```{r}
 #| label: cv-summarize
+
 collect_metrics(loans_fit_rs)
 ```
 
@@ -165,7 +208,7 @@ In this exercise, we will synthesize our work above to create a reader-friendly 
 In the classroom, these sorts of writing exercises appear throughout homework and lab assignments as well as exams.
 They give students an opportunity to demonstrate their understanding while gaining an appreciation that communication is a crucial part of using statistics.
 
-## Exploratory Data Analysis
+## Exploratory data analysis
 
 Using your plots above (along with any other metrics you compute), describe your initial findings about the training data.
 Discuss why we perform EDA only on the training data and not on the entire data set.
@@ -184,7 +227,7 @@ These may be outliers.
 
 The boxplot seems to suggest that while applications with a bankruptcy history have higher interest rates, the difference is very slight.
 
-## Model and Model Fit
+## Model fitting and fit evaluation
 
 Although our primary aim is prediction and not inference, its good to check the model fit nonetheless to make sure nothing looks out of the ordinary.
 Create a neatly organized table of the model output, and describe your observations, such as which parameters are significant.
@@ -202,7 +245,7 @@ We find that the sign of the coefficients is intuitive.
 For instance, as the debt-to-income ratio increases by 1%, the interest rate is predicted to increase by about 0.11% on average, holding all equal.
 Similarly, relative to loans with a 3-year maturity, loans with a 5-year maturity are predicted to have an interest rate about 3.84% higher on averaged, all else equal.
 
-## Cross-Validation
+## Cross-validation
 
 Explain what 10-fold CV does, and why it's useful.
 Display a neat table with the outputs of your CV summary, and describe your observations.

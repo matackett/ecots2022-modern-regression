@@ -1,10 +1,8 @@
 ---
 title: "Modeling loans"
-subtitle: "eCOTS 2022 - Modern Regression"
+subtitle: "eCOTS 2022 - Modernizing the undergraduate regression analysis course"
 editor: visual
 ---
-
-# Demo
 
 ```{r}
 #| label: load-pkgs
@@ -14,30 +12,46 @@ library(tidyverse)
 library(tidymodels)
 library(knitr)
 library(openintro)
-library(dplyr)
 ```
 
-## Introduction
+# Introduction
 
-In today's workshop, we will explore how to use **tidymodels** framework to perform data wrangling and modeling the data.
-We will start with some exploratory data analysis (EDA), walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation.
-Throughout we will be using the \texttt{loans} dataset from the OpenIntro textbook\footnote{Diez, David M., Christopher D. Barr, and Mine Çetinkaya-Rundel. 2019. OpenIntro statistics.}
+In today's workshop, we will explore using the **tidymodels** framework for modeling along with the tidyverse framework for data wrangling and visualization.
+We will start with some exploratory data analysis, walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation.
+Throughout we will be using the [`loans_full_schema`](http://openintrostat.github.io/openintro/reference/loans_full_schema.html) dataset from the **openintro** package[^1] and featured in the OpenIntro textbooks[^2]
+.
+
+[^1]: Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Y.
+    Kim, Ben Baumer, Chester Ismay, Nick Paterno and
+ Christopher Barr (2022).
+    openintro: Data Sets and
+ Supplemental Functions from 'OpenIntro' Textbooks and Labs.
+    R package version 2.3.0.
+    <https://CRAN.R-project.org/package=openintro>.
+
+[^2]: Mine Çetinkaya-Rundel and Johanna Hardin.
+    2021.
+    OpenIntro::Introduction to Modern Statistics.
+    [https://openintro-ims.netlify.app](https://openintro-ims.netlify.app/).
 
 The exercises below are drawn from an exam review.
 Students would have already completed readings, some assignments, and labs prior to attempting these questions.
 
 You may notice some code below has already been pre-populated for you.
 In these cases, there is a flag set as `eval = FALSE`.
-Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the pdf.
+Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the document.
+
+# Exercises
 
 ## Exercise 0: Data cleanup
 
 We are going to do a preliminary cleaning step.
 Let's drop any unused levels.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 #| label: load-data
-glimpse(loans_full_schema)
+
 loans_full_schema <- droplevels(loans_full_schema)
 ```
 
@@ -46,8 +60,10 @@ loans_full_schema <- droplevels(loans_full_schema)
 Split the data into a training and test set with a 75%-25% split.
 Don't forget to set a seed!
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 #| label: initial-split
+
 set.seed(210)
 loans_split <- initial_split(loans_full_schema)
 loans_train <- training(loans_split)
@@ -60,11 +76,14 @@ Write the model for predicting interest rate (`interest_rate`) from debt to inco
 The model should allow for the effect of to income ratio on interest rate to vary by application type.
 
 $$
-\widehat{\texttt{interest\_rate}} = b_0 + b_{DI}\cdot\texttt{debt\_to\_income} + b_{term}\cdot\texttt{term} 
-$$ $$
-+ b_{CC}\cdot\texttt{inquiries\_last\_12m} + b_{bank}\cdot\texttt{bankrupt} 
-$$ $$
-+ b_{app}\cdot\texttt{application\_type} + b_{DI:app}\cdot\text{debt\_to\_income:application\_type}
+\begin{aligned}
+\widehat{\texttt{interest\_rate}} = b_0 &+ b_{DI}\cdot\texttt{debt\_to\_income} \\
+&+ b_{term}\cdot\texttt{term} \\
+&+ b_{CC}\cdot\texttt{inquiries\_last\_12m} \\ 
+&+ b_{bank}\cdot\texttt{bankrupt} \\
+&+ b_{app}\cdot\texttt{application\_type} \\
+&+ b_{DI:app}\cdot\texttt{debt\_to\_income:application\_type}
+\end{aligned}
 $$
 
 ## Exercise 3: Exploratory data analysis
@@ -72,25 +91,40 @@ $$
 Explore characteristics of the variables you'll use for the model using the training data only.
 Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
 
-```{r, warning = FALSE, message = FALSE, fig.width = 5, fig.height = 3, fig.align = "center", eval = FALSE}
+```{r}
+#| eval: false
 #| label: explore
+#| warning: false
+#| message: false
+
 ggplot(loans_train, aes(x = interest_rate)) +
   geom_histogram(bins = 20) +
-  labs(x = "Interest Rate", y = "Count",
-       title = "Distribution of Loan Interest Rates")
+  labs(
+    x = "Interest Rate", y = "Count",
+    title = "Distribution of Loan Interest Rates"
+  )
 
-ggplot(loans_train, aes(x = debt_to_income, y = interest_rate,
-                        color = application_type)) +
+ggplot(loans_train, aes(
+  x = debt_to_income, y = interest_rate,
+  color = application_type
+)) +
   geom_point() +
-  labs(x = "Debt-to-Income Ratio", y = "Interest Rate",
-       title = "Interest Rate vs. Debt-to-Income, by App. Type")
+  labs(
+    x = "Debt-to-Income Ratio", y = "Interest Rate",
+    title = "Interest Rate vs. Debt-to-Income, by App. Type"
+  )
 
-ggplot(loans_train, aes(x = as_factor(if_else(public_record_bankrupt == 0,
-                                              "no", "yes")),
-                        y = interest_rate)) + 
+ggplot(loans_train, aes(
+  x = as_factor(if_else(public_record_bankrupt == 0,
+    "no", "yes"
+  )),
+  y = interest_rate
+)) +
   geom_boxplot() +
-  labs(x = "Past Bankrupcy Status", y = "Interest Rate",
-       title = "Boxplots of Interest Rate by Bankruptcy Status")
+  labs(
+    x = "Past Bankrupcy Status", y = "Interest Rate",
+    title = "Boxplots of Interest Rate by Bankruptcy Status"
+  )
 ```
 
 ## Exercise 4: Model specification
@@ -100,6 +134,7 @@ Call it `loans_spec`.
 
 ```{r}
 #| label: specify-model
+
 # add code here
 ```
 
@@ -114,6 +149,7 @@ Call it `loans_spec`.
 
 ```{r}
 #| label: create-recipe
+
 # add code here
 ```
 
@@ -123,7 +159,8 @@ Create the workflow that brings together the model specification and recipe.
 
 ```{r}
 #| label: create-wflow
-#| # add code here
+
+# add code here
 ```
 
 ## Exercise 7: Cross-validation and summary
@@ -132,6 +169,7 @@ Conduct 10-fold cross validation.
 
 ```{r}
 #| label: cv-tenfold
+
 # add code here
 ```
 
@@ -139,6 +177,7 @@ Summarize metrics from your CV resamples.
 
 ```{r}
 #| label: cv-summarize
+
 # add code here
 ```
 
