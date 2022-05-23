@@ -228,7 +228,7 @@
     "href": "slides/index.html#assessing-final-projects",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Assessing final projects",
-    "text": "Assessing final projects\n\nFinal group project throughout second half of the course\n\nUse regression analysis to analyze a data set of their choice\nProduce a written report and presentation\n\n\n\n\nNoticed students had challenges\n\nPreparing the data for the regression model\nEffectively summarizing model results\nMaking analysis decisions"
+    "text": "Assessing final projects\n\nFinal group project throughout second half of the course\n\nUse regression analysis to analyze a data set of their choice\nProduce a written report and presentation\n\n\n\n\nNoticed students had challenges…\n\nPreparing the data for analysis\nEffectively summarizing model results\nMaking analysis decisions"
   },
   {
     "objectID": "slides/index.html#inspired-by-introductory-courses",
@@ -242,14 +242,14 @@
     "href": "slides/index.html#sta-210-regression-analysis",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "STA 210: Regression Analysis",
-    "text": "STA 210: Regression Analysis\nA course on linear and logistic regression with a focus on application.\n\n\n\nStudents: 90+ students from a range of disciplines who have taken introductory statistics, data science, or probability\nClass meetings: 2 lectures with in-class activities and 1 lab\nAssessments: Labs, homework, exams, final group project"
+    "text": "STA 210: Regression Analysis\nA course primarily on linear and logistic regression with a focus on application.\n\n\n\nStudents: 90+ students from a range of disciplines who have taken introductory statistics, data science, or probability\nClass meetings: 2 lectures with in-class activities and 1 lab\nAssessments: Labs, homework, exams, final group project"
   },
   {
     "objectID": "slides/index.html#modernizing-the-course",
     "href": "slides/index.html#modernizing-the-course",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Modernizing the course",
-    "text": "Modernizing the course\nFacilitate opportunities for students to…\n\n\nRegularly engage with real-world applications and complex data\nDevelop proficiency using professional statistical software and using a reproducible workflow\nDevelop important non-technical skills, specifically written communication and teamwork\nIdentify appropriate methods for the primary analysis objective - inference or prediction"
+    "text": "Modernizing the course\nFacilitate opportunities for students to…\n\n\nRegularly engage with real-world applications and complex data\nDevelop proficiency using professional statistical software and using a reproducible workflow\nDevelop important non-technical skills, specifically written communication and teamwork\nIdentify appropriate methods based on the primary analysis objective - inference or prediction"
   },
   {
     "objectID": "slides/index.html#remainder-of-session",
@@ -270,7 +270,7 @@
     "href": "slides/index.html#getting-started-with-tidymodels",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Getting started with tidymodels",
-    "text": "Getting started with tidymodels\n\n# intall.packages(\"tidymodels\")\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──\n\n\n✔ broom        0.8.0          ✔ recipes      0.2.0     \n✔ dials        0.1.1          ✔ rsample      0.1.1     \n✔ dplyr        1.0.9          ✔ tibble       3.1.7     \n✔ ggplot2      3.3.6          ✔ tidyr        1.2.0.9000\n✔ infer        1.0.0          ✔ tune         0.2.0     \n✔ modeldata    0.1.1          ✔ workflows    0.2.6     \n✔ parsnip      0.2.1          ✔ workflowsets 0.2.1     \n✔ purrr        0.3.4          ✔ yardstick    0.0.9     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard() masks scales::discard()\n✖ dplyr::filter()  masks stats::filter()\n✖ dplyr::lag()     masks stats::lag()\n✖ recipes::step()  masks stats::step()\n• Learn how to get started at https://www.tidymodels.org/start/"
+    "text": "Getting started with tidymodels\n\n# intall.packages(\"tidymodels\")\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──\n\n\n✔ broom        0.8.0     ✔ recipes      0.2.0\n✔ dials        0.1.1     ✔ rsample      0.1.1\n✔ dplyr        1.0.9     ✔ tibble       3.1.7\n✔ ggplot2      3.3.6     ✔ tidyr        1.2.0\n✔ infer        1.0.0     ✔ tune         0.2.0\n✔ modeldata    0.1.1     ✔ workflows    0.2.6\n✔ parsnip      0.2.1     ✔ workflowsets 0.2.1\n✔ purrr        0.3.4     ✔ yardstick    0.0.9\n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard() masks scales::discard()\n✖ dplyr::filter()  masks stats::filter()\n✖ dplyr::lag()     masks stats::lag()\n✖ recipes::step()  masks stats::step()\n• Use suppressPackageStartupMessages() to eliminate package startup messages"
   },
   {
     "objectID": "slides/index.html#tidymodels-flow",
@@ -291,7 +291,7 @@
     "href": "slides/index.html#complex-data",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Complex data",
-    "text": "Complex data\n\nUse authentic data sets that require some wrangling\n\nReinforces exploratory data analysis and that raw data is not always ready for analysis\nExtent of data wrangling differs based on type of assignment and time to complete it\n\n\n\n\nAvoid using too many examples with violations in assumptions / regression not useful method for the data"
+    "text": "Complex data\n\nUse authentic data sets that require some wrangling\n\nReinforces exploratory data analysis and that raw data is not always “ready to go” without some preparation\nExtent of data wrangling differs based on type of assignment and time to complete it\n\n\n\n\nAvoid using too many examples with violations in assumptions or where regression is not useful to analyze the data"
   },
   {
     "objectID": "slides/index.html#resources-for-finding-data",
@@ -305,20 +305,20 @@
     "href": "slides/index.html#teamwork",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Teamwork",
-    "text": "Teamwork\n\nTeams of 3 or 4 students assigned based on\n\nstatistics and computing experience\nmajor or academic interests\neach student has at least one potential point of connection\n\n\n\n\nGroups work together throughout the semester on weekly lab assignments and the final project"
+    "text": "Teamwork\n\nTeams of 3 or 4 students assigned based on\n\nprevious statistics and computing experience\nmajor or academic interests\ntrying to give each student at least one potential point of connection with their teammates\n\n\n\n\nGroups work together throughout the semester on weekly lab assignments and the final project"
   },
   {
     "objectID": "slides/index.html#teamwork-1",
     "href": "slides/index.html#teamwork-1",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Teamwork",
-    "text": "Teamwork\n\nTeamwork is assessed based on contribution and collaboration\n\nGitHub commit history on assignments to assess contribution\nPeriodic team feedback to assess collaboration"
+    "text": "Teamwork\n\nThe first team assignment includes\n\nCompleting a team agreement\nComing up with a fun team name!\n\n\n\n\nTeamwork is assessed based on contribution and collaboration\n\nGitHub commit history on assignments to assess contribution\nPeriodic team feedback to assess collaboration"
   },
   {
     "objectID": "slides/index.html#putting-it-all-together",
     "href": "slides/index.html#putting-it-all-together",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Putting it all together",
-    "text": "Putting it all together\nSome skills highlighted in 2014 ASA Curriculum Guidelines\n\n“…concepts and approaches for working with complex data …and analyzing non-textbook data.”\n“…students’ analyses should be undertaken in a well-documented and reproducible way”\n“…construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams…”\n\n\n\nIt is important that students not only develop these skills but also how to use them in practice."
+    "text": "Putting it all together\nSkills from the 2014 ASA Curriculum Guidelines\n\n“…concepts and approaches for working with complex data …and analyzing non-textbook data.”\n“…students’ analyses should be undertaken in a well-documented and reproducible way”\n“…construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams…”"
   }
 ]

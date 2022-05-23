@@ -423,7 +423,7 @@
 </section></section>
 <section>
 <section id="background-motivation" class="title-slide slide level1 center">
-<h1>Background &amp; Motivation</h1>
+<h1>Background + motivation</h1>
 
 </section>
 <section id="asa-curriculum-guidelines" class="slide level2 center">
@@ -452,9 +452,9 @@
 </ul>
 <div class="fragment">
 <ul>
-<li><p>Noticed students had challenges</p>
+<li><p>Noticed students had challenges…</p>
 <ul>
-<li><p>Preparing the data for the regression model</p></li>
+<li><p>Preparing the data for analysis</p></li>
 <li><p>Effectively summarizing model results</p></li>
 <li><p>Making analysis decisions</p></li>
 </ul></li>
@@ -462,8 +462,8 @@
 </div>
 </section></section>
 <section>
-<section id="how-can-we-help-students-translate-conceptual-knowledge-to-practical-application" class="title-slide slide level1 center">
-<h1>How can we help students translate conceptual knowledge to practical application?</h1>
+<section id="how-can-we-help-students-better-use-their-conceptual-knowledge-and-skills-to-analyze-real-world-data" class="title-slide slide level1 center">
+<h1>How can we help students better use their conceptual knowledge and skills to analyze real-world data?</h1>
 
 </section>
 <section id="inspired-by-introductory-courses" class="slide level2 center">
@@ -504,13 +504,13 @@
 </div>
 </section></section>
 <section>
-<section id="goal-create-learning-experiences-to-continue-cultivating-these-skills-beyond-the-intro-course" class="title-slide slide level1 center">
-<h1>Goal: Create learning experiences to continue cultivating these skills beyond the intro course</h1>
+<section id="goal-develop-learning-experiences-that-continue-cultivating-these-skills-beyond-the-introductory-course" class="title-slide slide level1 center">
+<h1>Goal: Develop learning experiences that continue cultivating these skills beyond the introductory course</h1>
 
 </section>
 <section id="sta-210-regression-analysis" class="slide level2 center">
 <h2>STA 210: Regression Analysis</h2>
-<p>A course on linear and logistic regression with a focus on application.</p>
+<p>A course primarily on linear and logistic regression with a focus on application.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
@@ -531,7 +531,7 @@
 <li class="fragment"><p>Regularly engage with <strong>real-world applications and complex data</strong></p></li>
 <li class="fragment"><p>Develop proficiency using <strong>professional statistical software</strong> and using a reproducible workflow</p></li>
 <li class="fragment"><p>Develop important non-technical skills, specifically <strong>written communication and teamwork</strong></p></li>
-<li class="fragment"><p>Identify <strong>appropriate methods for the primary analysis objective</strong> - inference or prediction</p></li>
+<li class="fragment"><p>Identify <strong>appropriate methods based on the primary analysis objective</strong> - inference or prediction</p></li>
 </ul>
 </div>
 </section>
@@ -574,14 +574,14 @@
 <pre><code>── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>✔ broom        0.8.0          ✔ recipes      0.2.0     
-✔ dials        0.1.1          ✔ rsample      0.1.1     
-✔ dplyr        1.0.9          ✔ tibble       3.1.7     
-✔ ggplot2      3.3.6          ✔ tidyr        1.2.0.9000
-✔ infer        1.0.0          ✔ tune         0.2.0     
-✔ modeldata    0.1.1          ✔ workflows    0.2.6     
-✔ parsnip      0.2.1          ✔ workflowsets 0.2.1     
-✔ purrr        0.3.4          ✔ yardstick    0.0.9     </code></pre>
+<pre><code>✔ broom        0.8.0     ✔ recipes      0.2.0
+✔ dials        0.1.1     ✔ rsample      0.1.1
+✔ dplyr        1.0.9     ✔ tibble       3.1.7
+✔ ggplot2      3.3.6     ✔ tidyr        1.2.0
+✔ infer        1.0.0     ✔ tune         0.2.0
+✔ modeldata    0.1.1     ✔ workflows    0.2.6
+✔ parsnip      0.2.1     ✔ workflowsets 0.2.1
+✔ purrr        0.3.4     ✔ yardstick    0.0.9</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
@@ -589,7 +589,7 @@
 ✖ dplyr::filter()  masks stats::filter()
 ✖ dplyr::lag()     masks stats::lag()
 ✖ recipes::step()  masks stats::step()
-• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+• Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
 </div>
 </div>
 </section>
@@ -735,13 +735,13 @@
 <ul>
 <li>Use authentic data sets that require some wrangling
 <ul>
-<li>Reinforces exploratory data analysis and that raw data is not always ready for analysis</li>
+<li>Reinforces exploratory data analysis and that raw data is not always “ready to go” without some preparation</li>
 <li>Extent of data wrangling differs based on type of assignment and time to complete it</li>
 </ul></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Avoid using too many examples with violations in assumptions / regression not useful method for the data</li>
+<li>Avoid using too many examples with violations in assumptions or where regression is not useful to analyze the data</li>
 </ul>
 </div>
 </section>
@@ -763,9 +763,9 @@
 <ul>
 <li>Teams of 3 or 4 students assigned based on
 <ul>
-<li>statistics and computing experience</li>
+<li>previous statistics and computing experience</li>
 <li>major or academic interests</li>
-<li>each student has at least one potential point of connection</li>
+<li>trying to give each student at least one potential point of connection with their teammates</li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -777,27 +777,36 @@
 <section id="teamwork-1" class="slide level2 center">
 <h2>Teamwork</h2>
 <ul>
+<li><p>The first team assignment includes</p>
+<ul>
+<li><p>Completing a team agreement</p></li>
+<li><p>Coming up with a fun team name!</p></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
 <li>Teamwork is assessed based on contribution and collaboration
 <ul>
 <li>GitHub commit history on assignments to assess contribution</li>
 <li>Periodic team feedback to assess collaboration</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="putting-it-all-together" class="slide level2 center">
 <h2>Putting it all together</h2>
-<p>Some skills highlighted in 2014 ASA Curriculum Guidelines</p>
+<p>Skills from the 2014 ASA Curriculum Guidelines</p>
 <ul>
-<li>“…concepts and approaches for working with complex data …and analyzing non-textbook data.”</li>
+<li>“…concepts and approaches for working with <strong>complex data</strong> …and analyzing non-textbook data.”</li>
 <li>“…students’ analyses should be undertaken in a <strong>well-documented and reproducible way</strong>”</li>
 <li>“…construct effective visual displays and <strong>compelling written summaries</strong>” and “demonstrate ability to <strong>collaborate in teams</strong>…”</li>
 </ul>
-<div class="fragment">
-<div class="question">
-<p>It is important that students not only develop these skills but also how to use them in practice.</p>
-</div>
-</div>
 </section></section>
+<section id="it-is-important-that-students-not-only-develop-these-skills-but-also-learn-how-to-use-them-in-practice." class="title-slide slide level1 center">
+<h1>It is important that students not only develop these skills but also learn how to use them in practice.</h1>
+
+</section>
+
 <section id="questions" class="title-slide slide level1 center">
 <h1>Questions?</h1>
 
