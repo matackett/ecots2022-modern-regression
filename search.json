@@ -147,6 +147,13 @@
     "text": "Exercise 7: Cross-validation and summary\nConduct 10-fold cross validation.\n\nset.seed(210)\nloans_folds <- vfold_cv(loans_train, v = 10)\n\nloans_fit_rs <- ___ %>%\n  fit_resamples(___)\n\nloans_fit_rs\n\nSummarize metrics from your CV resamples.\n\ncollect_metrics(___)\n\nWe can also visualize the metrics across folds.\n\ncollect_metrics(loans_fit_rs, summarize = FALSE) %>%\n  ..."
   },
   {
+    "objectID": "activity/modeling-loans.html#breakout-1",
+    "href": "activity/modeling-loans.html#breakout-1",
+    "title": "Modeling loans - Solutions",
+    "section": "Breakout 1",
+    "text": "Breakout 1\nGo to https://docs.google.com/presentation/d/1xAesWFvErmAGqsEUwABJThJjaxxlNFwFPbo9mZgNfrY/edit."
+  },
+  {
     "objectID": "activity/modeling-loans.html#exploratory-data-analysis",
     "href": "activity/modeling-loans.html#exploratory-data-analysis",
     "title": "Modeling loans - Solutions",
@@ -166,6 +173,13 @@
     "title": "Modeling loans - Solutions",
     "section": "Cross-validation",
     "text": "Cross-validation\nExplain what 10-fold CV does, and why it’s useful. Display a neat table with the outputs of your CV summary, and describe your observations. Make sure to discuss why we are focusing on R-squared and RMSE instead of adjusted R-squared, AIC, and BIC."
+  },
+  {
+    "objectID": "activity/modeling-loans.html#breakout-2",
+    "href": "activity/modeling-loans.html#breakout-2",
+    "title": "Modeling loans - Solutions",
+    "section": "Breakout 2",
+    "text": "Breakout 2\nGo to https://docs.google.com/presentation/d/1xAesWFvErmAGqsEUwABJThJjaxxlNFwFPbo9mZgNfrY/edit."
   },
   {
     "objectID": "index.html",
