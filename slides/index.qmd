@@ -58,9 +58,8 @@ Rick Presman
 
 "...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
 
-::: footer
-[2014 ASA Curriculum Guidelines Report](https://www.amstat.org/docs/default-source/amstat-documents/edu-guidelines2014-11-15.pdf)
-:::
+[Full 2014 ASA Curriculum Guidelines Report](https://www.amstat.org/docs/default-source/amstat-documents/edu-guidelines2014-11-15.pdf)
+
 
 ## Assessing final projects
 

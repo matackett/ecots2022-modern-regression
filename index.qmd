@@ -23,7 +23,7 @@ The activities and demo will be hands-on; attendees will also have the opportuni
 
 ![](images/maria.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of Dr. Maria Tackett" width="200"}
 
-[**Dr. Maria Tackett**]() is ...
+[**Dr. Maria Tackett**]() is an Assistant Professor of the Practice in the Department of Statistical Science at Duke University. Her current work focuses on understanding how active learning strategies can be used to promote engagement and student motivation in undergraduate statistics courses. She also studies how classroom practices in introductory math and statistics courses impact students’ sense of community, self-efficacy, and learning outcomes. Maria is an RStudio certified trainer and is actively involved in the R and statistics education communities.
 
 <br><br><br><br><br><br>
 
