@@ -1,0 +1,20 @@
+---
+title: "Resources"
+editor: visual
+---
+
+## STA 210 course websites 
+
+-   [Spring 2022](https://sta210-s22.github.io/website/) (using tidymodels)
+
+-   [Fall 2021](https://sta210-fa21.netlify.app)
+
+## Textbooks 
+
+-   [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) by Mine Çetinkaya-Rundel and Johanna Hardin
+
+-   [R for Data Science](https://r4ds.had.co.nz/) by Garret Grolemund and Hadley Wickham
+
+-   [Tidy modeling with R](https://www.tmwr.org/) by Max Kuhn and Julia Silge
+
+-   [Beyond Multiple Linear Regression](https://bookdown.org/roback/bookdown-BeyondMLR/) by Paul Roback and Julie Legler

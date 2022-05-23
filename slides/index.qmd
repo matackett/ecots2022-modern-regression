@@ -60,7 +60,6 @@ Rick Presman
 
 [Full 2014 ASA Curriculum Guidelines Report](https://www.amstat.org/docs/default-source/amstat-documents/edu-guidelines2014-11-15.pdf)
 
-
 ## Assessing final projects
 
 -   Final group project throughout second half of the course
@@ -104,9 +103,7 @@ Innovations in introductory courses in line with recommendations in the [2016 GA
 :::
 :::
 
-
 # Goal: Create learning experiences to continue cultivating these skills beyond the intro course
-
 
 ## STA 210: Regression Analysis
 
@@ -148,7 +145,7 @@ Facilitate opportunities for students to...
 
     -   **Goal:** Get a glimpse of the in-class student experience
 
--  Tips + putting it all together
+-   Tips + putting it all together
 
 # Computing using tidymodels
 
@@ -199,16 +196,14 @@ Facilitate opportunities for students to...
 
 Some skills highlighted in 2014 ASA Curriculum Guidelines
 
-- "...concepts and approaches for working with complex data ...and analyzing non-textbook data."
-- "...students' analyses should be undertaken in a **well-documented and reproducible way**"
-- "...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
+-   "...concepts and approaches for working with complex data ...and analyzing non-textbook data."
+-   "...students' analyses should be undertaken in a **well-documented and reproducible way**"
+-   "...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
 
 . . .
 
 ::: question
-
 It is important that students not only develop these skills but also how to use them in practice.
-
 :::
 
 # Questions?

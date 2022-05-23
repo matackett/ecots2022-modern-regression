@@ -24,6 +24,8 @@ website:
        text: Slides
      - href: activity/modeling-loans.qmd
        text: Activity
+     - href: resources/resources.qmd
+       text: Resources
 
 format:
   html:
