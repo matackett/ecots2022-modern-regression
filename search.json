@@ -270,14 +270,21 @@
     "href": "slides/index.html#getting-started-with-tidymodels",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Getting started with tidymodels",
-    "text": "Getting started with tidymodels\n\n# intall.packages(\"tidymodels\")\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──\n\n\n✔ broom        0.8.0     ✔ recipes      0.2.0\n✔ dials        0.1.1     ✔ rsample      0.1.1\n✔ dplyr        1.0.9     ✔ tibble       3.1.7\n✔ ggplot2      3.3.6     ✔ tidyr        1.2.0\n✔ infer        1.0.0     ✔ tune         0.2.0\n✔ modeldata    0.1.1     ✔ workflows    0.2.6\n✔ parsnip      0.2.1     ✔ workflowsets 0.2.1\n✔ purrr        0.3.4     ✔ yardstick    0.0.9\n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard() masks scales::discard()\n✖ dplyr::filter()  masks stats::filter()\n✖ dplyr::lag()     masks stats::lag()\n✖ recipes::step()  masks stats::step()\n• Use tidymodels_prefer() to resolve common conflicts."
+    "text": "Getting started with tidymodels\n\n# intall.packages(\"tidymodels\")\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──\n\n\n✔ broom        0.8.0          ✔ recipes      0.2.0     \n✔ dials        0.1.1          ✔ rsample      0.1.1     \n✔ dplyr        1.0.9          ✔ tibble       3.1.7     \n✔ ggplot2      3.3.6          ✔ tidyr        1.2.0.9000\n✔ infer        1.0.0          ✔ tune         0.2.0     \n✔ modeldata    0.1.1          ✔ workflows    0.2.6     \n✔ parsnip      0.2.1          ✔ workflowsets 0.2.1     \n✔ purrr        0.3.4          ✔ yardstick    0.0.9     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard() masks scales::discard()\n✖ dplyr::filter()  masks stats::filter()\n✖ dplyr::lag()     masks stats::lag()\n✖ recipes::step()  masks stats::step()\n• Search for functions across packages at https://www.tidymodels.org/find/"
   },
   {
-    "objectID": "slides/index.html#slide-title",
-    "href": "slides/index.html#slide-title",
+    "objectID": "slides/index.html#tidymodels-flow",
+    "href": "slides/index.html#tidymodels-flow",
     "title": "Modernizing the undergraduate regression analysis course",
-    "section": "Slide title",
-    "text": "Slide title\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel specification\n\n\n\nWorkflow\n\n\n\nRecipe\n\n\n\nData\n\n\n\nTraining data\n\n\n\nTesting\n\n\n\nModel evaluation\n\n\n\nModel selection\n\n\n\nFinal fit"
+    "section": "Tidymodels flow",
+    "text": "Tidymodels flow\n\n\n\n\n\n\n\n\nOverall model creation process\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTesting\n\n\n\nData\n\n\n\nTraining\n\n\n\nModel assessment\n\n\n\nFinal fit\n\n\n\nBetween model selection\n\n\n\nModel and feature development\n\n\n\nModel and feature development\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkflow\n\n\n\nModel specification\n\n\n\nRecipe / formula\n\n\n\nModel / feature tuning\n\n\n\nWithin model selection"
+  },
+  {
+    "objectID": "slides/index.html#live-demo-activity-1",
+    "href": "slides/index.html#live-demo-activity-1",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Live demo + activity",
+    "text": "Live demo + activity\n\nGo to bit.ly/modern-regression and click on the Activity link on the left.\nJoin the RStudio Cloud workspace linked on top of the activity document.\nFollow along!"
   },
   {
     "objectID": "slides/index.html#complex-data",
