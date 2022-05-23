@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-99.9.9">
+  <meta name="generator" content="quarto-0.9.363">
 
   <meta name="author" content="Maria Tackett, Mine Çetinkaya-Rundel, Rick Presman">
   <title>Modernizing the undergraduate regression analysis course</title>
@@ -395,7 +395,7 @@
 <h1>Welcome</h1>
 
 </section>
-<section id="introductions" class="slide level2 center">
+<section id="introductions" class="slide level2">
 <h2>Introductions</h2>
 
 <img data-src="images/authors.png" alt="Headshots of Maria Tackett, Mine Çetinkaya-Rundel, and Rick Presman" class="r-stretch quarto-figure-center"><div style="text-align: center;">
@@ -404,7 +404,7 @@
 <p>Rick Presman</p>
 </div>
 </section>
-<section id="section" class="slide level2 center">
+<section id="section" class="slide level2">
 <h2></h2>
 
 <img data-src="images/logo.png" alt="Hex logo for workshop" class="r-stretch quarto-figure-center"><div style="text-align: center;">
@@ -412,7 +412,7 @@
 <p>🔗 <a href="https://bit.ly/modern-regression">bit.ly/modern-regression</a></p>
 </div>
 </section>
-<section id="session-agenda" class="slide level2 center">
+<section id="session-agenda" class="slide level2">
 <h2>Session agenda</h2>
 <ul>
 <li>Background + motivation</li>
@@ -426,7 +426,7 @@
 <h1>Background &amp; Motivation</h1>
 
 </section>
-<section id="asa-curriculum-guidelines" class="slide level2 center">
+<section id="asa-curriculum-guidelines" class="slide level2">
 <h2>2014 ASA Curriculum Guidelines</h2>
 <div class="fragment">
 <p>“…concepts and approaches for working with <strong>complex data</strong>…and analyzing non-textbook data.”</p>
@@ -441,7 +441,7 @@
 <p><a href="https://www.amstat.org/docs/default-source/amstat-documents/edu-guidelines2014-11-15.pdf">Full 2014 ASA Curriculum Guidelines Report</a></p>
 </div>
 </section>
-<section id="assessing-final-projects" class="slide level2 center">
+<section id="assessing-final-projects" class="slide level2">
 <h2>Assessing final projects</h2>
 <ul>
 <li><p>Final group project throughout second half of the course</p>
@@ -466,7 +466,7 @@
 <h1>How can we help students translate conceptual knowledge to practical application?</h1>
 
 </section>
-<section id="inspired-by-introductory-courses" class="slide level2 center">
+<section id="inspired-by-introductory-courses" class="slide level2">
 <h2>Inspired by introductory courses</h2>
 <p>Innovations in introductory courses in line with recommendations in the <a href="https://www.amstat.org/docs/default-source/amstat-documents/gaisecollege_full.pdf">2016 GAISE report</a>.</p>
 <div class="fragment">
@@ -508,7 +508,7 @@
 <h1>Goal: Create learning experiences to continue cultivating these skills beyond the intro course</h1>
 
 </section>
-<section id="sta-210-regression-analysis" class="slide level2 center">
+<section id="sta-210-regression-analysis" class="slide level2">
 <h2>STA 210: Regression Analysis</h2>
 <p>A course on linear and logistic regression with a focus on application.</p>
 <div class="columns">
@@ -523,7 +523,7 @@
 </div>
 </div>
 </section>
-<section id="modernizing-the-course" class="slide level2 center">
+<section id="modernizing-the-course" class="slide level2">
 <h2>Modernizing the course</h2>
 <p>Facilitate opportunities for students to…</p>
 <div>
@@ -535,7 +535,7 @@
 </ul>
 </div>
 </section>
-<section id="remainder-of-session" class="slide level2 center">
+<section id="remainder-of-session" class="slide level2">
 <h2>Remainder of session</h2>
 <ul>
 <li><p>Tidymodels overview and demonstration</p></li>
@@ -551,7 +551,7 @@
 <h1>Computing using tidymodels</h1>
 
 </section>
-<section id="what-is-tidymodels" class="slide level2 center">
+<section id="what-is-tidymodels" class="slide level2">
 <h2>What is tidymodels?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -565,7 +565,7 @@
 </div>
 </div>
 </section>
-<section id="getting-started-with-tidymodels" class="slide level2 center">
+<section id="getting-started-with-tidymodels" class="slide level2">
 <h2>Getting started with tidymodels</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># intall.packages("tidymodels")</span></span>
@@ -574,14 +574,14 @@
 <pre><code>── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>✔ broom        0.8.0          ✔ recipes      0.2.0     
-✔ dials        0.1.1          ✔ rsample      0.1.1     
-✔ dplyr        1.0.9          ✔ tibble       3.1.7     
-✔ ggplot2      3.3.6          ✔ tidyr        1.2.0.9000
-✔ infer        1.0.0          ✔ tune         0.2.0     
-✔ modeldata    0.1.1          ✔ workflows    0.2.6     
-✔ parsnip      0.2.1          ✔ workflowsets 0.2.1     
-✔ purrr        0.3.4          ✔ yardstick    0.0.9     </code></pre>
+<pre><code>✔ broom        0.8.0     ✔ recipes      0.2.0
+✔ dials        0.1.1     ✔ rsample      0.1.1
+✔ dplyr        1.0.9     ✔ tibble       3.1.7
+✔ ggplot2      3.3.6     ✔ tidyr        1.2.0
+✔ infer        1.0.0     ✔ tune         0.2.0
+✔ modeldata    0.1.1     ✔ workflows    0.2.6
+✔ parsnip      0.2.1     ✔ workflowsets 0.2.1
+✔ purrr        0.3.4     ✔ yardstick    0.0.9</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
@@ -593,14 +593,12 @@
 </div>
 </div>
 </section>
-<section id="slide-title" class="slide level2 center">
+<section id="slide-title" class="slide level2">
 <h2>Slide title</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="cell-handler-fake-div-1">
-<p>
-<svg id="mermaid-figure-1" width="982" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" height="168" viewbox="0 0 982.1484375 168" style=" display: block; margin: auto auto auto auto">
-<style>#mermaid-figure-1 {font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:2px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-1 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<svg id="mermaid-1653278833143" width="100%" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" height="168" style="max-width: 982.1484375px;" viewbox="0 0 982.1484375 168">
+<style>#mermaid-1653278833143 {font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#mermaid-1653278833143 .error-icon{fill:#552222;}#mermaid-1653278833143 .error-text{fill:#552222;stroke:#552222;}#mermaid-1653278833143 .edge-thickness-normal{stroke-width:2px;}#mermaid-1653278833143 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1653278833143 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1653278833143 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1653278833143 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1653278833143 .marker{fill:#333333;stroke:#333333;}#mermaid-1653278833143 .marker.cross{stroke:#333333;}#mermaid-1653278833143 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1653278833143 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-1653278833143 .cluster-label text{fill:#333;}#mermaid-1653278833143 .cluster-label span{color:#333;}#mermaid-1653278833143 .label text,#mermaid-1653278833143 span{fill:#333;color:#333;}#mermaid-1653278833143 .node rect,#mermaid-1653278833143 .node circle,#mermaid-1653278833143 .node ellipse,#mermaid-1653278833143 .node polygon,#mermaid-1653278833143 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-1653278833143 .node .label{text-align:center;}#mermaid-1653278833143 .node.clickable{cursor:pointer;}#mermaid-1653278833143 .arrowheadPath{fill:#333333;}#mermaid-1653278833143 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-1653278833143 .flowchart-link{stroke:#333333;fill:none;}#mermaid-1653278833143 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid-1653278833143 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaid-1653278833143 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-1653278833143 .cluster text{fill:#333;}#mermaid-1653278833143 .cluster span{color:#333;}#mermaid-1653278833143 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1653278833143 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
 <g transform="translate(0, 0)"><marker id="flowchart-pointEnd" class="marker flowchart" viewbox="0 0 10 10" refx="9" refy="5" markerunits="userSpaceOnUse" markerwidth="12" markerheight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="flowchart-pointStart" class="marker flowchart" viewbox="0 0 10 10" refx="0" refy="5" markerunits="userSpaceOnUse" markerwidth="12" markerheight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="flowchart-circleEnd" class="marker flowchart" viewbox="0 0 10 10" refx="11" refy="5" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="flowchart-circleStart" class="marker flowchart" viewbox="0 0 10 10" refx="-1" refy="5" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="flowchart-crossEnd" class="marker cross flowchart" viewbox="0 0 11 11" refx="12" refy="5.2" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="flowchart-crossStart" class="marker cross flowchart" viewbox="0 0 11 11" refx="-1" refy="5.2" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M418.4140625,24.75L422.5807291666667,24.75C426.7473958333333,24.75,435.0807291666667,24.75,445.82915419161674,28.916666666666668C456.57757921656685,33.083333333333336,469.7410959331337,41.416666666666664,476.3228542914171,45.583333333333336L482.9046126497006,49.75" id="L-A-C-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-C" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M372.79296875,108.25L384.5631510416667,108.25C396.3333333333333,108.25,419.8736979166667,108.25,438.22563856661674,104.08333333333333C456.57757921656685,99.91666666666667,469.7410959331337,91.58333333333333,476.3228542914171,87.41666666666667L482.9046126497006,83.25" id="L-B-C-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-C" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M55.96875,121.45574162679426L60.135416666666664,119.25478468899523C64.30208333333333,117.05382775119618,72.63541666666667,112.6519138755981,80.96875,110.45095693779905C89.30208333333333,108.25,97.63541666666667,108.25,101.80208333333333,108.25L105.96875,108.25" id="L-D-E-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-E" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M55.96875,146.79425837320574L60.135416666666664,148.99521531100478C64.30208333333333,151.19617224880383,72.63541666666667,155.5980861244019,90.02604166666667,157.79904306220095C107.41666666666667,160,133.86458333333334,160,160.3125,160C186.76041666666666,160,213.20833333333334,160,243.412109375,160C273.6158854166667,160,307.5755208333333,160,341.53515625,160C375.4947916666667,160,409.4544270833333,160,437.42578125,160C465.3971354166667,160,487.3802083333333,160,509.36328125,160C531.3463541666666,160,553.3294270833334,160,579.919921875,160C606.5104166666666,160,637.7083333333334,160,668.90625,160C700.1041666666666,160,731.3020833333334,160,751.0677083333334,158.12792511700468C770.8333333333334,156.25585023400936,779.1666666666666,152.51170046801872,783.3333333333334,150.6396255850234L787.5,148.76755070202807" id="L-D-F-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-F" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M214.65625,108.25L218.82291666666666,108.25C222.98958333333334,108.25,231.32291666666666,108.25,247.259765625,108.25C263.1966145833333,108.25,286.7369791666667,108.25,298.5071614583333,108.25L310.27734375,108.25" id="L-E-B-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-B" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M535.8219498502993,49.75L542.4037082085828,45.583333333333336C548.9854665668662,41.416666666666664,562.1489832834332,33.083333333333336,572.8974083083832,28.916666666666668C583.6458333333334,24.75,591.9791666666666,24.75,596.1458333333334,24.75L600.3125,24.75" id="L-C-G-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-G" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M535.8219498502993,83.25L542.4037082085828,87.41666666666667C548.9854665668662,91.58333333333333,562.1489832834332,99.91666666666667,573.7528770583832,104.08333333333333C585.3567708333334,108.25,595.4010416666666,108.25,600.4231770833334,108.25L605.4453125,108.25" id="L-C-H-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-H" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M732.3671875,108.25L737.3893229166666,108.25C742.4114583333334,108.25,752.4557291666666,108.25,761.64453125,110.12207488299532C770.8333333333334,111.99414976599064,779.1666666666666,115.73829953198128,783.3333333333334,117.6103744149766L787.5,119.48244929797193" id="L-H-F-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-H LE-F" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M852.6796875,134.125L856.8463541666666,134.125C861.0130208333334,134.125,869.3463541666666,134.125,877.6796875,134.125C886.0130208333334,134.125,894.3463541666666,134.125,898.5130208333334,134.125L902.6796875,134.125" id="L-F-I-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-I" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0">
 <div data-xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">
 <span class="edgeLabel"></span>
@@ -675,8 +673,6 @@
 </div>
 </foreignobject></g></g></g></g></g>
 </svg>
-</p>
-</div>
 </div>
 </div>
 </section></section>
@@ -690,7 +686,7 @@
 <h1>Tips + putting it all together</h1>
 
 </section>
-<section id="complex-data" class="slide level2 center">
+<section id="complex-data" class="slide level2">
 <h2>Complex data</h2>
 <ul>
 <li>Use authentic data sets that require some wrangling
@@ -705,7 +701,7 @@
 </ul>
 </div>
 </section>
-<section id="resources-for-finding-data" class="slide level2 center">
+<section id="resources-for-finding-data" class="slide level2">
 <h2>Resources for finding data</h2>
 <ul>
 <li><p><a href="https://www.openintro.org/data/">OpenIntro</a></p></li>
@@ -718,7 +714,7 @@
 <li><p><a href="https://www.data-is-plural.com/">Data is Plural</a></p></li>
 </ul>
 </section>
-<section id="teamwork" class="slide level2 center">
+<section id="teamwork" class="slide level2">
 <h2>Teamwork</h2>
 <ul>
 <li>Teams of 3 or 4 students assigned based on
@@ -734,7 +730,7 @@
 </ul>
 </div>
 </section>
-<section id="teamwork-1" class="slide level2 center">
+<section id="teamwork-1" class="slide level2">
 <h2>Teamwork</h2>
 <ul>
 <li>Teamwork is assessed based on contribution and collaboration
@@ -744,7 +740,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="putting-it-all-together" class="slide level2 center">
+<section id="putting-it-all-together" class="slide level2">
 <h2>Putting it all together</h2>
 <p>Some skills highlighted in 2014 ASA Curriculum Guidelines</p>
 <ul>
