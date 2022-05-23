@@ -172,7 +172,7 @@
     "href": "index.html",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "",
-    "text": "USCOTS 2022\nMonday, May 23, 2022\n3:35 pm – 4:45 pm ET\n\n\nAbstract\nThere has been significant innovation in introductory statistics and data science courses to equip students with the statistical, computing, and communication skills needed for modern data analysis. Innovating subsequent courses is also important, so students can continue developing these skills beyond the first course. In this session, we'll present a modern approach to teaching undergraduate regression analysis, the second statistics course for many students. We'll share strategies for using real-world data sets and examples, teaching modern computing skills, and incorporating non-technical skills such as writing and effective collaboration as part of the course. We'll share example activities and assignments, along with a demo of the computing toolkit using the R tidymodels package, Quarto for reproducible reports, and Git and GitHub for version control and collaboration. The activities and demo will be hands-on; attendees will also have the opportunity to exchange ideas and ask questions throughout the session.\n\n\nPresenters\n\nDr. Maria Tackett is an Assistant Professor of the Practice in the Department of Statistical Science at Duke University. Her current work focuses on understanding how active learning strategies can be used to promote engagement and student motivation in undergraduate statistics courses. She also studies how classroom practices in introductory math and statistics courses impact students’ sense of community, self-efficacy, and learning outcomes. Maria is an RStudio certified trainer and is actively involved in the R and statistics education communities.\n\n\nDr. Mine Çetinkaya-Rundel (she/her) is Professor of the Practice and Director of Undergraduate Studies at the Department of Statistical Science at Duke University. Mine’s work focuses on innovation in statistics and data science pedagogy, with an emphasis on computing, reproducible research, student-centered learning, and open-source education as well as pedagogical approaches for enhancing retention of women and under-represented minorities in STEM. Mine also works with RStudio as a Developer Educator.\n\n\nRisk Presman is …"
+    "text": "USCOTS 2022\nMonday, May 23, 2022\n3:35 pm – 4:45 pm ET\n\n\nAbstract\nThere has been significant innovation in introductory statistics and data science courses to equip students with the statistical, computing, and communication skills needed for modern data analysis. Innovating subsequent courses is also important, so students can continue developing these skills beyond the first course. In this session, we’ll present a modern approach to teaching undergraduate regression analysis, the second statistics course for many students. We’ll share strategies for using real-world data sets and examples, teaching modern computing skills, and incorporating non-technical skills such as writing and effective collaboration as part of the course. We’ll share example activities and assignments, along with a demo of the computing toolkit using the R tidymodels package, Quarto for reproducible reports, and Git and GitHub for version control and collaboration. The activities and demo will be hands-on; attendees will also have the opportunity to exchange ideas and ask questions throughout the session.\n\n\nPresenters\n\nDr. Maria Tackett is an Assistant Professor of the Practice in the Department of Statistical Science at Duke University. Her current work focuses on understanding how active learning strategies can be used to promote engagement and student motivation in undergraduate statistics courses. She also studies how classroom practices in introductory math and statistics courses impact students’ sense of community, self-efficacy, and learning outcomes. Maria is an RStudio certified trainer and is actively involved in the R and statistics education communities.\n\n\nDr. Mine Çetinkaya-Rundel (she/her) is Professor of the Practice and Director of Undergraduate Studies at the Department of Statistical Science at Duke University. Mine’s work focuses on innovation in statistics and data science pedagogy, with an emphasis on computing, reproducible research, student-centered learning, and open-source education as well as pedagogical approaches for enhancing retention of women and under-represented minorities in STEM. Mine also works with RStudio as a Developer Educator.\n\n\nRisk Presman is …"
   },
   {
     "objectID": "slides.html",
@@ -182,11 +182,32 @@
     "text": "View slides in full screen"
   },
   {
+    "objectID": "resources/resources.html",
+    "href": "resources/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Spring 2022 (using tidymodels)\nFall 2021"
+  },
+  {
+    "objectID": "resources/resources.html#textbooks",
+    "href": "resources/resources.html#textbooks",
+    "title": "Resources",
+    "section": "Textbooks",
+    "text": "Textbooks\n\nIntroduction to Modern Statistics by Mine Çetinkaya-Rundel and Johanna Hardin\nR for Data Science by Garret Grolemund and Hadley Wickham\nTidy modeling with R by Max Kuhn and Julia Silge\nBeyond Multiple Linear Regression by Paul Roback and Julie Legler"
+  },
+  {
     "objectID": "slides/index.html#introductions",
     "href": "slides/index.html#introductions",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Introductions",
     "text": "Introductions\n\n\nDr. Maria Tackett\nDr. Mine Çetinkaya-Rundel\nRick Presman"
+  },
+  {
+    "objectID": "slides/index.html#section",
+    "href": "slides/index.html#section",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "",
+    "text": "One link for all materials\n🔗 bit.ly/modern-regression"
   },
   {
     "objectID": "slides/index.html#session-agenda",
@@ -236,6 +257,27 @@
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Remainder of session",
     "text": "Remainder of session\n\nTidymodels overview and demonstration\nHands-on activity with tidymodels and writing exercises\n\nGoal: Get a glimpse of the in-class student experience\n\nTips + putting it all together"
+  },
+  {
+    "objectID": "slides/index.html#what-is-tidymodels",
+    "href": "slides/index.html#what-is-tidymodels",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "What is tidymodels?",
+    "text": "What is tidymodels?\n\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles."
+  },
+  {
+    "objectID": "slides/index.html#getting-started-with-tidymodels",
+    "href": "slides/index.html#getting-started-with-tidymodels",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Getting started with tidymodels",
+    "text": "Getting started with tidymodels\n\n# intall.packages(\"tidymodels\")\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──\n\n\n✔ broom        0.8.0     ✔ recipes      0.2.0\n✔ dials        0.1.1     ✔ rsample      0.1.1\n✔ dplyr        1.0.9     ✔ tibble       3.1.7\n✔ ggplot2      3.3.6     ✔ tidyr        1.2.0\n✔ infer        1.0.0     ✔ tune         0.2.0\n✔ modeldata    0.1.1     ✔ workflows    0.2.6\n✔ parsnip      0.2.1     ✔ workflowsets 0.2.1\n✔ purrr        0.3.4     ✔ yardstick    0.0.9\n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard() masks scales::discard()\n✖ dplyr::filter()  masks stats::filter()\n✖ dplyr::lag()     masks stats::lag()\n✖ recipes::step()  masks stats::step()\n• Use tidymodels_prefer() to resolve common conflicts."
+  },
+  {
+    "objectID": "slides/index.html#slide-title",
+    "href": "slides/index.html#slide-title",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Slide title",
+    "text": "Slide title\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel specification\n\n\n\nWorkflow\n\n\n\nRecipe\n\n\n\nData\n\n\n\nTraining data\n\n\n\nTesting\n\n\n\nModel evaluation\n\n\n\nModel selection\n\n\n\nFinal fit"
   },
   {
     "objectID": "slides/index.html#complex-data",
