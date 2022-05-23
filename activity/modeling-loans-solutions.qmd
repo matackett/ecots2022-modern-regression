@@ -18,6 +18,15 @@ library(openintro)
 
 # Introduction
 
+The exercises below are drawn from an exam review.
+Students would have already completed readings, some assignments, and labs prior to attempting these questions.
+
+You may notice some code below has already been pre-populated for you.
+In these cases, there is a flag set as `eval = FALSE`.
+Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the document.
+
+## Data
+
 In today's workshop, we will explore using the **tidymodels** framework for modeling along with the tidyverse framework for data wrangling and visualization.
 We will start with some exploratory data analysis, walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation.
 Throughout we will be using the [`loans_full_schema`](http://openintrostat.github.io/openintro/reference/loans_full_schema.html) dataset from the **openintro** package[^1] and featured in the OpenIntro textbooks[^2]
@@ -33,25 +42,31 @@ Throughout we will be using the [`loans_full_schema`](http://openintrostat.githu
     OpenIntro::Introduction to Modern Statistics.
     [https://openintro-ims.netlify.app](https://openintro-ims.netlify.app/).
 
-The exercises below are drawn from an exam review.
-Students would have already completed readings, some assignments, and labs prior to attempting these questions.
-
-You may notice some code below has already been pre-populated for you.
-In these cases, there is a flag set as `eval = FALSE`.
-Make sure to remove this flag prior to running the relevant code chunk to avoid any errors when rendering the document.
-
-# Exercises
-
-## Exercise 0: Data cleanup
-
-We are going to do a preliminary cleaning step.
-Let's drop any unused levels.
+The data has a bit of peculiarity about it, specifically the `application_type` variable is a factor variable with an empty level.
 
 ```{r}
-#| label: load-data
+levels(loans_full_schema$application_type)
+```
+
+Let's clean up this variable using the `droplevels()` function first.
+And let's apply that to the whole dataset, in case there are other variables with similar issues.
+
+```{r}
+#| label: drop-levels
 
 loans_full_schema <- droplevels(loans_full_schema)
 ```
+
+The variables we'll use in this analysis are:
+
+-   `interest_rate`: Interest rate of the loan the applicant received.
+-   `debt_to_income`: Debt-to-income ratio.
+-   `term`: The number of months of the loan the applicant received.
+-   `inquiries_last_12m`: Inquiries into the applicant's credit during the last 12 months.
+-   `public_record_bankrupt`: Number of bankruptcies listed in the public record for this applicant.
+-   `application_type`: The type of application: either `individual` or `joint`.
+
+# Exercises
 
 ## Exercise 1: Train-test data split
 
@@ -62,6 +77,7 @@ Don't forget to set a seed!
 #| label: initial-split
 
 set.seed(210)
+
 loans_split <- initial_split(loans_full_schema)
 loans_train <- training(loans_split)
 loans_test <- testing(loans_split)
@@ -74,24 +90,40 @@ The model should allow for the effect of to income ratio on interest rate to var
 
 $$
 \begin{aligned}
-\widehat{\texttt{interest\_rate}} = b_0 &+ b_{DI}\cdot\texttt{debt\_to\_income} \\
-&+ b_{term}\cdot\texttt{term} \\
-&+ b_{CC}\cdot\texttt{inquiries\_last\_12m} \\ 
-&+ b_{bank}\cdot\texttt{bankrupt} \\
-&+ b_{app}\cdot\texttt{application\_type} \\
-&+ b_{DI:app}\cdot\texttt{debt\_to\_income:application\_type}
+\widehat{\texttt{interest\_rate}} = b_0 &+ b_1\times\texttt{debt\_to\_income} \\
+&+ b_2 \times \texttt{term} \\
+&+ b_3 \times \texttt{inquiries\_last\_12m} \\ 
+&+ b_4 \times \texttt{bankrupt} \\
+&+ b_5 \times \texttt{application\_type} \\
+&+ b_6 \times \texttt{debt\_to\_income:application\_type}
 \end{aligned}
 $$
 
 ## Exercise 3: EDA
 
 Explore characteristics of the variables you'll use for the model using the training data only.
-Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
+
+First, take a peek at the relevant variables in the data.
 
 ```{r}
-#| label: explore
-#| warning: false
-#| message: false
+#| label: glimpse
+
+loans_train %>%
+  select(interest_rate, debt_to_income, term,
+         inquiries_last_12m, public_record_bankrupt, application_type) %>%
+  glimpse()
+```
+
+Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
+
+-   Interest rate:
+
+```{r}
+#| label: explore-interest-rate
+#| fig-alt: >
+#|   A histogram of interest rate showing a right skewed distribution with 
+#|   peaks at 5%, 10%, and 15%. There are very few loans with interest rates 
+#|   above 20%.
 
 ggplot(loans_train, aes(x = interest_rate)) +
   geom_histogram(binwidth = 1) +
@@ -99,22 +131,44 @@ ggplot(loans_train, aes(x = interest_rate)) +
     x = "Interest rate", y = "Count",
     title = "Distribution of loan interest rates"
   )
+```
 
-ggplot(loans_train, aes(
-  x = debt_to_income, y = interest_rate,
-  color = application_type, shape = application_type
-)) +
+-   Interest rate vs. debt to income ratio by application type:
+
+```{r}
+#| label: explore-debt-to-income
+#| fig-alt: >
+#|   Scatterplot of interest rate vs. debt to income ratio, where different 
+#|   colors and shapes of point represent individual and joint applications. 
+#|   There is no clear relationship between interest rate and debt to income 
+#|   ratio. The only pattern that stands out is that debt to income ratio 
+#|   tends to be lower for individual applications (below 50) while it ranges 
+#|   all the way up to above 400 for joint applications.
+
+ggplot(loans_train, 
+       aes(x = debt_to_income, y = interest_rate,
+           color = application_type, shape = application_type)) +
   geom_point() +
   labs(
     x = "Debt-to-income ratio", y = "Interest rate",
     color = "Application type", shape = "Application type",
     title = "Interest rate vs. Debt-to-income by application type"
   )
+```
+
+-   Interest rate by bankruptcy:
+
+```{r}
+#| label: explore-bankrupt
+#| fig-alt: >
+#|   Density plot of interest rate by past bankruptcy status. For applicants 
+#|   with and without past bankrupty interest rates have a right skewed 
+#|   distribution. Typical interest is higher for those with bankrupty and the 
+#|   distribution is unimodal, while it is bimodal for those without.
 
 loans_train %>%
-  mutate(public_record_bankrupt = if_else(public_record_bankrupt == 0, "no", "yes"
-  )) %>%
-ggplot(aes(x = interest_rate, fill = public_record_bankrupt)) +
+  mutate(bankrupt = if_else(public_record_bankrupt == 0, "no", "yes")) %>%
+  ggplot(aes(x = interest_rate, fill = bankrupt)) +
   geom_density(alpha = 0.5) +
   labs(
     x = "Interest rate", y = "Density",
@@ -131,11 +185,10 @@ Call it `loans_spec`.
 ```{r}
 #| label: specify-model
 
-loans_spec <- linear_reg() %>%
-  set_engine("lm")
+loans_spec <- linear_reg()
 ```
 
-## Exercise 5: Recipe building
+## Exercise 5: Recipe and formula building
 
 -   Predict `interest_rate` from `debt_to_income`, `term`, `inquiries_last_12m`, `public_record_bankrupt`, and `application_type`.
 -   Mean center `debt_to_income`.
@@ -148,16 +201,17 @@ loans_spec <- linear_reg() %>%
 #| label: create-recipe
 
 loans_rec <- recipe(interest_rate ~ debt_to_income +
-          term + inquiries_last_12m +
-          public_record_bankrupt + application_type,
-          data = loans_train) %>%
-          step_center(debt_to_income) %>%
-          step_mutate(term = as_factor(term)) %>%
-          step_mutate(bankrupt = as_factor(if_else(public_record_bankrupt == 0, "no", "yes"))) %>%
-          step_rm(public_record_bankrupt) %>%
-          step_dummy(all_nominal_predictors()) %>%
-          step_interact(terms = ~ starts_with("application_type"):debt_to_income) %>%
-          step_zv(all_predictors())
+  term + inquiries_last_12m +
+  public_record_bankrupt + application_type,
+data = loans_train
+) %>%
+  step_center(debt_to_income) %>%
+  step_mutate(term = as_factor(term)) %>%
+  step_mutate(bankrupt = as_factor(if_else(public_record_bankrupt == 0, "no", "yes"))) %>%
+  step_rm(public_record_bankrupt) %>%
+  step_dummy(all_nominal_predictors()) %>%
+  step_interact(terms = ~ starts_with("application_type"):debt_to_income) %>%
+  step_zv(all_predictors())
 ```
 
 ## Exercise 6: Creating a workflow
@@ -194,6 +248,25 @@ Summarize metrics from your CV resamples.
 collect_metrics(loans_fit_rs)
 ```
 
+We can also visualize the metrics across folds.
+
+```{r}
+#| label: cv-visualize
+#| fig-alt: >
+#|   Faceted line plot of cross-validation metrics. On top is RMSE and on the 
+#|   bottom is R-squared. The x-axis shows 10 folds and the y-axis shows the 
+#|   relevant metric estimate. R-squared values range from 15% to 21%. RMSE 
+#|   values range from roughly 4.4 to 4.75.
+
+collect_metrics(loans_fit_rs, summarize = FALSE) %>%
+  mutate(id = str_remove(id, "Fold")) %>%
+  ggplot(aes(x = id, y = .estimate, group = .metric)) +
+  geom_line() +
+  facet_wrap(~.metric, scales = "free", ncol = 1) +
+  labs(x = "Fold", y = "Estimate",
+       title = "Cross-validation metrics")
+```
+
 # Writing Exercise
 
 In this exercise, we will synthesize our work above to create a reader-friendly version of our conclusions.
@@ -206,6 +279,8 @@ Using your plots above (along with any other metrics you compute), describe your
 Discuss why we perform EDA only on the training data and not on the entire data set.
 
 ```{r}
+#| label: loans-ir-summary
+
 loans_med <- median(loans_train$interest_rate)
 loans_iqr <- IQR(loans_train$interest_rate)
 ```
@@ -214,25 +289,26 @@ It appears that the marginal distribution for interest rates is largely unimodal
 The median interest rate is `r loans_med` with IQR `r loans_iqr`.
 
 It appears that there is no strong relationship between debt-to-income when the debt-to-income ratio is low.
-It seems that the that joint applications generally have higher debt-to-income ratios, but possibly some lower interest rates for highly levered (i.e., high debt-to-income ratios, esepcially greater than 100%) applications.
+It seems that the that joint applications generally have higher debt-to-income ratios, but possibly some lower interest rates for highly levered (i.e., high debt-to-income ratios, especially greater than 100%) applications.
 These may be outliers.
 
 The boxplot seems to suggest that while applications with a bankruptcy history have higher interest rates, the difference is very slight.
 
 ## Model fitting and fit evaluation
 
-Although our primary aim is prediction and not inference, its good to check the model fit nonetheless to make sure nothing looks out of the ordinary.
+Although our primary aim is prediction and not inference, it may be of interest to view the model fit nonetheless to make sure nothing looks out of the ordinary.
 Create a neatly organized table of the model output, and describe your observations, such as which parameters are significant.
 Make sure to interpret some coefficients appropriately.
 
 ```{r}
 loans_train_fit <- fit(loans_wflow, data = loans_train)
+
 tidy(loans_train_fit) %>% 
   kable(digits = 2)
 ```
 
-From the above table, it appears that all of the coefficients are significant at the 0.05 significance level except for \texttt{application\_type}.
-However, the interaction with \texttt{debt\_to\_income} is significant, so we want to include the main effect.
+From the above table, it appears that all of the coefficients are significant at the 0.05 significance level except for `application_type`.
+However, the interaction with `debt_to_income` is significant, so we want to include the main effect.
 We find that the sign of the coefficients is intuitive.
 For instance, as the debt-to-income ratio increases by 1%, the interest rate is predicted to increase by about 0.11% on average, holding all equal.
 Similarly, relative to loans with a 3-year maturity, loans with a 5-year maturity are predicted to have an interest rate about 3.84% higher on averaged, all else equal.
@@ -251,8 +327,7 @@ Since prediction is our primary concern, we use these metrics instead of R-squar
 
 ```{r}
 cv_metrics <- collect_metrics(loans_fit_rs)
-cv_metrics %>% 
-  kable(digits=2)
+cv_metrics %>% kable(digits = 2)
 loan_rmse <- cv_metrics$mean[1]
 loan_rsq <- cv_metrics$mean[2]
 ```
