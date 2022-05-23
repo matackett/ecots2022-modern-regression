@@ -184,7 +184,7 @@ library(tidymodels)
 ## Tidymodels flow
 
 ```{mermaid}
-%%| fig-width: 11
+%%| fig-width: 12
 
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff'}}}%%
 flowchart LR
