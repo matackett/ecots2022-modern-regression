@@ -48,7 +48,7 @@ One link for all materials
 -   Live demo + activity
 -   Tips + putting it all together
 
-# Background & Motivation
+# Background + motivation
 
 ## 2014 ASA Curriculum Guidelines
 
@@ -79,15 +79,15 @@ One link for all materials
 
 . . .
 
--   Noticed students had challenges
+-   Noticed students had challenges...
 
-    -   Preparing the data for the regression model
+    -   Preparing the data for analysis
 
     -   Effectively summarizing model results
 
     -   Making analysis decisions
 
-# How can we help students translate conceptual knowledge to practical application?
+# How can we help students better use their conceptual knowledge and skills to analyze real-world data?
 
 ## Inspired by introductory courses
 
@@ -113,11 +113,11 @@ Innovations in introductory courses in line with recommendations in the [2016 GA
 :::
 :::
 
-# Goal: Create learning experiences to continue cultivating these skills beyond the intro course
+# Goal: Develop learning experiences that continue cultivating these skills beyond the introductory course
 
 ## STA 210: Regression Analysis
 
-A course on linear and logistic regression with a focus on application.
+A course primarily on linear and logistic regression with a focus on application.
 
 ::: columns
 ::: {.column width="60%"}
@@ -144,7 +144,7 @@ Facilitate opportunities for students to...
 
 -   Develop important non-technical skills, specifically **written communication and teamwork**
 
--   Identify **appropriate methods for the primary analysis objective** - inference or prediction
+-   Identify **appropriate methods based on the primary analysis objective** - inference or prediction
 :::
 
 ## Remainder of session
@@ -217,12 +217,12 @@ flowchart LR
 ## Complex data
 
 -   Use authentic data sets that require some wrangling
-    -   Reinforces exploratory data analysis and that raw data is not always ready for analysis
+    -   Reinforces exploratory data analysis and that raw data is not always "ready to go" without some preparation
     -   Extent of data wrangling differs based on type of assignment and time to complete it
 
 . . .
 
--   Avoid using too many examples with violations in assumptions / regression not useful method for the data
+-   Avoid using too many examples with violations in assumptions or where regression is not useful to analyze the data
 
 ## Resources for finding data
 
@@ -241,9 +241,9 @@ flowchart LR
 ## Teamwork
 
 -   Teams of 3 or 4 students assigned based on
-    -   statistics and computing experience
+    -   previous statistics and computing experience
     -   major or academic interests
-    -   each student has at least one potential point of connection
+    -   trying to give each student at least one potential point of connection with their teammates
 
 . . .
 
@@ -251,22 +251,26 @@ flowchart LR
 
 ## Teamwork
 
+-   The first team assignment includes
+
+    -   Completing a team agreement
+
+    -   Coming up with a fun team name!
+
+. . .
+
 -   Teamwork is assessed based on contribution and collaboration
     -   GitHub commit history on assignments to assess contribution
     -   Periodic team feedback to assess collaboration
 
 ## Putting it all together
 
-Some skills highlighted in 2014 ASA Curriculum Guidelines
+Skills from the 2014 ASA Curriculum Guidelines
 
--   "...concepts and approaches for working with complex data ...and analyzing non-textbook data."
+-   "...concepts and approaches for working with **complex data** ...and analyzing non-textbook data."
 -   "...students' analyses should be undertaken in a **well-documented and reproducible way**"
 -   "...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
 
-. . .
-
-::: question
-It is important that students not only develop these skills but also how to use them in practice.
-:::
+# It is important that students not only develop these skills but also learn how to use them in practice.
 
 # Questions?
