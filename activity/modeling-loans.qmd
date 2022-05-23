@@ -302,4 +302,4 @@ Go to <https://docs.google.com/presentation/d/1xAesWFvErmAGqsEUwABJThJjaxxlNFwFP
 
 # Solutions
 
-See here for [solutions](activity/modeling-loans-solutions.html) to this activity.
+See [here](modeling-loans-solutions.html) for solutions to this activity.
