@@ -21,40 +21,6 @@ execute:
 
 ## Introductions
 
-<<<<<<< HEAD:modern-regression.qmd
-:::: columns
-
-:::{.column width="33%"}
-![Maria Tackett](images/maria.png)
-::::
-
-:::{.column width="33%"}
-![Mine Çetinkaya-Rundel](images/mine.png)
-::::
-
-:::{.column width="33%"}
-![Rick Presman](images/rick.png)
-::: 
-
-::::
-
-
-------------------------------------------------------------------------
-
-## Session agenda
-
-<br>
-
-`r emo::ji("one")` Background & motivation
-
-<br>
-
-`r emo::ji("two")` Computing with tidymodels
-
-<br>
-
-`r emo::ji("three")` Data, teamwork, and putting it all together
-=======
 ![](images/authors.png){fig-alt="Headshots of Maria Tackett, Mine Çetinkaya-Rundel, and Rick Presman" fig-align="center"}
 
 ::: {style="text-align: center;"}
@@ -70,32 +36,27 @@ Rick Presman
 -   Background + motivation
 -   Computing with tidymodels
 -   Live demo + activity
--   Tips + lessons learned
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
+-   Tips + putting it all together
 
-# Background + motivation
+# Background & Motivation
 
-<<<<<<< HEAD:modern-regression.qmd
 ## 2014 ASA Curriculum Guidelines
 
 . . .
 
-*"...concepts and approaches for working with **complex data**...and analyzing non-textbook data."*
+"...concepts and approaches for working with **complex data**...and analyzing non-textbook data."
 
 <br>
 
 . . .
 
-*"...students' analyses should be undertaken in a **well-documented and reproducible way**"*
+"...students' analyses should be undertaken in a **well-documented and reproducible way**"
 
 <br>
-=======
-## Statistics curriculum guidelines {.smaller}
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
 
 . . .
 
-*"...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."*
+"...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
 
 ::: footer
 [2014 ASA Curriculum Guidelines Report](https://www.amstat.org/docs/default-source/amstat-documents/edu-guidelines2014-11-15.pdf)
@@ -122,71 +83,43 @@ Rick Presman
 
 ## Inspired by introductory courses
 
-Innovations in introductory courses in line with recommendations in the [2016 GAISE report](https://www.amstat.org/docs/default-source/amstat-documents/gaisecollege_full.pdf). 
+Innovations in introductory courses in line with recommendations in the [2016 GAISE report](https://www.amstat.org/docs/default-source/amstat-documents/gaisecollege_full.pdf).
 
-.  .  .
+. . .
 
 ::: columns
 ::: {.column width="25%"}
 ![[Modern Dive](https://moderndive.com/)](images/modern-dive.png)
-
-<<<<<<< HEAD:modern-regression.qmd
 :::
-=======
-. . .
-
-**Curriculum Guidelines for Undergraduate Programs in Statistical Science**
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
 
 ::: {.column width="25%"}
-
 ![[Introduction to Modern Statistics](https://openintro-ims.netlify.app/)](images/ims.png)
-
 :::
 
 ::: {.column width="25%"}
-
 ![[Modern Data Science with R](https://mdsr-book.github.io/mdsr2e/)](images/modern-ds.png)
+:::
 
-::: 
-
-<<<<<<< HEAD:modern-regression.qmd
 ::: {.column width="25%"}
-=======
--   Modernizing intro statistics classes
--   Development of intro data science classes
-    -   Data Science in a Box
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
-
 ![[Data Science in a Box](https://datasciencebox.org/)](images/dsbox2.png)
-
 :::
 :::
 
-<<<<<<< HEAD:modern-regression.qmd
-# Create learning experiences to continue cultivating these skills beyond the intro course
-=======
-. . .
 
--   Why this course?
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
+# Goal: Create learning experiences to continue cultivating these skills beyond the intro course
+
 
 ## STA 210: Regression Analysis
 
-<<<<<<< HEAD:modern-regression.qmd
-A course on linear and logistic regression with a focus on application. 
-=======
-## The course
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
+A course on linear and logistic regression with a focus on application.
 
 ::: columns
 ::: {.column width="60%"}
 -   **Students**: 90+ students from a range of disciplines who have taken introductory statistics, data science, or probability
 
-- **Class meetings**: 2 lectures with in-class activities and 1 lab
+-   **Class meetings**: 2 lectures with in-class activities and 1 lab
 
-- **Assessments**: Labs, homework, exams, final group project
-
+-   **Assessments**: Labs, homework, exams, final group project
 :::
 
 ::: {.column width="35%"}
@@ -196,16 +129,10 @@ A course on linear and logistic regression with a focus on application.
 
 ## Modernizing the course
 
-<<<<<<< HEAD:modern-regression.qmd
 Facilitate opportunities for students to...
 
 ::: incremental
 -   Regularly engage with **real-world applications and complex data**
-=======
--   Regularly engage with complex and relevant real-world data and applications
-
--   Develop the skills and computational proficiency for a reproducible data analysis workflow
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
 
 -   Develop proficiency using **professional statistical software** and using a reproducible workflow
 
@@ -214,7 +141,6 @@ Facilitate opportunities for students to...
 -   Identify **appropriate methods for the primary analysis objective** - inference or prediction
 :::
 
-<<<<<<< HEAD:modern-regression.qmd
 ## Remainder of session
 
 -   Tidymodels overview and demonstration
@@ -223,11 +149,11 @@ Facilitate opportunities for students to...
 
     -   **Goal:** Get a glimpse of the in-class student experience
 
--   Data, teamwork, and putting it all together
+-  Tips + putting it all together
 
 # Computing using tidymodels
 
-# Tips and Lessons Learned
+# Tips + putting it all together
 
 ## Complex data
 
@@ -255,42 +181,35 @@ Facilitate opportunities for students to...
 
 ## Teamwork
 
-- Teams of 3 or 4 students assigned based on
+-   Teams of 3 or 4 students assigned based on
     -   statistics and computing experience
     -   major or academic interests
     -   each student has at least one potential point of connection
 
-. . . 
+. . .
 
 -   Groups work together throughout the semester on weekly lab assignments and the final project
 
-## Teamwork 
+## Teamwork
 
-- Teamwork is assessed based on contribution and collaboration
-    -   GitHub commit history on assignments to assess contribution 
+-   Teamwork is assessed based on contribution and collaboration
+    -   GitHub commit history on assignments to assess contribution
     -   Periodic team feedback to assess collaboration
 
 ## Putting it all together
 
-Some skills highlighted in 2014 ASA Curriculum Guidelines 
-=======
-# Live demo + activity
+Some skills highlighted in 2014 ASA Curriculum Guidelines
 
-# Tips + lessons learned
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
+- "...concepts and approaches for working with complex data ...and analyzing non-textbook data."
+- "...students' analyses should be undertaken in a **well-documented and reproducible way**"
+- "...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
 
-- *"...concepts and approaches for working with complex data ...and analyzing non-textbook data."*
-- *"...students' analyses should be undertaken in a **well-documented and reproducible way**"*
-- *"...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."*
+. . .
 
-<<<<<<< HEAD:modern-regression.qmd
-. . . 
+::: question
 
 It is important that students not only develop these skills but also how to use them in practice.
-=======
-## Teamwork
 
-## Challenges + lessons learned
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index.qmd
+:::
 
 # Questions?

@@ -18,11 +18,11 @@ details>summary {
 }
 
 .reveal .slide .question {
-  border-left: 3px solid #5B888C;
+  border-left: 3px solid #7090A5;
   padding-left: 0.5em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
-  background: #D9E3E4;
+  background: #A9BCC9;
 }
 
 .reveal .slide .poll {
@@ -40,3 +40,8 @@ details>summary {
   padding: 0.5em;
   background: #EBF7FF;
 }
+
+.reveal .slide b, strong {
+  color: #D3533A;
+}
+

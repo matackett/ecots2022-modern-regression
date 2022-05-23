@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-99.9.9">
+  <meta name="generator" content="quarto-0.9.363">
 
   <meta name="author" content="Maria Tackett, Mine Çetinkaya-Rundel, Rick Presman">
   <title>Modernizing the undergraduate regression analysis course</title>
@@ -334,128 +334,56 @@
 </section>
 <section id="introductions" class="slide level2">
 <h2>Introductions</h2>
-<<<<<<< HEAD:modern-regression-speaker.html
-<div class="columns">
-<div class="column" style="width:33%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/maria.png"></p>
-<p></p><figcaption aria-hidden="true">Maria Tackett</figcaption><p></p>
-</figure>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/mine.png"></p>
-<p></p><figcaption aria-hidden="true">Mine Çetinkaya-Rundel</figcaption><p></p>
-</figure>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/rick.png"></p>
-<p></p><figcaption aria-hidden="true">Rick Presman</figcaption><p></p>
-</figure>
-</div>
-</div>
-=======
 
 <img data-src="images/authors.png" alt="Headshots of Maria Tackett, Mine Çetinkaya-Rundel, and Rick Presman" class="r-stretch quarto-figure-center"><div style="text-align: center;">
 <p>Dr.&nbsp;Maria Tackett</p>
 <p>Dr.&nbsp;Mine Çetinkaya-Rundel</p>
 <p>Rick Presman</p>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 </div>
 </section>
 <section id="session-agenda" class="slide level2">
 <h2>Session agenda</h2>
-<<<<<<< HEAD:modern-regression-speaker.html
-<p><br></p>
-<p>1️⃣ Background &amp; motivation</p>
-<p><br></p>
-<p>2️⃣ Computing with tidymodels</p>
-<p><br></p>
-<p>3️⃣ Data, teamwork, and putting it all together</p>
-</section>
-=======
 <ul>
 <li>Background + motivation</li>
 <li>Computing with tidymodels</li>
 <li>Live demo + activity</li>
-<li>Tips + lessons learned</li>
+<li>Tips + putting it all together</li>
 </ul>
 </section></section>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 <section>
 <section id="background-motivation" class="title-slide slide level1 center">
-<h1>Background + motivation</h1>
+<h1>Background &amp; Motivation</h1>
 
 </section>
-<<<<<<< HEAD:modern-regression-speaker.html
 <section id="asa-curriculum-guidelines" class="slide level2">
 <h2>2014 ASA Curriculum Guidelines</h2>
 <div class="fragment">
-<p><em>“…concepts and approaches for working with <strong>complex data</strong>…and analyzing non-textbook data.”</em></p>
+<p>“…concepts and approaches for working with <strong>complex data</strong>…and analyzing non-textbook data.”</p>
 <p><br></p>
 </div>
 <div class="fragment">
-<p><em>“…students’ analyses should be undertaken in a <strong>well-documented and reproducible way</strong>”</em></p>
+<p>“…students’ analyses should be undertaken in a <strong>well-documented and reproducible way</strong>”</p>
 <p><br></p>
 </div>
 <div class="fragment">
-<p><em>“…construct effective visual displays and <strong>compelling written summaries</strong>” and “demonstrate ability to <strong>collaborate in teams</strong>…”</em></p>
+<p>“…construct effective visual displays and <strong>compelling written summaries</strong>” and “demonstrate ability to <strong>collaborate in teams</strong>…”</p>
 <div class="footer">
 <p><a href="https://www.amstat.org/docs/default-source/amstat-documents/edu-guidelines2014-11-15.pdf">2014 ASA Curriculum Guidelines Report</a></p>
 </div>
 </div>
-=======
-<section id="statistics-curriculum-guidelines" class="slide level2 smaller">
-<h2>Statistics curriculum guidelines</h2>
-<p><strong>GAISE</strong></p>
-<ul>
-<li>“..emphasize the practical problem-solving skills that are necessary to answer statistical questions.” - GAISE</li>
-</ul>
-<div class="fragment">
-<p><strong>Curriculum Guidelines for Undergraduate Programs in Statistical Science</strong></p>
-<ul>
-<li><p>“concepts and approaches for working with complex data…and analyzing non-textbook data”</p></li>
-<li><p>facile with professional statistical software” and that students’ analyses “should be undertaken in a well-documented and reproducible way”</p></li>
-<li><p>“write clearly, speak fluently, and construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams and to organize and manage projects”</p></li>
-</ul>
-</div>
-</section>
-<section id="observations-from-projects" class="slide level2">
-<h2>Observations from projects</h2>
-<ul>
-<li>Final projects in class</li>
-<li>Noticed gaps</li>
-</ul>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 </section>
 <section id="assessing-final-projects" class="slide level2">
 <h2>Assessing final projects</h2>
 <ul>
 <li><p>Final group project throughout second half of the course</p>
 <ul>
-<<<<<<< HEAD:modern-regression-speaker.html
 <li>Use regression analysis to analyze a data set of their choice</li>
 <li>Produce a written report and presentation</li>
-=======
-<li>Data Science in a Box</li>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 </ul></li>
 </ul>
 <div class="fragment">
 <ul>
-<<<<<<< HEAD:modern-regression-speaker.html
 <li><p>Noticed students had challenges</p>
-=======
-<li><strong>Goal:</strong> Create learning experiences to continue cultivating these skills beyond the intro course</li>
-</ul>
-<div class="fragment">
-<ul>
-<li><p>Why this course?</p>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 <ul>
 <li><p>Preparing the data for the regression model</p></li>
 <li><p>Effectively summarizing model results</p></li>
@@ -463,7 +391,6 @@
 </ul></li>
 </ul>
 </div>
-<<<<<<< HEAD:modern-regression-speaker.html
 </section></section>
 <section>
 <section id="how-can-we-help-students-translate-conceptual-knowledge-to-practical-application" class="title-slide slide level1 center">
@@ -508,18 +435,13 @@
 </div>
 </section></section>
 <section>
-<section id="create-learning-experiences-to-continue-cultivating-these-skills-beyond-the-intro-course" class="title-slide slide level1 center">
-<h1>Create learning experiences to continue cultivating these skills beyond the intro course</h1>
+<section id="goal-create-learning-experiences-to-continue-cultivating-these-skills-beyond-the-intro-course" class="title-slide slide level1 center">
+<h1>Goal: Create learning experiences to continue cultivating these skills beyond the intro course</h1>
 
 </section>
 <section id="sta-210-regression-analysis" class="slide level2">
 <h2>STA 210: Regression Analysis</h2>
 <p>A course on linear and logistic regression with a focus on application.</p>
-=======
-</section>
-<section id="the-course" class="slide level2">
-<h2>The course</h2>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
@@ -547,19 +469,12 @@
 <section id="remainder-of-session" class="slide level2">
 <h2>Remainder of session</h2>
 <ul>
-<<<<<<< HEAD:modern-regression-speaker.html
 <li><p>Tidymodels overview and demonstration</p></li>
 <li><p>Hands-on activity with tidymodels and writing exercises</p>
 <ul>
 <li><strong>Goal:</strong> Get a glimpse of the in-class student experience</li>
 </ul></li>
-<li><p>Data, teamwork, and putting it all together</p></li>
-=======
-<li><p>Regularly engage with complex and relevant real-world data and applications</p></li>
-<li><p>Develop the skills and computational proficiency for a reproducible data analysis workflow</p></li>
-<li><p>Develop important non-technical skills, specifically written communication and teamwork</p></li>
-<li><p>Use regression for prediction and inference and determine appropriate methods based on analysis objective</p></li>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
+<li><p>Tips + putting it all together</p></li>
 </ul>
 </section></section>
 <section id="computing-using-tidymodels" class="title-slide slide level1 center">
@@ -567,20 +482,11 @@
 
 </section>
 
-<<<<<<< HEAD:modern-regression-speaker.html
-=======
-<section id="live-demo-activity" class="title-slide slide level1 center">
-<h1>Live demo + activity</h1>
-
-</section>
-
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 <section>
-<section id="tips-lessons-learned" class="title-slide slide level1 center">
-<h1>Tips + lessons learned</h1>
+<section id="tips-putting-it-all-together" class="title-slide slide level1 center">
+<h1>Tips + putting it all together</h1>
 
 </section>
-<<<<<<< HEAD:modern-regression-speaker.html
 <section id="complex-data" class="slide level2">
 <h2>Complex data</h2>
 <ul>
@@ -627,16 +533,6 @@
 </section>
 <section id="teamwork-1" class="slide level2">
 <h2>Teamwork</h2>
-=======
-<section id="finding-authentic-data" class="slide level2">
-<h2>Finding authentic data</h2>
-</section>
-<section id="teamwork" class="slide level2">
-<h2>Teamwork</h2>
-</section>
-<section id="challenges-lessons-learned" class="slide level2">
-<h2>Challenges + lessons learned</h2>
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 <ul>
 <li>Teamwork is assessed based on contribution and collaboration
 <ul>
@@ -644,25 +540,23 @@
 <li>Periodic team feedback to assess collaboration</li>
 </ul></li>
 </ul>
-<<<<<<< HEAD:modern-regression-speaker.html
 </section>
 <section id="putting-it-all-together" class="slide level2">
 <h2>Putting it all together</h2>
 <p>Some skills highlighted in 2014 ASA Curriculum Guidelines</p>
 <ul>
-<li><em>“…concepts and approaches for working with complex data …and analyzing non-textbook data.”</em></li>
-<li><em>“…students’ analyses should be undertaken in a <strong>well-documented and reproducible way</strong>”</em></li>
-<li><em>“…construct effective visual displays and <strong>compelling written summaries</strong>” and “demonstrate ability to <strong>collaborate in teams</strong>…”</em></li>
+<li>“…concepts and approaches for working with complex data …and analyzing non-textbook data.”</li>
+<li>“…students’ analyses should be undertaken in a <strong>well-documented and reproducible way</strong>”</li>
+<li>“…construct effective visual displays and <strong>compelling written summaries</strong>” and “demonstrate ability to <strong>collaborate in teams</strong>…”</li>
 </ul>
 <div class="fragment">
+<div class="question">
 <p>It is important that students not only develop these skills but also how to use them in practice.</p>
+</div>
 </div>
 </section></section>
 <section id="questions" class="title-slide slide level1 center">
 <h1>Questions?</h1>
-<div class="footer footer-default">
-=======
->>>>>>> 94c63badeeec86099670eb2f26b0061996cdd280:slides/index-speaker.html
 
 
 <img src="images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
@@ -885,48 +779,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
