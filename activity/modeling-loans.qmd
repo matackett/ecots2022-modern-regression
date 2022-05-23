@@ -269,6 +269,10 @@ collect_metrics(loans_fit_rs, summarize = FALSE) %>%
   ...
 ```
 
+## Breakout 1
+
+Go to <https://docs.google.com/presentation/d/1xAesWFvErmAGqsEUwABJThJjaxxlNFwFPbo9mZgNfrY/edit>.
+
 # Writing Exercise
 
 In this exercise, we will synthesize our work above to create a reader-friendly version of our conclusions.
@@ -291,6 +295,10 @@ Make sure to interpret some coefficients appropriately.
 Explain what 10-fold CV does, and why it's useful.
 Display a neat table with the outputs of your CV summary, and describe your observations.
 Make sure to discuss why we are focusing on R-squared and RMSE instead of adjusted R-squared, AIC, and BIC.
+
+## Breakout 2
+
+Go to <https://docs.google.com/presentation/d/1xAesWFvErmAGqsEUwABJThJjaxxlNFwFPbo9mZgNfrY/edit>.
 
 # Solutions
 
