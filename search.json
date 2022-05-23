@@ -193,69 +193,83 @@
     "href": "slides/index.html#session-agenda",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Session agenda",
-    "text": "Session agenda\n\nBackground + motivation\nComputing with tidymodels\nLive demo + activity\nTips + lessons learned"
+    "text": "Session agenda\n\nBackground + motivation\nComputing with tidymodels\nLive demo + activity\nTips + putting it all together"
   },
   {
-    "objectID": "slides/index.html#statistics-curriculum-guidelines",
-    "href": "slides/index.html#statistics-curriculum-guidelines",
+    "objectID": "slides/index.html#asa-curriculum-guidelines",
+    "href": "slides/index.html#asa-curriculum-guidelines",
     "title": "Modernizing the undergraduate regression analysis course",
-    "section": "Statistics curriculum guidelines",
-    "text": "Statistics curriculum guidelines\nGAISE\n\n“..emphasize the practical problem-solving skills that are necessary to answer statistical questions.” - GAISE\n\n\nCurriculum Guidelines for Undergraduate Programs in Statistical Science\n\n“concepts and approaches for working with complex data…and analyzing non-textbook data”\nfacile with professional statistical software” and that students’ analyses “should be undertaken in a well-documented and reproducible way”\n“write clearly, speak fluently, and construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams and to organize and manage projects”"
+    "section": "2014 ASA Curriculum Guidelines",
+    "text": "2014 ASA Curriculum Guidelines\n\n“…concepts and approaches for working with complex data…and analyzing non-textbook data.”\n\n\n\n“…students’ analyses should be undertaken in a well-documented and reproducible way”\n\n\n\n“…construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams…”\n\n2014 ASA Curriculum Guidelines Report"
   },
   {
-    "objectID": "slides/index.html#observations-from-projects",
-    "href": "slides/index.html#observations-from-projects",
+    "objectID": "slides/index.html#assessing-final-projects",
+    "href": "slides/index.html#assessing-final-projects",
     "title": "Modernizing the undergraduate regression analysis course",
-    "section": "Observations from projects",
-    "text": "Observations from projects\n\nFinal projects in class\nNoticed gaps"
+    "section": "Assessing final projects",
+    "text": "Assessing final projects\n\nFinal group project throughout second half of the course\n\nUse regression analysis to analyze a data set of their choice\nProduce a written report and presentation\n\n\n\n\nNoticed students had challenges\n\nPreparing the data for the regression model\nEffectively summarizing model results\nMaking analysis decisions"
   },
   {
-    "objectID": "slides/index.html#innovations-at-introductory-level",
-    "href": "slides/index.html#innovations-at-introductory-level",
+    "objectID": "slides/index.html#inspired-by-introductory-courses",
+    "href": "slides/index.html#inspired-by-introductory-courses",
     "title": "Modernizing the undergraduate regression analysis course",
-    "section": "Innovations at introductory level",
-    "text": "Innovations at introductory level\n\nModernizing intro statistics classes\nDevelopment of intro data science classes\n\nData Science in a Box"
+    "section": "Inspired by introductory courses",
+    "text": "Inspired by introductory courses\nInnovations in introductory courses in line with recommendations in the 2016 GAISE report.\n\n\n\n\n\n\nModern Dive\n\n\n\n\n\n\nIntroduction to Modern Statistics\n\n\n\n\n\n\nModern Data Science with R\n\n\n\n\n\n\nData Science in a Box"
   },
   {
-    "objectID": "slides/index.html#motivation",
-    "href": "slides/index.html#motivation",
+    "objectID": "slides/index.html#sta-210-regression-analysis",
+    "href": "slides/index.html#sta-210-regression-analysis",
     "title": "Modernizing the undergraduate regression analysis course",
-    "section": "Motivation",
-    "text": "Motivation\n\nGoal: Create learning experiences to continue cultivating these skills beyond the intro course\n\n\n\nWhy this course?\n\nOften the second course for many students\nServes a diverse student population\nFirst shared course for statistics majors\nDevelop skills early that can be built on in later courses"
-  },
-  {
-    "objectID": "slides/index.html#the-course",
-    "href": "slides/index.html#the-course",
-    "title": "Modernizing the undergraduate regression analysis course",
-    "section": "The course",
-    "text": "The course\n\n\n\n~ 90 - 100 students who have taken introductory statistics, data science, or probability course\nTopics: Linear regression, logistic regression, and ANOVA with focus on application\nActivities: Active lectures with in-class exercises, computing labs, homework, quizzes/exams, group project"
+    "section": "STA 210: Regression Analysis",
+    "text": "STA 210: Regression Analysis\nA course on linear and logistic regression with a focus on application.\n\n\n\nStudents: 90+ students from a range of disciplines who have taken introductory statistics, data science, or probability\nClass meetings: 2 lectures with in-class activities and 1 lab\nAssessments: Labs, homework, exams, final group project"
   },
   {
     "objectID": "slides/index.html#modernizing-the-course",
     "href": "slides/index.html#modernizing-the-course",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Modernizing the course",
-    "text": "Modernizing the course\n\nRegularly engage with complex and relevant real-world data and applications\nDevelop the skills and computational proficiency for a reproducible data analysis workflow\nDevelop important non-technical skills, specifically written communication and teamwork\nUse regression for prediction and inference and determine appropriate methods based on analysis objective"
+    "text": "Modernizing the course\nFacilitate opportunities for students to…\n\n\nRegularly engage with real-world applications and complex data\nDevelop proficiency using professional statistical software and using a reproducible workflow\nDevelop important non-technical skills, specifically written communication and teamwork\nIdentify appropriate methods for the primary analysis objective - inference or prediction"
   },
   {
-    "objectID": "slides/index.html#finding-authentic-data",
-    "href": "slides/index.html#finding-authentic-data",
+    "objectID": "slides/index.html#remainder-of-session",
+    "href": "slides/index.html#remainder-of-session",
     "title": "Modernizing the undergraduate regression analysis course",
-    "section": "Finding authentic data",
-    "text": "Finding authentic data"
+    "section": "Remainder of session",
+    "text": "Remainder of session\n\nTidymodels overview and demonstration\nHands-on activity with tidymodels and writing exercises\n\nGoal: Get a glimpse of the in-class student experience\n\nTips + putting it all together"
+  },
+  {
+    "objectID": "slides/index.html#complex-data",
+    "href": "slides/index.html#complex-data",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Complex data",
+    "text": "Complex data\n\nUse authentic data sets that require some wrangling\n\nReinforces exploratory data analysis and that raw data is not always ready for analysis\nExtent of data wrangling differs based on type of assignment and time to complete it\n\n\n\n\nAvoid using too many examples with violations in assumptions / regression not useful method for the data"
+  },
+  {
+    "objectID": "slides/index.html#resources-for-finding-data",
+    "href": "slides/index.html#resources-for-finding-data",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Resources for finding data",
+    "text": "Resources for finding data\n\nOpenIntro\nTidyTuesday\nFiveThirtyEight\n\nGitHub repo\nR package\n\nData is Plural"
   },
   {
     "objectID": "slides/index.html#teamwork",
     "href": "slides/index.html#teamwork",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Teamwork",
-    "text": "Teamwork"
+    "text": "Teamwork\n\nTeams of 3 or 4 students assigned based on\n\nstatistics and computing experience\nmajor or academic interests\neach student has at least one potential point of connection\n\n\n\n\nGroups work together throughout the semester on weekly lab assignments and the final project"
   },
   {
-    "objectID": "slides/index.html#challenges-lessons-learned",
-    "href": "slides/index.html#challenges-lessons-learned",
+    "objectID": "slides/index.html#teamwork-1",
+    "href": "slides/index.html#teamwork-1",
     "title": "Modernizing the undergraduate regression analysis course",
-    "section": "Challenges + lessons learned",
-    "text": "Challenges + lessons learned\n\nImportant for students to understand how to put everything together\n\nvalue of the project\n\n\n\n\n\n🔗 matackett.github.io/ecots2022-modern-regression"
+    "section": "Teamwork",
+    "text": "Teamwork\n\nTeamwork is assessed based on contribution and collaboration\n\nGitHub commit history on assignments to assess contribution\nPeriodic team feedback to assess collaboration"
+  },
+  {
+    "objectID": "slides/index.html#putting-it-all-together",
+    "href": "slides/index.html#putting-it-all-together",
+    "title": "Modernizing the undergraduate regression analysis course",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nSome skills highlighted in 2014 ASA Curriculum Guidelines\n\n“…concepts and approaches for working with complex data …and analyzing non-textbook data.”\n“…students’ analyses should be undertaken in a well-documented and reproducible way”\n“…construct effective visual displays and compelling written summaries” and “demonstrate ability to collaborate in teams…”\n\n\n\nIt is important that students not only develop these skills but also how to use them in practice."
   }
 ]
