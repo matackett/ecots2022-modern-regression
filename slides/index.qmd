@@ -12,7 +12,7 @@ format:
     slide-number: true
     incremental: false 
     chalkboard: true
-editor: visual
+    center: true
 execute:
   freeze: auto
 ---
@@ -46,73 +46,116 @@ One link for all materials
 -   Background + motivation
 -   Computing with tidymodels
 -   Live demo + activity
--   Tips + lessons learned
+-   Tips + putting it all together
 
-# Background + motivation
+# Background & Motivation
 
-## Statistics curriculum guidelines {.smaller}
-
-**GAISE**
-
--   "..emphasize the practical problem-solving skills that are necessary to answer statistical questions." - GAISE
+## 2014 ASA Curriculum Guidelines
 
 . . .
 
-**Curriculum Guidelines for Undergraduate Programs in Statistical Science**
+"...concepts and approaches for working with **complex data**...and analyzing non-textbook data."
 
--   "concepts and approaches for working with complex data...and analyzing non-textbook data"
-
--   facile with professional statistical software" and that students' analyses "should be undertaken in a well-documented and reproducible way"
-
--   "write clearly, speak fluently, and construct effective visual displays and compelling written summaries" and "demonstrate ability to collaborate in teams and to organize and manage projects"
-
-## Observations from projects
-
--   Final projects in class
--   Noticed gaps
-
-## Innovations at introductory level
-
--   Modernizing intro statistics classes
--   Development of intro data science classes
-    -   Data Science in a Box
-
-## Motivation
-
--   **Goal:** Create learning experiences to continue cultivating these skills beyond the intro course
+<br>
 
 . . .
 
--   Why this course?
+"...students' analyses should be undertaken in a **well-documented and reproducible way**"
 
-    -   Often the second course for many students
-    -   Serves a diverse student population
-    -   First shared course for statistics majors
-    -   Develop skills early that can be built on in later courses
+<br>
 
-## The course
+. . .
+
+"...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
+
+[Full 2014 ASA Curriculum Guidelines Report](https://www.amstat.org/docs/default-source/amstat-documents/edu-guidelines2014-11-15.pdf)
+
+## Assessing final projects
+
+-   Final group project throughout second half of the course
+
+    -   Use regression analysis to analyze a data set of their choice
+    -   Produce a written report and presentation
+
+. . .
+
+-   Noticed students had challenges
+
+    -   Preparing the data for the regression model
+
+    -   Effectively summarizing model results
+
+    -   Making analysis decisions
+
+# How can we help students translate conceptual knowledge to practical application?
+
+## Inspired by introductory courses
+
+Innovations in introductory courses in line with recommendations in the [2016 GAISE report](https://www.amstat.org/docs/default-source/amstat-documents/gaisecollege_full.pdf).
+
+. . .
+
+::: columns
+::: {.column width="25%"}
+![[Modern Dive](https://moderndive.com/)](images/modern-dive.png)
+:::
+
+::: {.column width="25%"}
+![[Introduction to Modern Statistics](https://openintro-ims.netlify.app/)](images/ims.png)
+:::
+
+::: {.column width="25%"}
+![[Modern Data Science with R](https://mdsr-book.github.io/mdsr2e/)](images/modern-ds.png)
+:::
+
+::: {.column width="25%"}
+![[Data Science in a Box](https://datasciencebox.org/)](images/dsbox2.png)
+:::
+:::
+
+# Goal: Create learning experiences to continue cultivating these skills beyond the intro course
+
+## STA 210: Regression Analysis
+
+A course on linear and logistic regression with a focus on application.
 
 ::: columns
 ::: {.column width="60%"}
--   \~ 90 - 100 students who have taken introductory statistics, data science, or probability course
--   **Topics:** Linear regression, logistic regression, and ANOVA with focus on application
--   **Activities:** Active lectures with in-class exercises, computing labs, homework, quizzes/exams, group project
+-   **Students**: 90+ students from a range of disciplines who have taken introductory statistics, data science, or probability
+
+-   **Class meetings**: 2 lectures with in-class activities and 1 lab
+
+-   **Assessments**: Labs, homework, exams, final group project
 :::
 
 ::: {.column width="35%"}
-![](images/sta210-sticker.png)
+![](images/sta210-sticker.png){width="400"}
 :::
 :::
 
 ## Modernizing the course
 
--   Regularly engage with complex and relevant real-world data and applications
+Facilitate opportunities for students to...
 
--   Develop the skills and computational proficiency for a reproducible data analysis workflow
+::: incremental
+-   Regularly engage with **real-world applications and complex data**
 
--   Develop important non-technical skills, specifically written communication and teamwork
+-   Develop proficiency using **professional statistical software** and using a reproducible workflow
 
--   Use regression for prediction and inference and determine appropriate methods based on analysis objective
+-   Develop important non-technical skills, specifically **written communication and teamwork**
+
+-   Identify **appropriate methods for the primary analysis objective** - inference or prediction
+:::
+
+## Remainder of session
+
+-   Tidymodels overview and demonstration
+
+-   Hands-on activity with tidymodels and writing exercises
+
+    -   **Goal:** Get a glimpse of the in-class student experience
+
+-   Tips + putting it all together
 
 # Computing using tidymodels
 
@@ -155,13 +198,61 @@ flowchart LR
 
 # Live demo + activity
 
-# Tips + lessons learned
+# Tips + putting it all together
 
-## Finding authentic data
+## Complex data
+
+-   Use authentic data sets that require some wrangling
+    -   Reinforces exploratory data analysis and that raw data is not always ready for analysis
+    -   Extent of data wrangling differs based on type of assignment and time to complete it
+
+. . .
+
+-   Avoid using too many examples with violations in assumptions / regression not useful method for the data
+
+## Resources for finding data
+
+-   [OpenIntro](https://www.openintro.org/data/)
+
+-   [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+
+-   FiveThirtyEight
+
+    -   [GitHub repo](https://data.fivethirtyeight.com/)
+
+    -   [R package](https://fivethirtyeight-r.netlify.app/)
+
+-   [Data is Plural](https://www.data-is-plural.com/)
 
 ## Teamwork
 
-## Challenges + lessons learned
+-   Teams of 3 or 4 students assigned based on
+    -   statistics and computing experience
+    -   major or academic interests
+    -   each student has at least one potential point of connection
 
--   Important for students to understand how to put everything together
-    -   value of the project
+. . .
+
+-   Groups work together throughout the semester on weekly lab assignments and the final project
+
+## Teamwork
+
+-   Teamwork is assessed based on contribution and collaboration
+    -   GitHub commit history on assignments to assess contribution
+    -   Periodic team feedback to assess collaboration
+
+## Putting it all together
+
+Some skills highlighted in 2014 ASA Curriculum Guidelines
+
+-   "...concepts and approaches for working with complex data ...and analyzing non-textbook data."
+-   "...students' analyses should be undertaken in a **well-documented and reproducible way**"
+-   "...construct effective visual displays and **compelling written summaries**" and "demonstrate ability to **collaborate in teams**..."
+
+. . .
+
+::: question
+It is important that students not only develop these skills but also how to use them in practice.
+:::
+
+# Questions?
