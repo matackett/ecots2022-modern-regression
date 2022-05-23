@@ -42,7 +42,7 @@ Make sure to remove this flag prior to running the relevant code chunk to avoid 
 
 # Exercises
 
-## Exercise 0: Data Cleanup
+## Exercise 0: Data cleanup
 
 We are going to do a preliminary cleaning step.
 Let's drop any unused levels.
@@ -53,7 +53,7 @@ Let's drop any unused levels.
 loans_full_schema <- droplevels(loans_full_schema)
 ```
 
-## Exercise 1: Train-Test Data Split
+## Exercise 1: Train-test data split
 
 Split the data into a training and test set with a 75%-25% split.
 Don't forget to set a seed!
@@ -86,10 +86,7 @@ $$
 ## Exercise 3: EDA
 
 Explore characteristics of the variables you'll use for the model using the training data only.
-Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
-
-Explore characteristics of the variables you'll use for the model using the training data only.
-Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
+Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
 
 ```{r}
 #| label: explore
@@ -97,32 +94,32 @@ Create both univariate and bivariate plots, and make sure to think about which p
 #| message: false
 
 ggplot(loans_train, aes(x = interest_rate)) +
-  geom_histogram(bins = 20) +
+  geom_histogram(binwidth = 1) +
   labs(
-    x = "Interest Rate", y = "Count",
-    title = "Distribution of Loan Interest Rates"
+    x = "Interest rate", y = "Count",
+    title = "Distribution of loan interest rates"
   )
 
 ggplot(loans_train, aes(
   x = debt_to_income, y = interest_rate,
-  color = application_type
+  color = application_type, shape = application_type
 )) +
   geom_point() +
   labs(
-    x = "Debt-to-Income Ratio", y = "Interest Rate",
-    title = "Interest Rate vs. Debt-to-Income, by App. Type"
+    x = "Debt-to-income ratio", y = "Interest rate",
+    color = "Application type", shape = "Application type",
+    title = "Interest rate vs. Debt-to-income by application type"
   )
 
-ggplot(loans_train, aes(
-  x = as_factor(if_else(public_record_bankrupt == 0,
-    "no", "yes"
-  )),
-  y = interest_rate
-)) +
-  geom_boxplot() +
+loans_train %>%
+  mutate(public_record_bankrupt = if_else(public_record_bankrupt == 0, "no", "yes"
+  )) %>%
+ggplot(aes(x = interest_rate, fill = public_record_bankrupt)) +
+  geom_density(alpha = 0.5) +
   labs(
-    x = "Past Bankrupcy Status", y = "Interest Rate",
-    title = "Boxplots of Interest Rate by Bankruptcy Status"
+    x = "Interest rate", y = "Density",
+    fill = "Past bankrupcy status", 
+    title = "Interest rate by past bankruptcy status"
   )
 ```
 

@@ -181,22 +181,36 @@ The [**tidymodels**](https://www.tidymodels.org/) framework is a collection of p
 library(tidymodels)
 ```
 
-## Slide title
+## Tidymodels flow
 
 ```{mermaid}
+%%| fig-width: 11
+
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff'}}}%%
 flowchart LR
-  A[Model specification] --> C(Workflow)
-  B(Recipe) --> C(Workflow)
-  D(Data) --> E[Training]
-  D(Data) --> F[Testing]
-  E(Training data) --> B
-  C --> G[Model evaluation]
-  C --> H[Model selection]
-  H --> F
-  F --> I(Final fit)
+    MFD_SG --> MFD
+
+    subgraph MFD_SG[Model and feature development]
+    MS[Model specification] --> Workflow
+    RF[Recipe / formula] --> Workflow
+    Workflow --> MFT[Model / feature tuning] --> WMS[Within model selection]
+    end
+    
+    subgraph Overall model creation process
+    Data-->Testing
+    Data-->Training
+    Training --> MFD((Model and feature development)) --> BMS[Between model selection] --> FF[Final fit] --> MA[Model assessment]
+    Testing --> MA
+    end
 ```
 
 # Live demo + activity
+
+## Live demo + activity
+
+-   Go to [bit.ly/modern-regression](https://bit.ly/modern-regression) and click on the **Activity** link on the left.
+-   Join the RStudio Cloud workspace linked on top of the activity document.
+-   Follow along!
 
 # Tips + putting it all together
 
