@@ -1,0 +1,39 @@
+project:
+  type: website
+
+website:
+  title: "Modernizing the undergraduate regression analysis course"
+  description: "Homepage for eCOTS 2022 breakout session"
+  sidebar:
+    background: "#7090A5"
+    logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/matackett/ecots2022-modern-regression
+        text: GitHub
+      - icon: cloud-fill
+        href: https://rstudio.cloud/spaces/249609
+        text: RStudio Cloud
+    style: docked
+    contents:
+     - href: index.qmd
+       text: Home
+     - href: slides.qmd
+       text: Slides
+     - href: activity/modeling-loans.qmd
+       text: Activity
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+    mainfont: "Atkinson Hyperlegible"
+
+editor: visual
+
