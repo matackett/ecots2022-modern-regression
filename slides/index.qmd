@@ -2,7 +2,7 @@
 title: "Modernizing the undergraduate regression analysis course"
 subtitle: "eCOTS 2022"
 author: "Maria Tackett, Mine Çetinkaya-Rundel, Rick Presman"
-footer: "[🔗 matackett.github.io/ecots2022-modern-regression](https://matackett.github.io/ecots2022-modern-regression/)"
+footer: "[🔗 bit.ly/modern-regression](https://bit.ly/modern-regression)"
 logo: "images/logo.png"
 format: 
   revealjs:
@@ -29,6 +29,16 @@ Dr. Maria Tackett
 Dr. Mine Çetinkaya-Rundel
 
 Rick Presman
+:::
+
+## 
+
+![](images/logo.png){fig-alt="Hex logo for workshop" fig-align="center"}
+
+::: {style="text-align: center;"}
+One link for all materials
+
+🔗 [bit.ly/modern-regression](https://bit.ly/modern-regression)
 :::
 
 ## Session agenda
@@ -105,6 +115,43 @@ Rick Presman
 -   Use regression for prediction and inference and determine appropriate methods based on analysis objective
 
 # Computing using tidymodels
+
+## What is tidymodels?
+
+::: columns
+::: {.column width="50%"}
+The [**tidymodels**](https://www.tidymodels.org/) framework is a collection of packages for modeling and machine learning using tidyverse principles.
+:::
+
+::: {.column width="50%"}
+![](images/hello-tidymodels.png){fig-alt="Hex logos for tidymodels and a few of the packages in tidymodels" fig-align="center"}
+:::
+:::
+
+## Getting started with tidymodels
+
+```{r}
+#| echo: true
+#| message: true
+
+# intall.packages("tidymodels")
+library(tidymodels)
+```
+
+## Slide title
+
+```{mermaid}
+flowchart LR
+  A[Model specification] --> C(Workflow)
+  B(Recipe) --> C(Workflow)
+  D(Data) --> E[Training]
+  D(Data) --> F[Testing]
+  E(Training data) --> B
+  C --> G[Model evaluation]
+  C --> H[Model selection]
+  H --> F
+  F --> I(Final fit)
+```
 
 # Live demo + activity
 
