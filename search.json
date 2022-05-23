@@ -86,84 +86,84 @@
   {
     "objectID": "activity/modeling-loans.html",
     "href": "activity/modeling-loans.html",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "",
-    "text": "To work on this activity, join the RStudio Cloud workspace for this session by clicking here, and then start the project titled Modeling loans."
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)"
   },
   {
-    "objectID": "activity/modeling-loans.html#exercise-0-data-cleanup",
-    "href": "activity/modeling-loans.html#exercise-0-data-cleanup",
-    "title": "Modeling loans",
-    "section": "Exercise 0: Data cleanup",
-    "text": "Exercise 0: Data cleanup\nWe are going to do a preliminary cleaning step. Let’s drop any unused levels.\n\nloans_full_schema <- droplevels(loans_full_schema)"
+    "objectID": "activity/modeling-loans.html#data",
+    "href": "activity/modeling-loans.html#data",
+    "title": "Modeling loans - Solutions",
+    "section": "Data",
+    "text": "Data\nIn today’s workshop, we will explore using the tidymodels framework for modeling along with the tidyverse framework for data wrangling and visualization. We will start with some exploratory data analysis, walk through how to create the key components of a predictive model (models, recipes, and workflows), and how to perform cross-validation. Throughout we will be using the loans_full_schema dataset from the openintro package1 and featured in the OpenIntro textbooks2 .\nThe data has a bit of peculiarity about it, specifically the application_type variable is a factor variable with an empty level.\n\nlevels(loans_full_schema$application_type)\n\n[1] \"\"           \"individual\" \"joint\"     \n\n\nLet’s clean up this variable using the droplevels() function first. And let’s apply that to the whole dataset, in case there are other variables with similar issues.\n\nloans_full_schema <- droplevels(loans_full_schema)\n\nThe variables we’ll use in this analysis are:\n\ninterest_rate: Interest rate of the loan the applicant received.\ndebt_to_income: Debt-to-income ratio.\nterm: The number of months of the loan the applicant received.\ninquiries_last_12m: Inquiries into the applicant’s credit during the last 12 months.\npublic_record_bankrupt: Number of bankruptcies listed in the public record for this applicant.\napplication_type: The type of application: either individual or joint."
   },
   {
     "objectID": "activity/modeling-loans.html#exercise-1-train-test-data-split",
     "href": "activity/modeling-loans.html#exercise-1-train-test-data-split",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "Exercise 1: Train-test data split",
-    "text": "Exercise 1: Train-test data split\nSplit the data into a training and test set with a 75%-25% split. Don’t forget to set a seed!\n\nset.seed(210)\nloans_split <- initial_split(loans_full_schema)\nloans_train <- training(loans_split)\nloans_test <- testing(loans_split)"
+    "text": "Exercise 1: Train-test data split\nSplit the data into a training and test set with a 75%-25% split. Don’t forget to set a seed!\n\nset.seed(210)\n\nloans_split <- initial_split(___)\n\nloans_train <- training(___)\nloans_test <- ___(___)"
   },
   {
     "objectID": "activity/modeling-loans.html#exercise-2-the-model",
     "href": "activity/modeling-loans.html#exercise-2-the-model",
-    "title": "Modeling loans",
-    "section": "Exercise 2: The model",
-    "text": "Exercise 2: The model\nWrite the model for predicting interest rate (interest_rate) from debt to income ratio (debt_to_income), the term of loan (term), the number of inquiries (credit checks) into the applicant’s credit during the last 12 months (inquiries_last_12m), whether there are any bankruptcies listed in the public record for this applicant (bankrupt), and the type of application (application_type). The model should allow for the effect of to income ratio on interest rate to vary by application type.\n\\[\n\\begin{aligned}\n\\widehat{\\texttt{interest\\_rate}} = b_0 &+ b_{DI}\\cdot\\texttt{debt\\_to\\_income} \\\\\n&+ b_{term}\\cdot\\texttt{term} \\\\\n&+ b_{CC}\\cdot\\texttt{inquiries\\_last\\_12m} \\\\\n&+ b_{bank}\\cdot\\texttt{bankrupt} \\\\\n&+ b_{app}\\cdot\\texttt{application\\_type} \\\\\n&+ b_{DI:app}\\cdot\\texttt{debt\\_to\\_income:application\\_type}\n\\end{aligned}\n\\]"
+    "title": "Modeling loans - Solutions",
+    "section": "Exercise 2: The Model",
+    "text": "Exercise 2: The Model\nWrite the model for predicting interest rate (interest_rate) from debt to income ratio (debt_to_income), the term of loan (term), the number of inquiries (credit checks) into the applicant’s credit during the last 12 months (inquiries_last_12m), whether there are any bankruptcies listed in the public record for this applicant (bankrupt), and the type of application (application_type). The model should allow for the effect of to income ratio on interest rate to vary by application type.\n\\[\n\\begin{aligned}\n\\widehat{\\texttt{interest\\_rate}} = b_0 &+ b_1\\times\\texttt{debt\\_to\\_income} \\\\\n&+ b_2 \\times \\texttt{term} \\\\\n&+ b_3 \\times \\texttt{inquiries\\_last\\_12m} \\\\\n&+ b_4 \\times \\texttt{bankrupt} \\\\\n&+ b_5 \\times \\texttt{application\\_type} \\\\\n&+ b_6 \\times \\texttt{debt\\_to\\_income:application\\_type}\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "activity/modeling-loans.html#exercise-3-exploratory-data-analysis",
-    "href": "activity/modeling-loans.html#exercise-3-exploratory-data-analysis",
-    "title": "Modeling loans",
-    "section": "Exercise 3: Exploratory data analysis",
-    "text": "Exercise 3: Exploratory data analysis\nExplore characteristics of the variables you’ll use for the model using the training data only. Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(bins = 20) +\n  labs(\n    x = \"Interest Rate\", y = \"Count\",\n    title = \"Distribution of Loan Interest Rates\"\n  )\n\nggplot(loans_train, aes(\n  x = debt_to_income, y = interest_rate,\n  color = application_type\n)) +\n  geom_point() +\n  labs(\n    x = \"Debt-to-Income Ratio\", y = \"Interest Rate\",\n    title = \"Interest Rate vs. Debt-to-Income, by App. Type\"\n  )\n\nggplot(loans_train, aes(\n  x = as_factor(if_else(public_record_bankrupt == 0,\n    \"no\", \"yes\"\n  )),\n  y = interest_rate\n)) +\n  geom_boxplot() +\n  labs(\n    x = \"Past Bankrupcy Status\", y = \"Interest Rate\",\n    title = \"Boxplots of Interest Rate by Bankruptcy Status\"\n  )"
+    "objectID": "activity/modeling-loans.html#exercise-3-eda",
+    "href": "activity/modeling-loans.html#exercise-3-eda",
+    "title": "Modeling loans - Solutions",
+    "section": "Exercise 3: EDA",
+    "text": "Exercise 3: EDA\nExplore characteristics of the variables you’ll use for the model using the training data only.\nFirst, take a peek at the relevant variables in the data.\n\nloans_train %>%\n  select(interest_rate, debt_to_income, term,\n         inquiries_last_12m, public_record_bankrupt, application_type) %>%\n  glimpse()\n\nCreate univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nInterest rate:\n\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(binwidth = 1) +\n  labs(\n    x = \"Interest rate\", y = \"Count\",\n    title = \"Distribution of loan interest rates\"\n  )\n\n\nInterest rate vs. debt to income ratio by application type:\n\n\nggplot(loans_train, \n       aes(x = debt_to_income, y = interest_rate,\n           color = application_type, shape = application_type)) +\n  geom_point() +\n  labs(\n    x = \"Debt-to-income ratio\", y = \"Interest rate\",\n    color = \"Application type\", shape = \"Application type\",\n    title = \"Interest rate vs. Debt-to-income by application type\"\n  )\n\n\nInterest rate by bankruptcy:\n\n\nloans_train %>%\n  mutate(bankrupt = if_else(public_record_bankrupt == 0, \"no\", \"yes\")) %>%\n  ggplot(aes(x = interest_rate, fill = bankrupt)) +\n  geom_density(alpha = 0.5) +\n  labs(\n    x = \"Interest rate\", y = \"Density\",\n    fill = \"Past bankrupcy status\", \n    title = \"Interest rate by past bankruptcy status\"\n  )"
   },
   {
     "objectID": "activity/modeling-loans.html#exercise-4-model-specification",
     "href": "activity/modeling-loans.html#exercise-4-model-specification",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "Exercise 4: Model specification",
-    "text": "Exercise 4: Model specification\nSpecify a linear regression model. Call it loans_spec.\n\n# add code here"
+    "text": "Exercise 4: Model specification\nSpecify a linear regression model. Call it loans_spec.\n\nloans_spec <- ___"
   },
   {
-    "objectID": "activity/modeling-loans.html#exercise-5-recipe-building",
-    "href": "activity/modeling-loans.html#exercise-5-recipe-building",
-    "title": "Modeling loans",
-    "section": "Exercise 5: Recipe building",
-    "text": "Exercise 5: Recipe building\n\nPredict interest_rate from debt_to_income, term, inquiries_last_12m, public_record_bankrupt, and application_type.\nMean center debt_to_income.\nMake term a factor.\nCreate a new variable: bankrupt that takes on the value “no” if public_record_bankrupt is 0 and the value “yes” if public_record_bankrupt is 1 or higher. Then, remove public_record_bankrupt.\nInteract application_type with debt_to_income.\nCreate dummy variables where needed and drop any zero variance variables.\n\n\n# add code here"
+    "objectID": "activity/modeling-loans.html#exercise-5-recipe-and-formula-building",
+    "href": "activity/modeling-loans.html#exercise-5-recipe-and-formula-building",
+    "title": "Modeling loans - Solutions",
+    "section": "Exercise 5: Recipe and formula building",
+    "text": "Exercise 5: Recipe and formula building\n\nPredict interest_rate from debt_to_income, term, inquiries_last_12m, public_record_bankrupt, and application_type.\nMean center debt_to_income.\nMake term a factor.\nCreate a new variable: bankrupt that takes on the value “no” if public_record_bankrupt is 0 and the value “yes” if public_record_bankrupt is 1 or higher. Then, remove public_record_bankrupt.\nInteract application_type with debt_to_income.\nCreate dummy variables where needed and drop any zero variance variables.\n\n\nloans_rec <- recipe(interest_rate ~ ___, data = ___) %>%\n  step_center(___) %>%\n  step_mutate(term = ___) %>%\n  step_mutate(bankrupt = ___) %>%\n  step_rm(___) %>%\n  step_dummy(___) %>%\n  step_interact(terms = ~ ___) %>%\n  step_zv(___)"
   },
   {
     "objectID": "activity/modeling-loans.html#exercise-6-creating-a-workflow",
     "href": "activity/modeling-loans.html#exercise-6-creating-a-workflow",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "Exercise 6: Creating a workflow",
-    "text": "Exercise 6: Creating a workflow\nCreate the workflow that brings together the model specification and recipe.\n\n# add code here"
+    "text": "Exercise 6: Creating a workflow\nCreate the workflow that brings together the model specification and recipe.\n\nloans_wflow <- workflow() %>%\n  add_model(___) %>%\n  add_recipe(___)\n\nloans_wflow"
   },
   {
     "objectID": "activity/modeling-loans.html#exercise-7-cross-validation-and-summary",
     "href": "activity/modeling-loans.html#exercise-7-cross-validation-and-summary",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "Exercise 7: Cross-validation and summary",
-    "text": "Exercise 7: Cross-validation and summary\nConduct 10-fold cross validation.\n\n# add code here\n\nSummarize metrics from your CV resamples.\n\n# add code here"
+    "text": "Exercise 7: Cross-validation and summary\nConduct 10-fold cross validation.\n\nset.seed(210)\nloans_folds <- vfold_cv(loans_train, v = 10)\n\nloans_fit_rs <- ___ %>%\n  fit_resamples(___)\n\nloans_fit_rs\n\nSummarize metrics from your CV resamples.\n\ncollect_metrics(___)\n\nWe can also visualize the metrics across folds.\n\ncollect_metrics(loans_fit_rs, summarize = FALSE) %>%\n  ..."
   },
   {
     "objectID": "activity/modeling-loans.html#exploratory-data-analysis",
     "href": "activity/modeling-loans.html#exploratory-data-analysis",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "Exploratory data analysis",
     "text": "Exploratory data analysis\nUsing your plots above (along with any other metrics you compute), describe your initial findings about the training data. Discuss why we perform EDA only on the training data and not on the entire data set."
   },
   {
     "objectID": "activity/modeling-loans.html#model-fitting-and-fit-evaluation",
     "href": "activity/modeling-loans.html#model-fitting-and-fit-evaluation",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "Model fitting and fit evaluation",
-    "text": "Model fitting and fit evaluation\nAlthough our primary aim is prediction and not inference, its good to check the model fit nonetheless to make sure nothing looks out of the ordinary. Create a neatly organized table of the model output, and describe your observations, such as which parameters are significant. Make sure to interpret some coefficients appropriately."
+    "text": "Model fitting and fit evaluation\nAlthough our primary aim is prediction and not inference, it may be of interest to view the model fit nonetheless to make sure nothing looks out of the ordinary. Create a neatly organized table of the model output, and describe your observations, such as which parameters are significant. Make sure to interpret some coefficients appropriately."
   },
   {
     "objectID": "activity/modeling-loans.html#cross-validation",
     "href": "activity/modeling-loans.html#cross-validation",
-    "title": "Modeling loans",
+    "title": "Modeling loans - Solutions",
     "section": "Cross-validation",
     "text": "Cross-validation\nExplain what 10-fold CV does, and why it’s useful. Display a neat table with the outputs of your CV summary, and describe your observations. Make sure to discuss why we are focusing on R-squared and RMSE instead of adjusted R-squared, AIC, and BIC."
   },
