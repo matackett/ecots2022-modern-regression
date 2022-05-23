@@ -92,7 +92,7 @@ $$
 ## Exercise 3: Exploratory data analysis
 
 Explore characteristics of the variables you'll use for the model using the training data only.
-Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
+Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.
 
 ```{r}
 #| eval: false
