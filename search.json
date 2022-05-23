@@ -10,15 +10,15 @@
     "objectID": "activity/modeling-loans-solutions.html#exercise-0-data-cleanup",
     "href": "activity/modeling-loans-solutions.html#exercise-0-data-cleanup",
     "title": "Modeling loans - Solutions",
-    "section": "Exercise 0: Data Cleanup",
-    "text": "Exercise 0: Data Cleanup\nWe are going to do a preliminary cleaning step. Let’s drop any unused levels.\n\nloans_full_schema <- droplevels(loans_full_schema)"
+    "section": "Exercise 0: Data cleanup",
+    "text": "Exercise 0: Data cleanup\nWe are going to do a preliminary cleaning step. Let’s drop any unused levels.\n\nloans_full_schema <- droplevels(loans_full_schema)"
   },
   {
     "objectID": "activity/modeling-loans-solutions.html#exercise-1-train-test-data-split",
     "href": "activity/modeling-loans-solutions.html#exercise-1-train-test-data-split",
     "title": "Modeling loans - Solutions",
-    "section": "Exercise 1: Train-Test Data Split",
-    "text": "Exercise 1: Train-Test Data Split\nSplit the data into a training and test set with a 75%-25% split. Don’t forget to set a seed!\n\nset.seed(210)\nloans_split <- initial_split(loans_full_schema)\nloans_train <- training(loans_split)\nloans_test <- testing(loans_split)"
+    "section": "Exercise 1: Train-test data split",
+    "text": "Exercise 1: Train-test data split\nSplit the data into a training and test set with a 75%-25% split. Don’t forget to set a seed!\n\nset.seed(210)\nloans_split <- initial_split(loans_full_schema)\nloans_train <- training(loans_split)\nloans_test <- testing(loans_split)"
   },
   {
     "objectID": "activity/modeling-loans-solutions.html#exercise-2-the-model",
@@ -32,7 +32,7 @@
     "href": "activity/modeling-loans-solutions.html#exercise-3-eda",
     "title": "Modeling loans - Solutions",
     "section": "Exercise 3: EDA",
-    "text": "Exercise 3: EDA\nExplore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\nExplore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(bins = 20) +\n  labs(\n    x = \"Interest Rate\", y = \"Count\",\n    title = \"Distribution of Loan Interest Rates\"\n  )\n\n\n\nggplot(loans_train, aes(\n  x = debt_to_income, y = interest_rate,\n  color = application_type\n)) +\n  geom_point() +\n  labs(\n    x = \"Debt-to-Income Ratio\", y = \"Interest Rate\",\n    title = \"Interest Rate vs. Debt-to-Income, by App. Type\"\n  )\n\n\n\nggplot(loans_train, aes(\n  x = as_factor(if_else(public_record_bankrupt == 0,\n    \"no\", \"yes\"\n  )),\n  y = interest_rate\n)) +\n  geom_boxplot() +\n  labs(\n    x = \"Past Bankrupcy Status\", y = \"Interest Rate\",\n    title = \"Boxplots of Interest Rate by Bankruptcy Status\"\n  )"
+    "text": "Exercise 3: EDA\nExplore characteristics of the variables you’ll use for the model using the training data only. Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(binwidth = 1) +\n  labs(\n    x = \"Interest rate\", y = \"Count\",\n    title = \"Distribution of loan interest rates\"\n  )\n\n\n\nggplot(loans_train, aes(\n  x = debt_to_income, y = interest_rate,\n  color = application_type, shape = application_type\n)) +\n  geom_point() +\n  labs(\n    x = \"Debt-to-income ratio\", y = \"Interest rate\",\n    color = \"Application type\", shape = \"Application type\",\n    title = \"Interest rate vs. Debt-to-income by application type\"\n  )\n\n\n\nloans_train %>%\n  mutate(public_record_bankrupt = if_else(public_record_bankrupt == 0, \"no\", \"yes\"\n  )) %>%\nggplot(aes(x = interest_rate, fill = public_record_bankrupt)) +\n  geom_density(alpha = 0.5) +\n  labs(\n    x = \"Interest rate\", y = \"Density\",\n    fill = \"Past bankrupcy status\", \n    title = \"Interest rate by past bankruptcy status\"\n  )"
   },
   {
     "objectID": "activity/modeling-loans-solutions.html#exercise-4-model-specification",
@@ -116,7 +116,7 @@
     "href": "activity/modeling-loans.html#exercise-3-exploratory-data-analysis",
     "title": "Modeling loans",
     "section": "Exercise 3: Exploratory data analysis",
-    "text": "Exercise 3: Exploratory data analysis\nExplore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(bins = 20) +\n  labs(\n    x = \"Interest Rate\", y = \"Count\",\n    title = \"Distribution of Loan Interest Rates\"\n  )\n\nggplot(loans_train, aes(\n  x = debt_to_income, y = interest_rate,\n  color = application_type\n)) +\n  geom_point() +\n  labs(\n    x = \"Debt-to-Income Ratio\", y = \"Interest Rate\",\n    title = \"Interest Rate vs. Debt-to-Income, by App. Type\"\n  )\n\nggplot(loans_train, aes(\n  x = as_factor(if_else(public_record_bankrupt == 0,\n    \"no\", \"yes\"\n  )),\n  y = interest_rate\n)) +\n  geom_boxplot() +\n  labs(\n    x = \"Past Bankrupcy Status\", y = \"Interest Rate\",\n    title = \"Boxplots of Interest Rate by Bankruptcy Status\"\n  )"
+    "text": "Exercise 3: Exploratory data analysis\nExplore characteristics of the variables you’ll use for the model using the training data only. Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.\n\nggplot(loans_train, aes(x = interest_rate)) +\n  geom_histogram(bins = 20) +\n  labs(\n    x = \"Interest Rate\", y = \"Count\",\n    title = \"Distribution of Loan Interest Rates\"\n  )\n\nggplot(loans_train, aes(\n  x = debt_to_income, y = interest_rate,\n  color = application_type\n)) +\n  geom_point() +\n  labs(\n    x = \"Debt-to-Income Ratio\", y = \"Interest Rate\",\n    title = \"Interest Rate vs. Debt-to-Income, by App. Type\"\n  )\n\nggplot(loans_train, aes(\n  x = as_factor(if_else(public_record_bankrupt == 0,\n    \"no\", \"yes\"\n  )),\n  y = interest_rate\n)) +\n  geom_boxplot() +\n  labs(\n    x = \"Past Bankrupcy Status\", y = \"Interest Rate\",\n    title = \"Boxplots of Interest Rate by Bankruptcy Status\"\n  )"
   },
   {
     "objectID": "activity/modeling-loans.html#exercise-4-model-specification",
@@ -270,7 +270,7 @@
     "href": "slides/index.html#getting-started-with-tidymodels",
     "title": "Modernizing the undergraduate regression analysis course",
     "section": "Getting started with tidymodels",
-    "text": "Getting started with tidymodels\n\n# intall.packages(\"tidymodels\")\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──\n\n\n✔ broom        0.8.0          ✔ recipes      0.2.0     \n✔ dials        0.1.1          ✔ rsample      0.1.1     \n✔ dplyr        1.0.9          ✔ tibble       3.1.7     \n✔ ggplot2      3.3.6          ✔ tidyr        1.2.0.9000\n✔ infer        1.0.0          ✔ tune         0.2.0     \n✔ modeldata    0.1.1          ✔ workflows    0.2.6     \n✔ parsnip      0.2.1          ✔ workflowsets 0.2.1     \n✔ purrr        0.3.4          ✔ yardstick    0.0.9     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard() masks scales::discard()\n✖ dplyr::filter()  masks stats::filter()\n✖ dplyr::lag()     masks stats::lag()\n✖ recipes::step()  masks stats::step()\n• Search for functions across packages at https://www.tidymodels.org/find/"
+    "text": "Getting started with tidymodels\n\n# intall.packages(\"tidymodels\")\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──\n\n\n✔ broom        0.8.0          ✔ recipes      0.2.0     \n✔ dials        0.1.1          ✔ rsample      0.1.1     \n✔ dplyr        1.0.9          ✔ tibble       3.1.7     \n✔ ggplot2      3.3.6          ✔ tidyr        1.2.0.9000\n✔ infer        1.0.0          ✔ tune         0.2.0     \n✔ modeldata    0.1.1          ✔ workflows    0.2.6     \n✔ parsnip      0.2.1          ✔ workflowsets 0.2.1     \n✔ purrr        0.3.4          ✔ yardstick    0.0.9     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ purrr::discard() masks scales::discard()\n✖ dplyr::filter()  masks stats::filter()\n✖ dplyr::lag()     masks stats::lag()\n✖ recipes::step()  masks stats::step()\n• Learn how to get started at https://www.tidymodels.org/start/"
   },
   {
     "objectID": "slides/index.html#tidymodels-flow",

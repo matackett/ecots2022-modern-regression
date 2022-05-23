@@ -187,8 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-0-data-cleanup" id="toc-exercise-0-data-cleanup" class="nav-link" data-scroll-target="#exercise-0-data-cleanup">Exercise 0: Data Cleanup</a></li>
-  <li><a href="#exercise-1-train-test-data-split" id="toc-exercise-1-train-test-data-split" class="nav-link" data-scroll-target="#exercise-1-train-test-data-split">Exercise 1: Train-Test Data Split</a></li>
+  <li><a href="#exercise-0-data-cleanup" id="toc-exercise-0-data-cleanup" class="nav-link" data-scroll-target="#exercise-0-data-cleanup">Exercise 0: Data cleanup</a></li>
+  <li><a href="#exercise-1-train-test-data-split" id="toc-exercise-1-train-test-data-split" class="nav-link" data-scroll-target="#exercise-1-train-test-data-split">Exercise 1: Train-test data split</a></li>
   <li><a href="#exercise-2-the-model" id="toc-exercise-2-the-model" class="nav-link" data-scroll-target="#exercise-2-the-model">Exercise 2: The Model</a></li>
   <li><a href="#exercise-3-eda" id="toc-exercise-3-eda" class="nav-link" data-scroll-target="#exercise-3-eda">Exercise 3: EDA</a></li>
   <li><a href="#exercise-4-model-specification" id="toc-exercise-4-model-specification" class="nav-link" data-scroll-target="#exercise-4-model-specification">Exercise 4: Model specification</a></li>
@@ -240,14 +240,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="exercises" class="level1">
 <h1>Exercises</h1>
 <section id="exercise-0-data-cleanup" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-0-data-cleanup">Exercise 0: Data Cleanup</h2>
+<h2 class="anchored" data-anchor-id="exercise-0-data-cleanup">Exercise 0: Data cleanup</h2>
 <p>We are going to do a preliminary cleaning step. Let’s drop any unused levels.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>loans_full_schema <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(loans_full_schema)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-1-train-test-data-split" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1-train-test-data-split">Exercise 1: Train-Test Data Split</h2>
+<h2 class="anchored" data-anchor-id="exercise-1-train-test-data-split">Exercise 1: Train-test data split</h2>
 <p>Split the data into a training and test set with a 75%-25% split. Don’t forget to set a seed!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">210</span>)</span>
@@ -272,41 +272,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="exercise-3-eda" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3-eda">Exercise 3: EDA</h2>
-<p>Explore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.</p>
-<p>Explore characteristics of the variables you’ll use for the model using the training data only. Create both univariate and bivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.</p>
+<p>Explore characteristics of the variables you’ll use for the model using the training data only. Create univariate, bivariate, and multivariate plots, and make sure to think about which plots are the most appropriate and effective given the data types.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(<span class="at">x =</span> interest_rate)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Interest Rate"</span>, <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Loan Interest Rates"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Interest rate"</span>, <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of loan interest rates"</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="modeling-loans-solutions_files/figure-html/explore-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> debt_to_income, <span class="at">y =</span> interest_rate,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> application_type</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> application_type, <span class="at">shape =</span> application_type</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Debt-to-Income Ratio"</span>, <span class="at">y =</span> <span class="st">"Interest Rate"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Interest Rate vs. Debt-to-Income, by App. Type"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Debt-to-income ratio"</span>, <span class="at">y =</span> <span class="st">"Interest rate"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Application type"</span>, <span class="at">shape =</span> <span class="st">"Application type"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Interest rate vs. Debt-to-income by application type"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="modeling-loans-solutions_files/figure-html/explore-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loans_train, <span class="fu">aes</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">as_factor</span>(<span class="fu">if_else</span>(public_record_bankrupt <span class="sc">==</span> <span class="dv">0</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"no"</span>, <span class="st">"yes"</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  )),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> interest_rate</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Past Bankrupcy Status"</span>, <span class="at">y =</span> <span class="st">"Interest Rate"</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Boxplots of Interest Rate by Bankruptcy Status"</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>loans_train <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">public_record_bankrupt =</span> <span class="fu">if_else</span>(public_record_bankrupt <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"no"</span>, <span class="st">"yes"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> interest_rate, <span class="at">fill =</span> public_record_bankrupt)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Interest rate"</span>, <span class="at">y =</span> <span class="st">"Density"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Past bankrupcy status"</span>, </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Interest rate by past bankruptcy status"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="modeling-loans-solutions_files/figure-html/explore-3.png" class="img-fluid" width="672"></p>
 </div>
